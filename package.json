@@ -1,0 +1,23 @@
+{
+  "name": "supabase-csv-rag",
+  "version": "1.0.0",
+  "description": "A RAG app using Supabase, Cohere, and Google AI with a CSV source.",
+  "main": "rag.js",
+  "type": "module",
+  "scripts": {
+    "start": "node rag.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@langchain/cohere": "^1.0.0",
+    "@langchain/community": "^1.0.0",
+    "@langchain/core": "^1.0.2",
+    "@langchain/google-genai": "^1.0.0",
+    "@supabase/supabase-js": "^2.79.0",
+    "d3-dsv": "^2.0.0",
+    "dotenv": "^16.6.1",
+    "langchain": "^1.0.2"
+  }
+}
