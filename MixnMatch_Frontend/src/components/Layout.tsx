@@ -1,11 +1,22 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { NavLink } from "@/components/NavLink";
 import { Button } from "@/components/ui/button";
-import { ChefHat, Sparkles } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { ChefHat, Sparkles, User, LogOut, Settings } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useAuth } from "@/contexts/AuthContext";
 
 export const Layout = () => {
   const [scrolled, setScrolled] = useState(false);
+  const { isAuthenticated, user, logout } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,6 +25,11 @@ export const Layout = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
 
   const navItems = [
     { name: "Create Recipe", path: "/create" },
@@ -53,15 +69,63 @@ export const Layout = () => {
           </nav>
           
           <div className="flex items-center space-x-3">
-            <Button variant="ghost" size="sm" className="hidden sm:inline-flex">
-              Sign In
-            </Button>
-            <Button size="sm" asChild className="group">
-              <Link to="/create">
-                <Sparkles className="h-4 w-4 mr-2 group-hover:rotate-12 transition-transform" />
-                Start Cooking
-              </Link>
-            </Button>
+            {isAuthenticated ? (
+              <>
+                <Button size="sm" asChild className="group hidden sm:inline-flex">
+                  <Link to="/create">
+                    <Sparkles className="h-4 w-4 mr-2 group-hover:rotate-12 transition-transform" />
+                    Try Here
+                  </Link>
+                </Button>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="flex items-center space-x-2"
+                    >
+                      <div className="w-8 h-8 rounded-full bg-gradient-primary flex items-center justify-center">
+                        <User className="h-4 w-4 text-white" />
+                      </div>
+                      <span className="hidden md:inline-block">{user?.name}</span>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="w-56">
+                    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem onClick={() => navigate("/profile")}>
+                      <User className="h-4 w-4 mr-2" />
+                      Profile
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => navigate("/favorites")}>
+                      <Sparkles className="h-4 w-4 mr-2" />
+                      Favorites
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => navigate("/pantry")}>
+                      <ChefHat className="h-4 w-4 mr-2" />
+                      My Pantry
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem onClick={handleLogout}>
+                      <LogOut className="h-4 w-4 mr-2" />
+                      Log out
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </>
+            ) : (
+              <>
+                <Button variant="ghost" size="sm" className="hidden sm:inline-flex" asChild>
+                  <Link to="/login">Login</Link>
+                </Button>
+                <Button size="sm" asChild className="group">
+                  <Link to="/signup">
+                    <Sparkles className="h-4 w-4 mr-2 group-hover:rotate-12 transition-transform" />
+                    Try Here
+                  </Link>
+                </Button>
+              </>
+            )}
           </div>
         </div>
       </header>
