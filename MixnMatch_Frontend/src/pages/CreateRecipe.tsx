@@ -7,7 +7,7 @@ const CreateRecipe = () => {
   return (
     <div className="container py-8">
       <div className="grid lg:grid-cols-[1fr_300px] gap-6">
-        <div className="h-[calc(100vh-12rem)]">
+        <div>
           <ChatInterface />
         </div>
 
