@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useState, useEffect, useMemo } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -9,18 +10,128 @@ import mediterraneanImage from "@/assets/recipe-mediterranean.jpg";
 import curryImage from "@/assets/recipe-curry.jpg";
 import { Link } from "react-router-dom";
 
+interface Recipe {
+  id: number;
+  name: string;
+  description: string;
+  cookTimeMinutes: number;
+  cuisine: string;
+  mealType: string;
+  tags: string[];
+  imageUrl: string;
+}
+
 const Explore = () => {
-  const mockRecipes = [
-    { id: 1, name: "Asian Chicken Stir-Fry", time: "25 min", tags: ["Asian", "Quick"], image: stirfryImage, pantryMatch: 6 },
-    { id: 2, name: "Mediterranean Bowl", time: "20 min", tags: ["Vegetarian", "Healthy"], image: mediterraneanImage, pantryMatch: 7 },
-    { id: 3, name: "Spicy Thai Curry", time: "35 min", tags: ["Vegan", "Asian"], image: curryImage, pantryMatch: 5 },
-    { id: 4, name: "Italian Pasta Primavera", time: "30 min", tags: ["Italian", "Vegetarian"], image: mediterraneanImage, pantryMatch: 8 },
-    { id: 5, name: "Mexican Burrito Bowl", time: "20 min", tags: ["Mexican", "Quick"], image: stirfryImage, pantryMatch: 6 },
-    { id: 6, name: "Greek Salad Bowl", time: "15 min", tags: ["Mediterranean", "Healthy"], image: curryImage, pantryMatch: 9 },
-    { id: 7, name: "Indian Butter Chicken", time: "45 min", tags: ["Indian", "Comfort"], image: stirfryImage, pantryMatch: 4 },
-    { id: 8, name: "Vietnamese Pho", time: "60 min", tags: ["Asian", "Soup"], image: mediterraneanImage, pantryMatch: 5 },
-    { id: 9, name: "French Ratatouille", time: "50 min", tags: ["French", "Vegan"], image: curryImage, pantryMatch: 7 },
-  ];
+  const [recipes, setRecipes] = useState<Recipe[]>([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [cookTimeMax, setCookTimeMax] = useState(300);
+  const [activeFilters, setActiveFilters] = useState<Record<string, string[]>>({});
+  const [quickOptions, setQuickOptions] = useState({
+    onePot: false,
+    highProtein: false,
+    budgetFriendly: false,
+  });
+
+  // Load recipes from JSON on component mount
+  useEffect(() => {
+    const loadRecipes = async () => {
+      try {
+        const response = await fetch('/Recipies.json');
+        const data = await response.json();
+        const recipesData = data.recipes.map((recipe: any) => ({
+          ...recipe,
+          // Use placeholder images for now since the JSON imageUrl points to example.com
+          imageUrl: recipe.id % 3 === 0 ? curryImage : 
+                   recipe.id % 3 === 1 ? stirfryImage : mediterraneanImage,
+        }));
+        setRecipes(recipesData);
+      } catch (error) {
+        console.error('Error loading recipes:', error);
+        // Fallback to empty array
+        setRecipes([]);
+      }
+    };
+
+    loadRecipes();
+  }, []);
+
+  // Filter recipes based on all active filters
+  const filteredRecipes = useMemo(() => {
+    return recipes.filter((recipe) => {
+      // Search filter
+      if (searchQuery && !recipe.name.toLowerCase().includes(searchQuery.toLowerCase()) && 
+          !recipe.description.toLowerCase().includes(searchQuery.toLowerCase())) {
+        return false;
+      }
+
+      // Cook time filter
+      if (recipe.cookTimeMinutes > cookTimeMax) {
+        return false;
+      }
+
+      // Dietary preferences filter
+      if (activeFilters["Dietary Preferences"]?.length > 0) {
+        const hasMatchingDiet = activeFilters["Dietary Preferences"].some(diet => 
+          recipe.tags.includes(diet)
+        );
+        if (!hasMatchingDiet) return false;
+      }
+
+      // Cuisine type filter
+      if (activeFilters["Cuisine Type"]?.length > 0) {
+        const hasMatchingCuisine = activeFilters["Cuisine Type"].some(cuisine => 
+          recipe.cuisine.toLowerCase() === cuisine.toLowerCase()
+        );
+        if (!hasMatchingCuisine) return false;
+      }
+
+      // Meal type filter
+      if (activeFilters["Meal Type"]?.length > 0) {
+        const hasMatchingMealType = activeFilters["Meal Type"].some(mealType => 
+          recipe.mealType.toLowerCase() === mealType.toLowerCase()
+        );
+        if (!hasMatchingMealType) return false;
+      }
+
+      // Quick options filters
+      if (quickOptions.onePot && !recipe.tags.some(tag => tag.includes('one-pot'))) {
+        return false;
+      }
+      
+      if (quickOptions.highProtein && !recipe.tags.some(tag => tag.includes('protein-rich'))) {
+        return false;
+      }
+      
+      if (quickOptions.budgetFriendly && !recipe.tags.some(tag => tag.includes('budget-friendly'))) {
+        return false;
+      }
+
+      return true;
+    });
+  }, [recipes, searchQuery, cookTimeMax, activeFilters, quickOptions]);
+
+  // Handle filter changes from EnhancedFilter
+  const handleFilterChange = (filters: Record<string, any>) => {
+    // Extract search query and cook time
+    if (filters.searchQuery !== undefined) {
+      setSearchQuery(filters.searchQuery);
+    }
+    if (filters.cookTime !== undefined) {
+      setCookTimeMax(filters.cookTime[0]);
+    }
+    if (filters.quickOptions !== undefined) {
+      setQuickOptions(filters.quickOptions);
+    }
+    
+    // Extract category filters
+    const categoryFilters: Record<string, string[]> = {};
+    Object.keys(filters).forEach(key => {
+      if (key !== 'searchQuery' && key !== 'cookTime' && key !== 'quickOptions') {
+        categoryFilters[key] = filters[key];
+      }
+    });
+    setActiveFilters(categoryFilters);
+  };
 
   return (
     <div className="container py-8">
@@ -48,7 +159,7 @@ const Explore = () => {
           transition={{ delay: 0.2 }}
           className="lg:sticky lg:top-24 h-fit"
         >
-          <EnhancedFilter onFilterChange={(filters) => console.log(filters)} />
+          <EnhancedFilter onFilterChange={handleFilterChange} />
         </motion.aside>
 
         {/* Recipe Grid */}
@@ -60,7 +171,7 @@ const Explore = () => {
         >
           <div className="flex items-center justify-between">
             <p className="text-muted-foreground">
-              Showing <span className="font-semibold text-foreground">{mockRecipes.length}</span> recipes
+              Showing <span className="font-semibold text-foreground">{filteredRecipes.length}</span> recipes
             </p>
             <Badge variant="secondary" className="text-sm">
               Updated daily
@@ -68,7 +179,7 @@ const Explore = () => {
           </div>
 
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
-            {mockRecipes.map((recipe, index) => (
+            {filteredRecipes.map((recipe, index) => (
               <motion.div
                 key={recipe.id}
                 initial={{ opacity: 0, y: 20 }}
@@ -79,15 +190,12 @@ const Explore = () => {
                 <Card className="overflow-hidden hover:shadow-glow transition-all duration-500 group border-2 h-full flex flex-col">
                   <div className="relative h-48 overflow-hidden">
                     <img
-                      src={recipe.image}
+                      src={recipe.imageUrl}
                       alt={recipe.name}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                     <div className="absolute top-4 right-4 flex gap-2">
-                      <Badge className="bg-primary/90 backdrop-blur">
-                        {recipe.pantryMatch} items
-                      </Badge>
                       <motion.button
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
@@ -98,37 +206,28 @@ const Explore = () => {
                     </div>
                     <div className="absolute bottom-4 left-4 flex items-center gap-2 text-white">
                       <Clock className="h-4 w-4" />
-                      <span className="text-sm font-medium">{recipe.time}</span>
+                      <span className="text-sm font-medium">{recipe.cookTimeMinutes} min</span>
                     </div>
                   </div>
                   <CardContent className="p-6 space-y-4 flex-1 flex flex-col">
                     <h3 className="font-bold text-lg line-clamp-2">{recipe.name}</h3>
-                    <div className="flex flex-wrap gap-2 flex-1">
-                      {recipe.tags.map((tag) => (
+                    <p className="text-sm text-muted-foreground line-clamp-2 flex-1">{recipe.description}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {recipe.tags.filter(tag => tag !== 'ai-generated').slice(0, 3).map((tag) => (
                         <Badge key={tag} variant="secondary" className="hover:bg-primary hover:text-primary-foreground transition-colors cursor-pointer">
                           {tag}
                         </Badge>
                       ))}
                     </div>
                     <div className="flex gap-2 pt-2">
-                      <Button variant="outline" size="sm" className="flex-1">
+                      <Button variant="outline" size="sm" className="w-full">
                         View Recipe
-                      </Button>
-                      <Button size="sm" className="flex-1" asChild>
-                        <Link to="/create">Open Chat</Link>
                       </Button>
                     </div>
                   </CardContent>
                 </Card>
               </motion.div>
             ))}
-          </div>
-
-          {/* Load More */}
-          <div className="text-center pt-8">
-            <Button variant="glass" size="lg" className="text-lg">
-              Load More Recipes
-            </Button>
           </div>
         </motion.div>
       </div>

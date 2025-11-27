@@ -1,0 +1,1516 @@
+{
+  "recipes": [
+    {
+      "id": 1,
+      "slug": "savory-chicken-salad-with-fresh-green-beans",
+      "name": "Savory Chicken Salad with Fresh Green Beans",
+      "description": "A refreshing savory chicken salad with crisp green beans and tangy dressing — great for light lunches or dinners.",
+      "servings": 4,
+      "prepTimeMinutes": 10,
+      "cookTimeMinutes": 20,
+      "totalTimeMinutes": 30,
+      "difficulty": "medium",
+      "cuisine": "fusion",
+      "mealType": "salad",
+      "tags": [ "quick", "light", "healthy"],
+      "ingredients": [
+        { "name": "boneless chicken thighs", "quantity": 500, "unit": "g", "notes": "skinned" },
+        { "name": "fresh green beans", "quantity": 200, "unit": "g", "notes": "trimmed and blanched" },
+        { "name": "lettuce", "quantity": 4, "unit": "cups", "notes": "chopped" },
+        { "name": "cherry tomatoes", "quantity": 1, "unit": "cup", "notes": "halved" },
+        { "name": "cucumber", "quantity": 1, "unit": "", "notes": "sliced" },
+        { "name": "banana dressing", "quantity": 0.5, "unit": "cup", "notes": "see preparation notes" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "Season chicken thighs with salt and pepper. Pan-sear over medium heat until cooked through. Let rest and slice." },
+        { "stepNumber": 2, "instruction": "Blanch green beans in boiling water for 2–3 minutes; plunge into ice water to keep them crisp." },
+        { "stepNumber": 3, "instruction": "In a large bowl, combine lettuce, cucumber, tomatoes, green beans, and sliced chicken." },
+        { "stepNumber": 4, "instruction": "Drizzle banana dressing over the salad and toss gently to coat everything evenly." },
+        { "stepNumber": 5, "instruction": "Taste and adjust seasoning if needed. Chill salad for 10 minutes before serving." },
+        { "stepNumber": 6, "instruction": "Serve chilled or at room temperature. Garnish with fresh herbs if desired." }
+      ],
+      "imageUrl": "https://example.com/images/savory-chicken-salad-with-fresh-green-beans.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.7,
+      "ratingCount": 142,
+      
+      "createdAt": "2025-11-10T10:00:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 2,
+      "slug": "creamy-tomato-basil-pasta",
+      "name": "Creamy Tomato Basil Pasta",
+      "description": "Warm pasta in a creamy tomato basil sauce — comfort food for any day of the week.",
+      "servings": 4,
+      "prepTimeMinutes": 10,
+      "cookTimeMinutes": 25,
+      "totalTimeMinutes": 35,
+      "difficulty": "easy",
+      "cuisine": "italian",
+      "mealType": "dinner",
+      "tags": [ "comfort-food", "vegetarian"],
+      "ingredients": [
+        { "name": "pasta", "quantity": 400, "unit": "g", "notes": "spaghetti or your choice" },
+        { "name": "olive oil", "quantity": 2, "unit": "tbsp", "notes": "" },
+        { "name": "garlic", "quantity": 3, "unit": "cloves", "notes": "minced" },
+        { "name": "tomato sauce", "quantity": 500, "unit": "ml", "notes": "" },
+        { "name": "heavy cream", "quantity": 0.5, "unit": "cup", "notes": "" },
+        { "name": "fresh basil", "quantity": 0.25, "unit": "cup", "notes": "chopped" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "Cook pasta according to package instructions. Drain and set aside." },
+        { "stepNumber": 2, "instruction": "Heat olive oil in a pan, sauté garlic until fragrant." },
+        { "stepNumber": 3, "instruction": "Add tomato sauce and simmer 5 minutes, then stir in heavy cream." },
+        { "stepNumber": 4, "instruction": "Add cooked pasta to the sauce and toss to coat." },
+        { "stepNumber": 5, "instruction": "Stir in fresh basil. Season with salt and pepper to taste." },
+        { "stepNumber": 6, "instruction": "Serve hot with grated cheese or extra basil if desired." }
+      ],
+      "imageUrl": "https://example.com/images/creamy-tomato-basil-pasta.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.5,
+      "ratingCount": 98,
+      
+      "createdAt": "2025-10-22T15:30:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 3,
+      "slug": "garlic-lemon-roasted-salmon",
+      "name": "Garlic Lemon Roasted Salmon",
+      "description": "Tender salmon fillets roasted with garlic and lemon — simple, healthy, and elegant.",
+      "servings": 4,
+      "prepTimeMinutes": 5,
+      "cookTimeMinutes": 18,
+      "totalTimeMinutes": 23,
+      "difficulty": "easy",
+      "cuisine": "american",
+      "mealType": "dinner",
+      "tags": [ "pescatarian", "healthy"],
+      "ingredients": [
+        { "name": "salmon fillets", "quantity": 4, "unit": "", "notes": "approx. 150 g each" },
+        { "name": "olive oil", "quantity": 2, "unit": "tbsp", "notes": "" },
+        { "name": "garlic", "quantity": 3, "unit": "cloves", "notes": "minced" },
+        { "name": "lemon juice", "quantity": 2, "unit": "tbsp", "notes": "fresh" },
+        { "name": "lemon zest", "quantity": 1, "unit": "tsp", "notes": "" },
+        { "name": "fresh parsley", "quantity": 2, "unit": "tbsp", "notes": "chopped" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "Preheat oven to 400°F (200°C). Line a baking sheet with foil." },
+        { "stepNumber": 2, "instruction": "Place salmon fillets on the sheet, drizzle with olive oil, garlic, lemon juice and zest." },
+        { "stepNumber": 3, "instruction": "Season with salt and pepper." },
+        { "stepNumber": 4, "instruction": "Roast in preheated oven for 15–18 minutes until salmon is cooked through." },
+        { "stepNumber": 5, "instruction": "Remove from oven, sprinkle with fresh parsley." },
+        { "stepNumber": 6, "instruction": "Serve hot with a side salad or veggies." }
+      ],
+      "imageUrl": "https://example.com/images/garlic-lemon-roasted-salmon.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.8,
+      "ratingCount": 210,
+      
+      "createdAt": "2025-11-01T08:45:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 4,
+      "slug": "spicy-chickpea-buddha-bowl",
+      "name": "Spicy Chickpea Buddha Bowl",
+      "description": "A nourishing buddha bowl loaded with protein-rich chickpeas and colorful veggies with a spicy dressing kick.",
+      "servings": 4,
+      "prepTimeMinutes": 15,
+      "cookTimeMinutes": 15,
+      "totalTimeMinutes": 30,
+      "difficulty": "easy",
+      "cuisine": "fusion",
+      "mealType": "lunch",
+      "tags": [ "vegan", "healthy", "quick"],
+      "ingredients": [
+        { "name": "cooked chickpeas", "quantity": 2, "unit": "cups", "notes": "" },
+        { "name": "quinoa", "quantity": 1, "unit": "cup", "notes": "cooked" },
+        { "name": "spinach", "quantity": 2, "unit": "cups", "notes": "fresh" },
+        { "name": "red bell pepper", "quantity": 1, "unit": "", "notes": "sliced" },
+        { "name": "avocado", "quantity": 1, "unit": "", "notes": "sliced" },
+        { "name": "spicy tahini dressing", "quantity": 0.5, "unit": "cup", "notes": "" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "Cook quinoa per package instructions and set aside to cool slightly." },
+        { "stepNumber": 2, "instruction": "In a large bowl, combine chickpeas, quinoa, spinach, bell pepper, and avocado." },
+        { "stepNumber": 3, "instruction": "Drizzle spicy tahini dressing over the bowl and toss gently." },
+        { "stepNumber": 4, "instruction": "Season with salt and pepper to taste." },
+        { "stepNumber": 5, "instruction": "Garnish with fresh cilantro or parsley if desired." },
+        { "stepNumber": 6, "instruction": "Serve immediately or refrigerate for later (up to 2 days)." }
+      ],
+      "imageUrl": "https://example.com/images/spicy-chickpea-buddha-bowl.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.4,
+      "ratingCount": 85,
+      
+      "createdAt": "2025-10-15T14:20:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 5,
+      "slug": "herbed-mushroom-risotto",
+      "name": "Herbed Mushroom Risotto",
+      "description": "Creamy mushroom risotto with fresh herbs — a cozy and earthy dish for dinner nights.",
+      "servings": 4,
+      "prepTimeMinutes": 10,
+      "cookTimeMinutes": 25,
+      "totalTimeMinutes": 35,
+      "difficulty": "medium",
+      "cuisine": "italian",
+      "mealType": "dinner",
+      "tags": [ "vegetarian", "comfort-food"],
+      "ingredients": [
+        { "name": "arborio rice", "quantity": 1, "unit": "cup", "notes": "" },
+        { "name": "mushrooms", "quantity": 300, "unit": "g", "notes": "sliced" },
+        { "name": "olive oil", "quantity": 2, "unit": "tbsp", "notes": "" },
+        { "name": "onion", "quantity": 1, "unit": "", "notes": "finely chopped" },
+        { "name": "vegetable broth", "quantity": 4, "unit": "cups", "notes": "warmed" },
+        { "name": "fresh parsley", "quantity": 0.25, "unit": "cup", "notes": "chopped" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "Heat olive oil in a pot, sauté onion until translucent." },
+        { "stepNumber": 2, "instruction": "Add mushrooms and cook until soft." },
+        { "stepNumber": 3, "instruction": "Stir in arborio rice and toast for 1–2 minutes." },
+        { "stepNumber": 4, "instruction": "Gradually add warmed broth, one ladle at a time, stirring continuously until liquid is absorbed before adding next." },
+        { "stepNumber": 5, "instruction": "Continue until rice is creamy and al dente (about 20 minutes)." },
+        { "stepNumber": 6, "instruction": "Stir in fresh parsley, season with salt and pepper, and serve warm." }
+      ],
+      "imageUrl": "https://example.com/images/herbed-mushroom-risotto.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.6,
+      "ratingCount": 120,
+      
+      "createdAt": "2025-09-30T18:50:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 6,
+      "slug": "quinoa-black-bean-salad",
+      "name": "Quinoa Black Bean Salad",
+      "description": "A protein-packed quinoa and black bean salad with fresh veggies — perfect for meal prep or a healthy lunch.",
+      "servings": 4,
+      "prepTimeMinutes": 15,
+      "cookTimeMinutes": 15,
+      "totalTimeMinutes": 30,
+      "difficulty": "easy",
+      "cuisine": "mexican-fusion",
+      "mealType": "lunch",
+      "tags": [ "vegan", "gluten-free", "healthy"],
+      "ingredients": [
+        { "name": "quinoa", "quantity": 1, "unit": "cup", "notes": "" },
+        { "name": "black beans", "quantity": 1, "unit": "can (15 oz)", "notes": "rinsed & drained" },
+        { "name": "corn kernels", "quantity": 0.5, "unit": "cup", "notes": "fresh or frozen" },
+        { "name": "red bell pepper", "quantity": 1, "unit": "", "notes": "diced" },
+        { "name": "red onion", "quantity": 0.25, "unit": "cup", "notes": "finely chopped" },
+        { "name": "cilantro", "quantity": 0.25, "unit": "cup", "notes": "chopped" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "Cook quinoa according to package instructions. Let cool slightly." },
+        { "stepNumber": 2, "instruction": "In a large bowl, combine quinoa, black beans, corn, red bell pepper, red onion, and cilantro." },
+        { "stepNumber": 3, "instruction": "For dressing: whisk olive oil, lime juice, salt, and pepper." },
+        { "stepNumber": 4, "instruction": "Pour dressing over salad and toss." },
+        { "stepNumber": 5, "instruction": "Taste and adjust seasoning before serving." },
+        { "stepNumber": 6, "instruction": "Serve chilled or at room temperature." }
+      ],
+      "imageUrl": "https://example.com/images/quinoa-black-bean-salad.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.3,
+      "ratingCount": 67,
+      
+      "createdAt": "2025-08-12T11:10:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 7,
+      "slug": "spaghetti-aglio-e-olio",
+      "name": "Spaghetti Aglio e Olio",
+      "description": "A classic Italian pasta with garlic, olive oil and red pepper flakes — quick to make and full of flavor.",
+      "servings": 2,
+      "prepTimeMinutes": 5,
+      "cookTimeMinutes": 10,
+      "totalTimeMinutes": 15,
+      "difficulty": "easy",
+      "cuisine": "italian",
+      "mealType": "dinner",
+      "tags": [ "vegetarian", "quick", "budget-friendly"],
+      "ingredients": [
+        { "name": "spaghetti", "quantity": 200, "unit": "g", "notes": "" },
+        { "name": "olive oil", "quantity": 3, "unit": "tbsp", "notes": "" },
+        { "name": "garlic", "quantity": 4, "unit": "cloves", "notes": "thinly sliced" },
+        { "name": "red pepper flakes", "quantity": 0.5, "unit": "tsp", "notes": "or to taste" },
+        { "name": "fresh parsley", "quantity": 2, "unit": "tbsp", "notes": "chopped" },
+        { "name": "parmesan cheese", "quantity": 2, "unit": "tbsp", "notes": "optional" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "Cook spaghetti in salted boiling water until al dente. Drain, reserving some pasta water." },
+        { "stepNumber": 2, "instruction": "In a large pan, heat olive oil over medium heat. Add garlic and red pepper flakes, sauté until garlic is golden." },
+        { "stepNumber": 3, "instruction": "Add drained pasta to the pan. Toss rapidly to coat with oil and garlic." },
+        { "stepNumber": 4, "instruction": "If dry, add a splash of reserved pasta water to loosen." },
+        { "stepNumber": 5, "instruction": "Stir in chopped parsley and season with salt and pepper." },
+        { "stepNumber": 6, "instruction": "Serve hot, topped with parmesan if desired." }
+      ],
+      "imageUrl": "https://example.com/images/spaghetti-aglio-e-olio.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.2,
+      "ratingCount": 54,
+      
+      "createdAt": "2025-09-05T12:40:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 8,
+      "slug": "banana-oatmeal-breakfast-bowl",
+      "name": "Banana Oatmeal Breakfast Bowl",
+      "description": "A warm, hearty oatmeal bowl with banana — a perfect start to your day.",
+      "servings": 2,
+      "prepTimeMinutes": 5,
+      "cookTimeMinutes": 10,
+      "totalTimeMinutes": 15,
+      "difficulty": "easy",
+      "cuisine": "american",
+      "mealType": "breakfast",
+      "tags": [ "vegetarian", "healthy", "quick"],
+      "ingredients": [
+        { "name": "rolled oats", "quantity": 1, "unit": "cup", "notes": "" },
+        { "name": "milk (or plant milk)", "quantity": 2, "unit": "cups", "notes": "" },
+        { "name": "banana", "quantity": 1, "unit": "", "notes": "ripe, sliced" },
+        { "name": "honey", "quantity": 1, "unit": "tbsp", "notes": "optional" },
+        { "name": "cinnamon", "quantity": 0.25, "unit": "tsp", "notes": "" },
+        { "name": "walnuts", "quantity": 2, "unit": "tbsp", "notes": "chopped, optional" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "Combine oats and milk in a pot. Cook over medium heat, stirring occasionally until thickened." },
+        { "stepNumber": 2, "instruction": "Once creamy, remove from heat and let sit 1 minute." },
+        { "stepNumber": 3, "instruction": "Stir in sliced banana, honey, and cinnamon." },
+        { "stepNumber": 4, "instruction": "Pour into bowls, top with chopped walnuts." },
+        { "stepNumber": 5, "instruction": "Serve warm." },
+        { "stepNumber": 6, "instruction": "Store leftovers in the fridge and reheat with a splash of milk." }
+      ],
+      "imageUrl": "https://example.com/images/banana-oatmeal-breakfast-bowl.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.0,
+      "ratingCount": 30,
+      
+      "createdAt": "2025-08-28T07:15:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 9,
+      "slug": "vegetable-stir-fry-with-tofu",
+      "name": "Vegetable Stir-Fry with Tofu",
+      "description": "A quick and colorful veggie stir-fry with tofu — healthy, tasty and ready in under 20 minutes.",
+      "servings": 3,
+      "prepTimeMinutes": 10,
+      "cookTimeMinutes": 12,
+      "totalTimeMinutes": 22,
+      "difficulty": "easy",
+      "cuisine": "asian-fusion",
+      "mealType": "dinner",
+      "tags": [ "vegan", "gluten-free", "quick"],
+      "ingredients": [
+        { "name": "firm tofu", "quantity": 300, "unit": "g", "notes": "cubed" },
+        { "name": "broccoli florets", "quantity": 2, "unit": "cups", "notes": "" },
+        { "name": "carrot", "quantity": 1, "unit": "", "notes": "sliced" },
+        { "name": "bell pepper", "quantity": 1, "unit": "", "notes": "sliced" },
+        { "name": "soy sauce", "quantity": 3, "unit": "tbsp", "notes": "or tamari if gluten-free" },
+        { "name": "sesame oil", "quantity": 1, "unit": "tbsp", "notes": "" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "Heat sesame oil in a wok or large pan over high heat." },
+        { "stepNumber": 2, "instruction": "Add tofu cubes, stir-fry until slightly golden. Remove and set aside." },
+        { "stepNumber": 3, "instruction": "In same pan, add broccoli, carrot, and bell pepper — stir-fry 5–6 minutes until veggies are tender-crisp." },
+        { "stepNumber": 4, "instruction": "Return tofu to the pan. Add soy sauce and toss to coat evenly." },
+        { "stepNumber": 5, "instruction": "Stir everything together for another minute." },
+        { "stepNumber": 6, "instruction": "Serve hot over rice or noodles." }
+      ],
+      "imageUrl": "https://example.com/images/vegetable-stir-fry-with-tofu.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.5,
+      "ratingCount": 95,
+      
+      "createdAt": "2025-09-18T13:05:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 10,
+      "slug": "blueberry-banana-smoothie",
+      "name": "Blueberry Banana Smoothie",
+      "description": "A refreshing blueberry banana smoothie — creamy, fruity and perfect for breakfast or a snack.",
+      "servings": 2,
+      "prepTimeMinutes": 5,
+      "cookTimeMinutes": 0,
+      "totalTimeMinutes": 5,
+      "difficulty": "very easy",
+      "cuisine": "american",
+      "mealType": "breakfast",
+      "tags": [ "vegan", "quick", "healthy"],
+      "ingredients": [
+        { "name": "banana", "quantity": 1, "unit": "", "notes": "ripe" },
+        { "name": "blueberries", "quantity": 1, "unit": "cup", "notes": "fresh or frozen" },
+        { "name": "plant milk", "quantity": 1.5, "unit": "cups", "notes": "almond, soy, or oat" },
+        { "name": "honey", "quantity": 1, "unit": "tbsp", "notes": "optional (skip if vegan)" },
+        { "name": "chia seeds", "quantity": 1, "unit": "tbsp", "notes": "optional" },
+        { "name": "vanilla extract", "quantity": 0.5, "unit": "tsp", "notes": "optional" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "Add all ingredients to a blender." },
+        { "stepNumber": 2, "instruction": "Blend until smooth and creamy." },
+        { "stepNumber": 3, "instruction": "Check consistency — add more plant milk if too thick." },
+        { "stepNumber": 4, "instruction": "Pour into glasses and serve immediately." },
+        { "stepNumber": 5, "instruction": "Optional: top with extra blueberries or chia seeds." },
+        { "stepNumber": 6, "instruction": "Consume right away for best freshness." }
+      ],
+      "imageUrl": "https://example.com/images/blueberry-banana-smoothie.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.1,
+      "ratingCount": 45,
+      
+      "createdAt": "2025-08-05T09:00:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 11,
+      "slug": "grilled-vegetable-quinoa-bowl",
+      "name": "Grilled Vegetable Quinoa Bowl",
+      "description": "A bowl of grilled veggies over fluffy quinoa — healthy, filling and great for lunch or dinner.",
+      "servings": 3,
+      "prepTimeMinutes": 15,
+      "cookTimeMinutes": 20,
+      "totalTimeMinutes": 35,
+      "difficulty": "easy",
+      "cuisine": "mediterranean",
+      "mealType": "lunch",
+      "tags": [ "vegetarian", "gluten-free", "healthy"],
+      "ingredients": [
+        { "name": "quinoa", "quantity": 1, "unit": "cup", "notes": "" },
+        { "name": "zucchini", "quantity": 1, "unit": "", "notes": "sliced" },
+        { "name": "eggplant", "quantity": 1, "unit": "", "notes": "sliced" },
+        { "name": "red bell pepper", "quantity": 1, "unit": "", "notes": "quartered" },
+        { "name": "olive oil", "quantity": 2, "unit": "tbsp", "notes": "for grilling" },
+        { "name": "lemon vinaigrette", "quantity": 0.5, "unit": "cup", "notes": "" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "Cook quinoa as per instructions and fluff with a fork." },
+        { "stepNumber": 2, "instruction": "Toss zucchini, eggplant, and bell pepper with olive oil, salt and pepper." },
+        { "stepNumber": 3, "instruction": "Grill or roast vegetables until tender and slightly charred." },
+        { "stepNumber": 4, "instruction": "In bowls, layer quinoa and top with grilled veggies." },
+        { "stepNumber": 5, "instruction": "Drizzle lemon vinaigrette over bowl and toss gently." },
+        { "stepNumber": 6, "instruction": "Serve warm or chilled." }
+      ],
+      "imageUrl": "https://example.com/images/grilled-vegetable-quinoa-bowl.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.3,
+      "ratingCount": 78,
+      
+      "createdAt": "2025-09-25T12:10:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 12,
+      "slug": "chocolate-banana-protein-smoothie",
+      "name": "Chocolate Banana Protein Smoothie",
+      "description": "A rich and creamy chocolate banana smoothie — perfect after workouts or as a healthy treat.",
+      "servings": 2,
+      "prepTimeMinutes": 5,
+      "cookTimeMinutes": 0,
+      "totalTimeMinutes": 5,
+      "difficulty": "very easy",
+      "cuisine": "american",
+      "mealType": "snack",
+      "tags": [ "vegetarian", "quick", "protein-rich"],
+      "ingredients": [
+        { "name": "banana", "quantity": 1, "unit": "", "notes": "frozen or fresh" },
+        { "name": "cocoa powder", "quantity": 2, "unit": "tbsp", "notes": "unsweetened" },
+        { "name": "milk (or plant milk)", "quantity": 1.5, "unit": "cups", "notes": "" },
+        { "name": "peanut butter", "quantity": 1, "unit": "tbsp", "notes": "" },
+        { "name": "honey", "quantity": 1, "unit": "tbsp", "notes": "optional" },
+        { "name": "ice cubes", "quantity": 4, "unit": "", "notes": "optional" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "Combine all ingredients in a blender." },
+        { "stepNumber": 2, "instruction": "Blend until smooth and creamy." },
+        { "stepNumber": 3, "instruction": "Adjust thickness with more milk if needed." },
+        { "stepNumber": 4, "instruction": "Pour into glasses and enjoy." },
+        { "stepNumber": 5, "instruction": "Optional: garnish with banana slices or cocoa nibs." },
+        { "stepNumber": 6, "instruction": "Serve immediately." }
+      ],
+      "imageUrl": "https://example.com/images/chocolate-banana-protein-smoothie.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.2,
+      "ratingCount": 51,
+      
+      "createdAt": "2025-07-29T09:45:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 13,
+      "slug": "turkey-avocado-wrap",
+      "name": "Turkey Avocado Wrap",
+      "description": "A quick, satisfying turkey and avocado wrap — perfect for lunch on the go.",
+      "servings": 2,
+      "prepTimeMinutes": 10,
+      "cookTimeMinutes": 0,
+      "totalTimeMinutes": 10,
+      "difficulty": "very easy",
+      "cuisine": "american",
+      "mealType": "lunch",
+      "tags": [ "quick", "healthy", "on-the-go"],
+      "ingredients": [
+        { "name": "whole wheat tortillas", "quantity": 2, "unit": "", "notes": "" },
+        { "name": "sliced turkey breast", "quantity": 200, "unit": "g", "notes": "deli style or leftover cooked turkey" },
+        { "name": "avocado", "quantity": 1, "unit": "", "notes": "sliced" },
+        { "name": "lettuce", "quantity": 1, "unit": "cup", "notes": "chopped" },
+        { "name": "tomato", "quantity": 1, "unit": "", "notes": "sliced" },
+        { "name": "light mayo or spread", "quantity": 2, "unit": "tbsp", "notes": "" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "Lay out the tortillas and spread mayo or preferred spread evenly." },
+        { "stepNumber": 2, "instruction": "Layer lettuce, sliced turkey, avocado, and tomato on each tortilla." },
+        { "stepNumber": 3, "instruction": "Season with salt and pepper if desired." },
+        { "stepNumber": 4, "instruction": "Fold the tortillas into wraps tightly." },
+        { "stepNumber": 5, "instruction": "Slice in half and serve immediately or wrap for later." },
+        { "stepNumber": 6, "instruction": "Store in fridge if not eating right away (best within 24 hours)." }
+      ],
+      "imageUrl": "https://example.com/images/turkey-avocado-wrap.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.0,
+      "ratingCount": 40,
+      
+      "createdAt": "2025-10-05T11:25:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 14,
+      "slug": "greek-chickpea-salad",
+      "name": "Greek Chickpea Salad",
+      "description": "A Mediterranean-style chickpea salad with fresh veggies and herbs — light, nutritious and delicious.",
+      "servings": 4,
+      "prepTimeMinutes": 10,
+      "cookTimeMinutes": 0,
+      "totalTimeMinutes": 10,
+      "difficulty": "very easy",
+      "cuisine": "mediterranean",
+      "mealType": "salad",
+      "tags": [ "vegan", "gluten-free", "healthy"],
+      "ingredients": [
+        { "name": "chickpeas", "quantity": 1, "unit": "can (15 oz)", "notes": "rinsed & drained" },
+        { "name": "cucumber", "quantity": 1, "unit": "", "notes": "diced" },
+        { "name": "cherry tomatoes", "quantity": 1, "unit": "cup", "notes": "halved" },
+        { "name": "red onion", "quantity": 0.25, "unit": "cup", "notes": "finely chopped" },
+        { "name": "fresh parsley", "quantity": 0.25, "unit": "cup", "notes": "chopped" },
+        { "name": "vinaigrette dressing", "quantity": 0.5, "unit": "cup", "notes": "" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "In a large bowl, combine chickpeas, cucumber, tomatoes, red onion, and parsley." },
+        { "stepNumber": 2, "instruction": "Pour vinaigrette dressing over the mixture and toss well." },
+        { "stepNumber": 3, "instruction": "Season with salt and pepper to taste." },
+        { "stepNumber": 4, "instruction": "Let sit 5 minutes to allow flavors to meld." },
+        { "stepNumber": 5, "instruction": "Serve chilled or at room temperature." },
+        { "stepNumber": 6, "instruction": "Store leftovers in fridge (up to 2 days)." }
+      ],
+      "imageUrl": "https://example.com/images/greek-chickpea-salad.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.2,
+      "ratingCount": 65,
+      
+      "createdAt": "2025-09-12T16:00:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 15,
+      "slug": "pancakes-with-maple-syrup",
+      "name": "Classic Pancakes with Maple Syrup",
+      "description": "Fluffy pancakes drizzled with maple syrup — a perfect weekend breakfast treat.",
+      "servings": 4,
+      "prepTimeMinutes": 5,
+      "cookTimeMinutes": 15,
+      "totalTimeMinutes": 20,
+      "difficulty": "easy",
+      "cuisine": "american",
+      "mealType": "breakfast",
+      "tags": [ "vegetarian", "comfort-food"],
+      "ingredients": [
+        { "name": "all-purpose flour", "quantity": 2, "unit": "cups", "notes": "" },
+        { "name": "baking powder", "quantity": 2, "unit": "tsp", "notes": "" },
+        { "name": "salt", "quantity": 0.5, "unit": "tsp", "notes": "" },
+        { "name": "milk", "quantity": 1.5, "unit": "cups", "notes": "" },
+        { "name": "egg", "quantity": 1, "unit": "", "notes": "" },
+        { "name": "butter", "quantity": 2, "unit": "tbsp", "notes": "melted + extra for cooking" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "In a bowl, mix flour, baking powder, and salt." },
+        { "stepNumber": 2, "instruction": "In another bowl, whisk milk, egg, and melted butter." },
+        { "stepNumber": 3, "instruction": "Combine wet and dry ingredients; stir until just blended — small lumps are fine." },
+        { "stepNumber": 4, "instruction": "Heat a nonstick pan over medium heat, melt a little butter." },
+        { "stepNumber": 5, "instruction": "Pour batter for each pancake; cook 2–3 minutes per side until golden brown." },
+        { "stepNumber": 6, "instruction": "Stack pancakes and serve with maple syrup and butter." }
+      ],
+      "imageUrl": "https://example.com/images/pancakes-with-maple-syrup.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.5,
+      "ratingCount": 110,
+      
+      "createdAt": "2025-07-20T09:30:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 16,
+      "slug": "beef-and-broccoli-stir-fry",
+      "name": "Beef and Broccoli Stir-Fry",
+      "description": "Classic beef and broccoli stir-fry — tender beef strips and crisp broccoli in savory sauce, ready fast.",
+      "servings": 3,
+      "prepTimeMinutes": 15,
+      "cookTimeMinutes": 15,
+      "totalTimeMinutes": 30,
+      "difficulty": "medium",
+      "cuisine": "asian-fusion",
+      "mealType": "dinner",
+      "tags": [ "meat", "quick", "savory"],
+      "ingredients": [
+        { "name": "flank steak", "quantity": 400, "unit": "g", "notes": "thinly sliced" },
+        { "name": "broccoli florets", "quantity": 3, "unit": "cups", "notes": "" },
+        { "name": "soy sauce", "quantity": 4, "unit": "tbsp", "notes": "" },
+        { "name": "oyster sauce", "quantity": 2, "unit": "tbsp", "notes": "" },
+        { "name": "cornstarch", "quantity": 1, "unit": "tbsp", "notes": "for thickening sauce" },
+        { "name": "sesame oil", "quantity": 1, "unit": "tbsp", "notes": "" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "Mix soy sauce, oyster sauce, and cornstarch in a bowl; set aside as sauce." },
+        { "stepNumber": 2, "instruction": "Heat sesame oil in a wok over high heat. Add beef strips and stir-fry until browned. Remove and set aside." },
+        { "stepNumber": 3, "instruction": "Add broccoli to wok, stir-fry 4–5 minutes until tender-crisp." },
+        { "stepNumber": 4, "instruction": "Return beef to wok, pour in sauce and toss until everything is coated and sauce thickens." },
+        { "stepNumber": 5, "instruction": "Cook for another minute, then turn off heat." },
+        { "stepNumber": 6, "instruction": "Serve hot over steamed rice." }
+      ],
+      "imageUrl": "https://example.com/images/beef-and-broccoli-stir-fry.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.6,
+      "ratingCount": 130,
+      
+      "createdAt": "2025-10-02T19:10:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 17,
+      "slug": "lemon-garlic-chicken-with-roasted-potatoes",
+      "name": "Lemon Garlic Chicken with Roasted Potatoes",
+      "description": "Juicy chicken thighs baked with lemon and garlic, served with crispy roasted potatoes — a hearty, comforting meal.",
+      "servings": 4,
+      "prepTimeMinutes": 15,
+      "cookTimeMinutes": 45,
+      "totalTimeMinutes": 60,
+      "difficulty": "medium",
+      "cuisine": "american",
+      "mealType": "dinner",
+      "tags": [ "comfort-food", "family-friendly"],
+      "ingredients": [
+        { "name": "chicken thighs", "quantity": 4, "unit": "", "notes": "bone-in, skin-on" },
+        { "name": "potatoes", "quantity": 600, "unit": "g", "notes": "cut into wedges" },
+        { "name": "olive oil", "quantity": 3, "unit": "tbsp", "notes": "" },
+        { "name": "garlic", "quantity": 4, "unit": "cloves", "notes": "minced" },
+        { "name": "lemon juice", "quantity": 2, "unit": "tbsp", "notes": "fresh" },
+        { "name": "rosemary", "quantity": 1, "unit": "tbsp", "notes": "fresh, chopped" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "Preheat oven to 425°F (220°C). Toss potato wedges with half the olive oil, salt, pepper, and half the garlic." },
+        { "stepNumber": 2, "instruction": "Place potatoes on a baking tray and start roasting." },
+        { "stepNumber": 3, "instruction": "Meanwhile, rub chicken thighs with remaining olive oil, garlic, lemon juice, rosemary, salt, and pepper." },
+        { "stepNumber": 4, "instruction": "After potatoes roast 15 minutes, add chicken thighs to the tray." },
+        { "stepNumber": 5, "instruction": "Roast another 30 minutes or until chicken is cooked and potatoes are crispy." },
+        { "stepNumber": 6, "instruction": "Let rest 5 minutes before serving. Serve with a side salad if desired." }
+      ],
+      "imageUrl": "https://example.com/images/lemon-garlic-chicken-with-roasted-potatoes.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.7,
+      "ratingCount": 150,
+      
+      "createdAt": "2025-11-08T17:00:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 18,
+      "slug": "vegetarian-tacos-with-black-beans",
+      "name": "Vegetarian Tacos with Black Beans",
+      "description": "Quick vegetarian tacos loaded with black beans, veggies and spicy salsa — perfect for taco night.",
+      "servings": 4,
+      "prepTimeMinutes": 10,
+      "cookTimeMinutes": 10,
+      "totalTimeMinutes": 20,
+      "difficulty": "easy",
+      "cuisine": "mexican",
+      "mealType": "dinner",
+      "tags": [ "vegetarian", "quick", "weeknight"],
+      "ingredients": [
+        { "name": "corn tortillas", "quantity": 8, "unit": "", "notes": "" },
+        { "name": "black beans", "quantity": 1, "unit": "can (15 oz)", "notes": "rinsed & drained" },
+        { "name": "bell pepper", "quantity": 1, "unit": "", "notes": "sliced" },
+        { "name": "red onion", "quantity": 0.5, "unit": "", "notes": "sliced" },
+        { "name": "salsa", "quantity": 0.5, "unit": "cup", "notes": "" },
+        { "name": "avocado", "quantity": 1, "unit": "", "notes": "sliced" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "Warm tortillas in a skillet or oven." },
+        { "stepNumber": 2, "instruction": "In a pan, sauté bell pepper and red onion until softened." },
+        { "stepNumber": 3, "instruction": "Add black beans, cook until heated through." },
+        { "stepNumber": 4, "instruction": "Season with salt, pepper, and optional spices (chili powder, cumin)." },
+        { "stepNumber": 5, "instruction": "Assemble tacos: add bean mixture, salsa, and avocado slices to each tortilla." },
+        { "stepNumber": 6, "instruction": "Serve immediately with lime wedges if available." }
+      ],
+      "imageUrl": "https://example.com/images/vegetarian-tacos-with-black-beans.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.3,
+      "ratingCount": 88,
+      
+      "createdAt": "2025-10-18T13:55:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 19,
+      "slug": "apple-cinnamon-baked-oatmeal",
+      "name": "Apple Cinnamon Baked Oatmeal",
+      "description": "Warm baked oatmeal with apples and cinnamon — a cozy breakfast or brunch idea.",
+      "servings": 4,
+      "prepTimeMinutes": 10,
+      "cookTimeMinutes": 30,
+      "totalTimeMinutes": 40,
+      "difficulty": "easy",
+      "cuisine": "american",
+      "mealType": "breakfast",
+      "tags": [ "vegetarian", "comfort-food", "make-ahead"],
+      "ingredients": [
+        { "name": "old-fashioned oats", "quantity": 2, "unit": "cups", "notes": "" },
+        { "name": "milk", "quantity": 2, "unit": "cups", "notes": "" },
+        { "name": "apple", "quantity": 2, "unit": "", "notes": "peeled & chopped" },
+        { "name": "cinnamon", "quantity": 1, "unit": "tsp", "notes": "" },
+        { "name": "maple syrup", "quantity": 2, "unit": "tbsp", "notes": "plus more for serving" },
+        { "name": "walnuts", "quantity": 0.5, "unit": "cup", "notes": "chopped, optional" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "Preheat oven to 375°F (190°C). Grease a baking dish." },
+        { "stepNumber": 2, "instruction": "In a bowl, combine oats, chopped apples, cinnamon, and walnuts." },
+        { "stepNumber": 3, "instruction": "Pour milk and maple syrup over oat mixture; stir to combine." },
+        { "stepNumber": 4, "instruction": "Transfer to the baking dish and bake 25–30 minutes until top is golden and set." },
+        { "stepNumber": 5, "instruction": "Remove from oven and let rest 5 minutes." },
+        { "stepNumber": 6, "instruction": "Serve warm with extra maple syrup or yogurt." }
+      ],
+      "imageUrl": "https://example.com/images/apple-cinnamon-baked-oatmeal.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.4,
+      "ratingCount": 74,
+      
+      "createdAt": "2025-09-02T07:00:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 20,
+      "slug": "shrimp-and-avocado-salad",
+      "name": "Shrimp and Avocado Salad",
+      "description": "Light and fresh shrimp and avocado salad — perfect for a quick lunch or light dinner.",
+      "servings": 3,
+      "prepTimeMinutes": 15,
+      "cookTimeMinutes": 5,
+      "totalTimeMinutes": 20,
+      "difficulty": "easy",
+      "cuisine": "seafood",
+      "mealType": "salad",
+      "tags": [ "pescatarian", "gluten-free", "healthy"],
+      "ingredients": [
+        { "name": "shrimp", "quantity": 300, "unit": "g", "notes": "peeled & deveined" },
+        { "name": "avocado", "quantity": 1, "unit": "", "notes": "cubed" },
+        { "name": "mixed greens", "quantity": 3, "unit": "cups", "notes": "" },
+        { "name": "cherry tomatoes", "quantity": 1, "unit": "cup", "notes": "halved" },
+        { "name": "lemon juice", "quantity": 2, "unit": "tbsp", "notes": "fresh" },
+        { "name": "olive oil", "quantity": 1, "unit": "tbsp", "notes": "" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "Boil or sauté shrimp until cooked through (about 3–4 minutes). Cool slightly." },
+        { "stepNumber": 2, "instruction": "In a bowl, combine mixed greens, tomatoes, avocado and shrimp." },
+        { "stepNumber": 3, "instruction": "Whisk together lemon juice, olive oil, salt, and pepper for dressing." },
+        { "stepNumber": 4, "instruction": "Drizzle dressing over salad and toss gently." },
+        { "stepNumber": 5, "instruction": "Adjust seasoning to taste." },
+        { "stepNumber": 6, "instruction": "Serve immediately." }
+      ],
+      "imageUrl": "https://example.com/images/shrimp-and-avocado-salad.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.6,
+      "ratingCount": 99,
+      
+      "createdAt": "2025-10-12T14:50:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 21,
+      "slug": "banana-chia-pudding",
+      "name": "Banana Chia Pudding",
+      "description": "Creamy banana chia pudding — a healthy and quick dessert or breakfast option.",
+      "servings": 2,
+      "prepTimeMinutes": 5,
+      "cookTimeMinutes": 0,
+      "totalTimeMinutes": 5,
+      "difficulty": "very easy",
+      "cuisine": "healthy",
+      "mealType": "breakfast",
+      "tags": [ "vegan", "gluten-free", "make-ahead"],
+      "ingredients": [
+        { "name": "chia seeds", "quantity": 4, "unit": "tbsp", "notes": "" },
+        { "name": "banana", "quantity": 1, "unit": "", "notes": "ripe" },
+        { "name": "plant milk", "quantity": 1.5, "unit": "cups", "notes": "" },
+        { "name": "maple syrup", "quantity": 1, "unit": "tbsp", "notes": "optional" },
+        { "name": "vanilla extract", "quantity": 0.5, "unit": "tsp", "notes": "" },
+        { "name": "berries", "quantity": 0.5, "unit": "cup", "notes": "optional for topping" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "In a bowl or jar, mash banana until smooth." },
+        { "stepNumber": 2, "instruction": "Add chia seeds, plant milk, maple syrup, and vanilla extract." },
+        { "stepNumber": 3, "instruction": "Stir well to combine, cover, and refrigerate for at least 4 hours or overnight." },
+        { "stepNumber": 4, "instruction": "Before serving, stir pudding. If too thick, add a splash of milk." },
+        { "stepNumber": 5, "instruction": "Top with fresh berries if using." },
+        { "stepNumber": 6, "instruction": "Serve chilled." }
+      ],
+      "imageUrl": "https://example.com/images/banana-chia-pudding.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.2,
+      "ratingCount": 58,
+      
+      "createdAt": "2025-08-30T06:20:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 22,
+      "slug": "thai-green-curry-with-vegetables",
+      "name": "Thai Green Curry with Vegetables",
+      "description": "A fragrant, creamy Thai green curry loaded with fresh vegetables — great for a cozy dinner.",
+      "servings": 4,
+      "prepTimeMinutes": 15,
+      "cookTimeMinutes": 20,
+      "totalTimeMinutes": 35,
+      "difficulty": "medium",
+      "cuisine": "thai",
+      "mealType": "dinner",
+      "tags": [ "vegetarian", "gluten-free", "comfort-food"],
+      "ingredients": [
+        { "name": "green curry paste", "quantity": 2, "unit": "tbsp", "notes": "" },
+        { "name": "coconut milk", "quantity": 400, "unit": "ml", "notes": "" },
+        { "name": "bell pepper", "quantity": 1, "unit": "", "notes": "sliced" },
+        { "name": "zucchini", "quantity": 1, "unit": "", "notes": "sliced" },
+        { "name": "carrot", "quantity": 1, "unit": "", "notes": "sliced diagonally" },
+        { "name": "basil leaves", "quantity": 0.25, "unit": "cup", "notes": "" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "In a pot, heat a little oil and sauté green curry paste for 1 minute until fragrant." },
+        { "stepNumber": 2, "instruction": "Pour in coconut milk and bring to a gentle simmer." },
+        { "stepNumber": 3, "instruction": "Add all chopped vegetables. Simmer 10–12 minutes until tender but still crisp." },
+        { "stepNumber": 4, "instruction": "Stir in basil leaves. Season with salt or soy sauce if needed." },
+        { "stepNumber": 5, "instruction": "Serve hot over steamed rice or quinoa." },
+        { "stepNumber": 6, "instruction": "Garnish with extra basil or lime wedges if desired." }
+      ],
+      "imageUrl": "https://example.com/images/thai-green-curry-with-vegetables.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.4,
+      "ratingCount": 82,
+      
+      "createdAt": "2025-10-20T18:00:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 23,
+      "slug": "garlic-butter-shrimp-pasta",
+      "name": "Garlic Butter Shrimp Pasta",
+      "description": "Succulent shrimp tossed in garlic-butter sauce over pasta — rich, satisfying and quick to make.",
+      "servings": 3,
+      "prepTimeMinutes": 10,
+      "cookTimeMinutes": 15,
+      "totalTimeMinutes": 25,
+      "difficulty": "easy",
+      "cuisine": "italian-seafood",
+      "mealType": "dinner",
+      "tags": [ "pescatarian", "quick", "comfort-food"],
+      "ingredients": [
+        { "name": "spaghetti", "quantity": 250, "unit": "g", "notes": "" },
+        { "name": "shrimp", "quantity": 300, "unit": "g", "notes": "peeled & deveined" },
+        { "name": "butter", "quantity": 3, "unit": "tbsp", "notes": "" },
+        { "name": "garlic", "quantity": 4, "unit": "cloves", "notes": "minced" },
+        { "name": "parsley", "quantity": 2, "unit": "tbsp", "notes": "chopped" },
+        { "name": "lemon juice", "quantity": 1, "unit": "tbsp", "notes": "fresh" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "Cook spaghetti until al dente. Drain and set aside." },
+        { "stepNumber": 2, "instruction": "In a large pan, melt butter over medium heat. Add garlic and sauté briefly." },
+        { "stepNumber": 3, "instruction": "Add shrimp and cook until pink and cooked through (about 3–4 minutes)." },
+        { "stepNumber": 4, "instruction": "Add cooked pasta to the pan, toss with shrimp and butter-garlic sauce." },
+        { "stepNumber": 5, "instruction": "Stir in parsley and lemon juice. Season with salt and pepper." },
+        { "stepNumber": 6, "instruction": "Serve hot with extra parsley or lemon wedges." }
+      ],
+      "imageUrl": "https://example.com/images/garlic-butter-shrimp-pasta.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.7,
+      "ratingCount": 143,
+      
+      "createdAt": "2025-11-02T13:30:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 24,
+      "slug": "roasted-butternut-squash-soup",
+      "name": "Roasted Butternut Squash Soup",
+      "description": "Creamy roasted butternut squash soup — warm, comforting and loaded with fall flavors.",
+      "servings": 4,
+      "prepTimeMinutes": 15,
+      "cookTimeMinutes": 35,
+      "totalTimeMinutes": 50,
+      "difficulty": "medium",
+      "cuisine": "american",
+      "mealType": "soup",
+      "tags": [ "vegetarian", "comfort-food", "seasonal"],
+      "ingredients": [
+        { "name": "butternut squash", "quantity": 1.2, "unit": "kg", "notes": "peeled & cubed" },
+        { "name": "olive oil", "quantity": 2, "unit": "tbsp", "notes": "" },
+        { "name": "onion", "quantity": 1, "unit": "", "notes": "chopped" },
+        { "name": "vegetable broth", "quantity": 4, "unit": "cups", "notes": "" },
+        { "name": "coconut milk", "quantity": 0.5, "unit": "cup", "notes": "optional, for creaminess" },
+        { "name": "nutmeg", "quantity": 0.25, "unit": "tsp", "notes": "" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "Preheat oven to 400°F (200°C). Toss squash cubes with 1 tbsp olive oil, salt and pepper and roast 25 minutes until tender." },
+        { "stepNumber": 2, "instruction": "In a pot, sauté onion with remaining olive oil until soft." },
+        { "stepNumber": 3, "instruction": "Add roasted squash and vegetable broth to pot; bring to a boil then simmer 10 minutes." },
+        { "stepNumber": 4, "instruction": "Blend soup until smooth (use immersion blender or regular blender)." },
+        { "stepNumber": 5, "instruction": "Stir in coconut milk if using, add nutmeg, and adjust salt/pepper." },
+        { "stepNumber": 6, "instruction": "Serve hot with crusty bread or garnish of your choice." }
+      ],
+      "imageUrl": "https://example.com/images/roasted-butternut-squash-soup.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.5,
+      "ratingCount": 105,
+      
+      "createdAt": "2025-10-28T16:40:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 25,
+      "slug": "vegetable-fried-rice",
+      "name": "Vegetable Fried Rice",
+      "description": "Quick vegetable fried rice — a great way to use leftover rice and make a wholesome meal in minutes.",
+      "servings": 3,
+      "prepTimeMinutes": 5,
+      "cookTimeMinutes": 10,
+      "totalTimeMinutes": 15,
+      "difficulty": "easy",
+      "cuisine": "asian",
+      "mealType": "dinner",
+      "tags": [ "vegetarian", "quick", "budget-friendly"],
+      "ingredients": [
+        { "name": "cold cooked rice", "quantity": 3, "unit": "cups", "notes": "preferably day-old" },
+        { "name": "mixed vegetables", "quantity": 1.5, "unit": "cups", "notes": "e.g. carrots, peas, corn" },
+        { "name": "soy sauce", "quantity": 3, "unit": "tbsp", "notes": "" },
+        { "name": "sesame oil", "quantity": 1, "unit": "tbsp", "notes": "" },
+        { "name": "garlic", "quantity": 2, "unit": "cloves", "notes": "minced" },
+        { "name": "green onion", "quantity": 2, "unit": "", "notes": "chopped" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "Heat sesame oil in a large pan or wok over high heat. Add garlic and stir briefly." },
+        { "stepNumber": 2, "instruction": "Add mixed vegetables and stir-fry 2–3 minutes." },
+        { "stepNumber": 3, "instruction": "Add cold rice and soy sauce; stir to combine and heat through." },
+        { "stepNumber": 4, "instruction": "Break up any rice clumps and toss thoroughly." },
+        { "stepNumber": 5, "instruction": "Stir in chopped green onions. Taste and adjust seasoning." },
+        { "stepNumber": 6, "instruction": "Serve hot; optionally top with sesame seeds." }
+      ],
+      "imageUrl": "https://example.com/images/vegetable-fried-rice.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.0,
+      "ratingCount": 60,
+      
+      "createdAt": "2025-09-15T14:00:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 26,
+      "slug": "classic-caesar-salad",
+      "name": "Classic Caesar Salad",
+      "description": "A timeless Caesar salad with crisp romaine, tangy dressing and crunchy croutons — simple and refreshing.",
+      "servings": 2,
+      "prepTimeMinutes": 10,
+      "cookTimeMinutes": 0,
+      "totalTimeMinutes": 10,
+      "difficulty": "very easy",
+      "cuisine": "american",
+      "mealType": "salad",
+      "tags": [ "vegetarian", "quick", "starter"],
+      "ingredients": [
+        { "name": "romaine lettuce", "quantity": 1, "unit": "head", "notes": "chopped" },
+        { "name": "croutons", "quantity": 1, "unit": "cup", "notes": "" },
+        { "name": "parmesan cheese", "quantity": 0.5, "unit": "cup", "notes": "grated" },
+        { "name": "caesar dressing", "quantity": 0.5, "unit": "cup", "notes": "" },
+        { "name": "lemon juice", "quantity": 1, "unit": "tbsp", "notes": "optional" },
+        { "name": "black pepper", "quantity": 0.25, "unit": "tsp", "notes": "" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "In a large bowl, combine chopped romaine, croutons, and grated parmesan." },
+        { "stepNumber": 2, "instruction": "Pour Caesar dressing over salad, toss gently to coat." },
+        { "stepNumber": 3, "instruction": "Add lemon juice and black pepper if desired." },
+        { "stepNumber": 4, "instruction": "Taste and adjust seasoning." },
+        { "stepNumber": 5, "instruction": "Serve immediately." },
+        { "stepNumber": 6, "instruction": "Best eaten fresh — croutons stay crunchy." }
+      ],
+      "imageUrl": "https://example.com/images/classic-caesar-salad.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.1,
+      "ratingCount": 55,
+      
+      "createdAt": "2025-08-22T12:20:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 27,
+      "slug": "pumpkin-spice-muffins",
+      "name": "Pumpkin Spice Muffins",
+      "description": "Soft pumpkin spice muffins with warm autumn flavors — great for breakfast or dessert.",
+      "servings": 6,
+      "prepTimeMinutes": 10,
+      "cookTimeMinutes": 20,
+      "totalTimeMinutes": 30,
+      "difficulty": "easy",
+      "cuisine": "american",
+      "mealType": "breakfast",
+      "tags": [ "vegetarian", "seasonal", "baked"],
+      "ingredients": [
+        { "name": "all-purpose flour", "quantity": 1.5, "unit": "cups", "notes": "" },
+        { "name": "baking powder", "quantity": 2, "unit": "tsp", "notes": "" },
+        { "name": "cinnamon", "quantity": 1, "unit": "tsp", "notes": "" },
+        { "name": "pumpkin puree", "quantity": 1, "unit": "cup", "notes": "" },
+        { "name": "milk", "quantity": 0.5, "unit": "cup", "notes": "" },
+        { "name": "sugar", "quantity": 0.5, "unit": "cup", "notes": "" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "Preheat oven to 375°F (190°C). Grease or line a muffin tin." },
+        { "stepNumber": 2, "instruction": "In a bowl, mix flour, baking powder, and cinnamon." },
+        { "stepNumber": 3, "instruction": "In another bowl, mix pumpkin puree, milk, and sugar." },
+        { "stepNumber": 4, "instruction": "Combine wet and dry ingredients until just mixed." },
+        { "stepNumber": 5, "instruction": "Divide batter into muffin cups." },
+        { "stepNumber": 6, "instruction": "Bake 18–20 minutes or until a toothpick comes out clean. Cool before serving." }
+      ],
+      "imageUrl": "https://example.com/images/pumpkin-spice-muffins.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.2,
+      "ratingCount": 63,
+      
+      "createdAt": "2025-09-10T10:05:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 28,
+      "slug": "black-bean-sweet-potato-chili",
+      "name": "Black Bean & Sweet Potato Chili",
+      "description": "Hearty black bean and sweet potato chili — warm, filling and perfect for chilly evenings.",
+      "servings": 5,
+      "prepTimeMinutes": 15,
+      "cookTimeMinutes": 35,
+      "totalTimeMinutes": 50,
+      "difficulty": "medium",
+      "cuisine": "mexican-fusion",
+      "mealType": "dinner",
+      "tags": [ "vegan", "gluten-free", "comfort-food"],
+      "ingredients": [
+        { "name": "black beans", "quantity": 2, "unit": "cans (15 oz)", "notes": "rinsed & drained" },
+        { "name": "sweet potato", "quantity": 500, "unit": "g", "notes": "peeled & cubed" },
+        { "name": "onion", "quantity": 1, "unit": "", "notes": "chopped" },
+        { "name": "tomato sauce", "quantity": 400, "unit": "ml", "notes": "" },
+        { "name": "vegetable broth", "quantity": 2, "unit": "cups", "notes": "" },
+        { "name": "chili powder", "quantity": 1, "unit": "tbsp", "notes": "" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "In a pot, sauté onion until soft." },
+        { "stepNumber": 2, "instruction": "Add sweet potato cubes, tomato sauce, vegetable broth, and chili powder." },
+        { "stepNumber": 3, "instruction": "Bring to a boil, then reduce heat and simmer 15 minutes or until sweet potato is tender." },
+        { "stepNumber": 4, "instruction": "Add black beans and simmer another 5 minutes." },
+        { "stepNumber": 5, "instruction": "Stir, taste for seasoning, adjust salt/pepper or spices." },
+        { "stepNumber": 6, "instruction": "Serve hot, optionally with toppings like avocado, cilantro or tortilla chips." }
+      ],
+      "imageUrl": "https://example.com/images/black-bean-sweet-potato-chili.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.6,
+      "ratingCount": 97,
+      
+      "createdAt": "2025-10-14T17:30:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 29,
+      "slug": "strawberry-spinach-salad-with-feta",
+      "name": "Strawberry Spinach Salad with Feta",
+      "description": "A bright, fresh strawberry and spinach salad with creamy feta — ideal for spring or summer meals.",
+      "servings": 4,
+      "prepTimeMinutes": 10,
+      "cookTimeMinutes": 0,
+      "totalTimeMinutes": 10,
+      "difficulty": "very easy",
+      "cuisine": "american",
+      "mealType": "salad",
+      "tags": [ "vegetarian", "gluten-free", "light"],
+      "ingredients": [
+        { "name": "fresh spinach", "quantity": 4, "unit": "cups", "notes": "" },
+        { "name": "strawberries", "quantity": 1, "unit": "cup", "notes": "sliced" },
+        { "name": "feta cheese", "quantity": 0.5, "unit": "cup", "notes": "crumbled" },
+        { "name": "red onion", "quantity": 0.25, "unit": "cup", "notes": "thinly sliced" },
+        { "name": "balsamic vinaigrette", "quantity": 0.5, "unit": "cup", "notes": "" },
+        { "name": "almonds", "quantity": 0.25, "unit": "cup", "notes": "sliced, toasted, optional" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "In a large bowl, combine spinach, sliced strawberries, red onion, and almonds if using." },
+        { "stepNumber": 2, "instruction": "Drizzle balsamic vinaigrette over the salad." },
+        { "stepNumber": 3, "instruction": "Toss gently to coat ingredients evenly." },
+        { "stepNumber": 4, "instruction": "Sprinkle crumbled feta on top." },
+        { "stepNumber": 5, "instruction": "Season with salt and pepper to taste." },
+        { "stepNumber": 6, "instruction": "Serve immediately." }
+      ],
+      "imageUrl": "https://example.com/images/strawberry-spinach-salad-with-feta.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.3,
+      "ratingCount": 80,
+      
+      "createdAt": "2025-09-22T11:15:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 30,
+      "slug": "peanut-butter-chocolate-chip-cookies",
+      "name": "Peanut Butter Chocolate Chip Cookies",
+      "description": "Soft and chewy peanut butter cookies with chocolate chips — a crowd-pleasing classic treat.",
+      "servings": 24,
+      "prepTimeMinutes": 15,
+      "cookTimeMinutes": 12,
+      "totalTimeMinutes": 27,
+      "difficulty": "easy",
+      "cuisine": "american",
+      "mealType": "dessert",
+      "tags": [ "vegetarian", "baked", "snack"],
+      "ingredients": [
+        { "name": "peanut butter", "quantity": 1, "unit": "cup", "notes": "smooth or crunchy" },
+        { "name": "sugar", "quantity": 1, "unit": "cup", "notes": "" },
+        { "name": "egg", "quantity": 1, "unit": "", "notes": "room temperature" },
+        { "name": "vanilla extract", "quantity": 1, "unit": "tsp", "notes": "" },
+        { "name": "baking soda", "quantity": 0.5, "unit": "tsp", "notes": "" },
+        { "name": "chocolate chips", "quantity": 0.75, "unit": "cup", "notes": "" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "Preheat oven to 350°F (175°C) and line a baking sheet with parchment paper." },
+        { "stepNumber": 2, "instruction": "In a bowl, mix peanut butter and sugar until smooth." },
+        { "stepNumber": 3, "instruction": "Add egg, vanilla extract, and baking soda. Mix well." },
+        { "stepNumber": 4, "instruction": "Fold in chocolate chips." },
+        { "stepNumber": 5, "instruction": "Scoop small balls of dough onto baking sheet, flatten slightly." },
+        { "stepNumber": 6, "instruction": "Bake 10–12 minutes until edges are golden. Let cool before serving." }
+      ],
+      "imageUrl": "https://example.com/images/peanut-butter-chocolate-chip-cookies.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.5,
+      "ratingCount": 140,
+      
+      "createdAt": "2025-08-18T15:00:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 31,
+      "slug": "one-pot-chicken-and-rice",
+      "name": "One-Pot Chicken and Rice",
+      "description": "Complete meal cooked in one pot with chicken, rice, and vegetables - minimal cleanup required!",
+      "servings": 4,
+      "prepTimeMinutes": 10,
+      "cookTimeMinutes": 30,
+      "totalTimeMinutes": 40,
+      "difficulty": "easy",
+      "cuisine": "american",
+      "mealType": "dinner",
+      "tags": ["one-pot", "protein-rich", "family-friendly", "comfort-food"],
+      "ingredients": [
+        { "name": "chicken thighs", "quantity": 6, "unit": "", "notes": "bone-in, skin-on" },
+        { "name": "long-grain rice", "quantity": 1.5, "unit": "cups", "notes": "" },
+        { "name": "chicken broth", "quantity": 3, "unit": "cups", "notes": "" },
+        { "name": "mixed vegetables", "quantity": 2, "unit": "cups", "notes": "carrots, peas, corn" },
+        { "name": "onion", "quantity": 1, "unit": "", "notes": "diced" },
+        { "name": "garlic powder", "quantity": 1, "unit": "tsp", "notes": "" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "Season chicken with salt, pepper, and garlic powder." },
+        { "stepNumber": 2, "instruction": "In a large pot, brown chicken on both sides, then remove." },
+        { "stepNumber": 3, "instruction": "Add onion to the same pot, cook until softened." },
+        { "stepNumber": 4, "instruction": "Add rice, broth, and vegetables. Return chicken to pot." },
+        { "stepNumber": 5, "instruction": "Bring to boil, then reduce heat and simmer covered for 20-25 minutes." },
+        { "stepNumber": 6, "instruction": "Let rest 5 minutes before serving. Everything in one pot!" }
+      ],
+      "imageUrl": "https://example.com/images/one-pot-chicken-and-rice.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.6,
+      "ratingCount": 128,
+      "createdAt": "2025-11-27T10:00:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 32,
+      "slug": "one-pot-pasta-primavera",
+      "name": "One-Pot Pasta Primavera",
+      "description": "Fresh vegetables and pasta cooked together in one pot with creamy sauce - easy cleanup!",
+      "servings": 4,
+      "prepTimeMinutes": 5,
+      "cookTimeMinutes": 15,
+      "totalTimeMinutes": 20,
+      "difficulty": "easy",
+      "cuisine": "italian",
+      "mealType": "dinner",
+      "tags": ["one-pot", "vegetarian", "quick", "budget-friendly"],
+      "ingredients": [
+        { "name": "penne pasta", "quantity": 12, "unit": "oz", "notes": "" },
+        { "name": "vegetable broth", "quantity": 3, "unit": "cups", "notes": "" },
+        { "name": "heavy cream", "quantity": 1, "unit": "cup", "notes": "" },
+        { "name": "bell peppers", "quantity": 2, "unit": "", "notes": "sliced" },
+        { "name": "zucchini", "quantity": 1, "unit": "", "notes": "sliced" },
+        { "name": "cherry tomatoes", "quantity": 1, "unit": "cup", "notes": "halved" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "In a large pot, combine pasta, broth, and all vegetables." },
+        { "stepNumber": 2, "instruction": "Bring to boil, then reduce heat and simmer 10-15 minutes until pasta is tender." },
+        { "stepNumber": 3, "instruction": "Stir in cream and season with salt and pepper." },
+        { "stepNumber": 4, "instruction": "Cook 2 more minutes until sauce thickens slightly." },
+        { "stepNumber": 5, "instruction": "Garnish with fresh herbs if desired." },
+        { "stepNumber": 6, "instruction": "Serve hot directly from the pot!" }
+      ],
+      "imageUrl": "https://example.com/images/one-pot-pasta-primavera.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.4,
+      "ratingCount": 95,
+      "createdAt": "2025-11-27T10:15:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 33,
+      "slug": "protein-packed-quinoa-bowl",
+      "name": "Protein-Packed Quinoa Bowl",
+      "description": "High-protein bowl with quinoa, chickpeas, and Greek yogurt - perfect for post-workout fuel!",
+      "servings": 2,
+      "prepTimeMinutes": 10,
+      "cookTimeMinutes": 15,
+      "totalTimeMinutes": 25,
+      "difficulty": "easy",
+      "cuisine": "healthy",
+      "mealType": "lunch",
+      "tags": ["protein-rich", "vegetarian", "healthy", "gluten-free"],
+      "ingredients": [
+        { "name": "quinoa", "quantity": 1, "unit": "cup", "notes": "" },
+        { "name": "chickpeas", "quantity": 1, "unit": "can (15 oz)", "notes": "rinsed and drained" },
+        { "name": "Greek yogurt", "quantity": 0.5, "unit": "cup", "notes": "plain" },
+        { "name": "hemp seeds", "quantity": 2, "unit": "tbsp", "notes": "" },
+        { "name": "almonds", "quantity": 0.25, "unit": "cup", "notes": "sliced" },
+        { "name": "spinach", "quantity": 2, "unit": "cups", "notes": "fresh" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "Cook quinoa according to package directions." },
+        { "stepNumber": 2, "instruction": "In a bowl, combine cooked quinoa, chickpeas, and spinach." },
+        { "stepNumber": 3, "instruction": "Top with Greek yogurt and sprinkle with hemp seeds." },
+        { "stepNumber": 4, "instruction": "Add sliced almonds for extra protein and crunch." },
+        { "stepNumber": 5, "instruction": "Drizzle with olive oil and lemon juice." },
+        { "stepNumber": 6, "instruction": "Mix everything together and enjoy your protein boost!" }
+      ],
+      "imageUrl": "https://example.com/images/protein-packed-quinoa-bowl.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.5,
+      "ratingCount": 87,
+      "createdAt": "2025-11-27T10:30:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 34,
+      "slug": "high-protein-lentil-curry",
+      "name": "High-Protein Lentil Curry",
+      "description": "Protein-rich red lentil curry with aromatic spices - filling and nutritious!",
+      "servings": 4,
+      "prepTimeMinutes": 5,
+      "cookTimeMinutes": 25,
+      "totalTimeMinutes": 30,
+      "difficulty": "easy",
+      "cuisine": "indian",
+      "mealType": "dinner",
+      "tags": ["protein-rich", "vegan", "budget-friendly", "one-pot"],
+      "ingredients": [
+        { "name": "red lentils", "quantity": 1.5, "unit": "cups", "notes": "" },
+        { "name": "coconut milk", "quantity": 1, "unit": "can (14 oz)", "notes": "" },
+        { "name": "vegetable broth", "quantity": 2, "unit": "cups", "notes": "" },
+        { "name": "curry powder", "quantity": 2, "unit": "tbsp", "notes": "" },
+        { "name": "turmeric", "quantity": 1, "unit": "tsp", "notes": "" },
+        { "name": "onion", "quantity": 1, "unit": "", "notes": "diced" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "In a large pot, sauté onion until softened." },
+        { "stepNumber": 2, "instruction": "Add curry powder and turmeric, cook 1 minute until fragrant." },
+        { "stepNumber": 3, "instruction": "Add lentils, coconut milk, and broth. Bring to boil." },
+        { "stepNumber": 4, "instruction": "Reduce heat and simmer 20 minutes until lentils are tender." },
+        { "stepNumber": 5, "instruction": "Season with salt and pepper to taste." },
+        { "stepNumber": 6, "instruction": "Serve over rice with fresh cilantro. High in plant protein!" }
+      ],
+      "imageUrl": "https://example.com/images/high-protein-lentil-curry.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.7,
+      "ratingCount": 112,
+      "createdAt": "2025-11-27T10:45:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 35,
+      "slug": "budget-rice-and-beans",
+      "name": "Budget-Friendly Rice and Beans",
+      "description": "Hearty and affordable rice and beans with simple seasonings - feeds a crowd for less!",
+      "servings": 6,
+      "prepTimeMinutes": 5,
+      "cookTimeMinutes": 20,
+      "totalTimeMinutes": 25,
+      "difficulty": "very easy",
+      "cuisine": "latin",
+      "mealType": "dinner",
+      "tags": ["budget-friendly", "vegan", "protein-rich", "one-pot"],
+      "ingredients": [
+        { "name": "white rice", "quantity": 2, "unit": "cups", "notes": "" },
+        { "name": "black beans", "quantity": 2, "unit": "cans (15 oz each)", "notes": "rinsed and drained" },
+        { "name": "vegetable broth", "quantity": 3, "unit": "cups", "notes": "" },
+        { "name": "onion", "quantity": 1, "unit": "", "notes": "diced" },
+        { "name": "cumin", "quantity": 1, "unit": "tsp", "notes": "" },
+        { "name": "garlic powder", "quantity": 1, "unit": "tsp", "notes": "" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "In a large pot, sauté onion until softened." },
+        { "stepNumber": 2, "instruction": "Add rice, beans, broth, cumin, and garlic powder." },
+        { "stepNumber": 3, "instruction": "Bring to boil, then reduce heat and simmer covered 18 minutes." },
+        { "stepNumber": 4, "instruction": "Let stand 5 minutes, then fluff with a fork." },
+        { "stepNumber": 5, "instruction": "Season with salt and pepper to taste." },
+        { "stepNumber": 6, "instruction": "Serve hot. Costs under $5 to feed 6 people!" }
+      ],
+      "imageUrl": "https://example.com/images/budget-rice-and-beans.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.3,
+      "ratingCount": 78,
+      "createdAt": "2025-11-27T11:00:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 36,
+      "slug": "budget-egg-fried-rice",
+      "name": "Budget Egg Fried Rice",
+      "description": "Simple and cheap fried rice with eggs - uses pantry staples and leftover rice!",
+      "servings": 4,
+      "prepTimeMinutes": 5,
+      "cookTimeMinutes": 10,
+      "totalTimeMinutes": 15,
+      "difficulty": "very easy",
+      "cuisine": "asian",
+      "mealType": "dinner",
+      "tags": ["budget-friendly", "quick", "protein-rich", "one-pot"],
+      "ingredients": [
+        { "name": "cooked rice", "quantity": 4, "unit": "cups", "notes": "preferably day-old" },
+        { "name": "eggs", "quantity": 4, "unit": "", "notes": "beaten" },
+        { "name": "soy sauce", "quantity": 3, "unit": "tbsp", "notes": "" },
+        { "name": "vegetable oil", "quantity": 2, "unit": "tbsp", "notes": "" },
+        { "name": "green onions", "quantity": 3, "unit": "", "notes": "chopped" },
+        { "name": "garlic", "quantity": 2, "unit": "cloves", "notes": "minced" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "Heat oil in a large pan or wok over medium-high heat." },
+        { "stepNumber": 2, "instruction": "Add beaten eggs and scramble until just set." },
+        { "stepNumber": 3, "instruction": "Add garlic and cook for 30 seconds." },
+        { "stepNumber": 4, "instruction": "Add rice and soy sauce, stir-fry for 5 minutes." },
+        { "stepNumber": 5, "instruction": "Stir in green onions and cook 1 more minute." },
+        { "stepNumber": 6, "instruction": "Serve hot. Perfect use for leftover rice and costs under $3!" }
+      ],
+      "imageUrl": "https://example.com/images/budget-egg-fried-rice.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.2,
+      "ratingCount": 64,
+      "createdAt": "2025-11-27T11:15:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 37,
+      "slug": "one-pot-beef-stew",
+      "name": "One-Pot Hearty Beef Stew",
+      "description": "Classic beef stew with vegetables, all cooked in one pot - perfect comfort food with easy cleanup!",
+      "servings": 6,
+      "prepTimeMinutes": 15,
+      "cookTimeMinutes": 90,
+      "totalTimeMinutes": 105,
+      "difficulty": "medium",
+      "cuisine": "american",
+      "mealType": "dinner",
+      "tags": ["one-pot", "protein-rich", "comfort-food", "make-ahead"],
+      "ingredients": [
+        { "name": "beef chuck", "quantity": 2, "unit": "lbs", "notes": "cut into chunks" },
+        { "name": "potatoes", "quantity": 4, "unit": "", "notes": "cubed" },
+        { "name": "carrots", "quantity": 3, "unit": "", "notes": "sliced" },
+        { "name": "onion", "quantity": 1, "unit": "", "notes": "diced" },
+        { "name": "beef broth", "quantity": 4, "unit": "cups", "notes": "" },
+        { "name": "tomato paste", "quantity": 2, "unit": "tbsp", "notes": "" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "In a large pot, brown beef chunks on all sides." },
+        { "stepNumber": 2, "instruction": "Add onion and cook until softened." },
+        { "stepNumber": 3, "instruction": "Stir in tomato paste and cook 1 minute." },
+        { "stepNumber": 4, "instruction": "Add broth, potatoes, and carrots. Bring to boil." },
+        { "stepNumber": 5, "instruction": "Reduce heat, cover and simmer 1.5 hours until beef is tender." },
+        { "stepNumber": 6, "instruction": "Season and serve hot. One pot = one cleanup!" }
+      ],
+      "imageUrl": "https://example.com/images/one-pot-beef-stew.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.8,
+      "ratingCount": 156,
+      "createdAt": "2025-11-27T11:30:00Z",
+      "sourceUrl": ""
+    },
+    {
+      "id": 38,
+      "slug": "protein-power-smoothie-bowl",
+      "name": "Protein Power Smoothie Bowl",
+      "description": "High-protein smoothie bowl with Greek yogurt, protein powder, and nutritious toppings!",
+      "servings": 1,
+      "prepTimeMinutes": 5,
+      "cookTimeMinutes": 0,
+      "totalTimeMinutes": 5,
+      "difficulty": "very easy",
+      "cuisine": "healthy",
+      "mealType": "breakfast",
+      "tags": ["protein-rich", "healthy", "quick", "gluten-free"],
+      "ingredients": [
+        { "name": "Greek yogurt", "quantity": 1, "unit": "cup", "notes": "plain" },
+        { "name": "protein powder", "quantity": 1, "unit": "scoop", "notes": "vanilla" },
+        { "name": "banana", "quantity": 0.5, "unit": "", "notes": "frozen" },
+        { "name": "peanut butter", "quantity": 2, "unit": "tbsp", "notes": "" },
+        { "name": "chia seeds", "quantity": 1, "unit": "tbsp", "notes": "" },
+        { "name": "granola", "quantity": 0.25, "unit": "cup", "notes": "" }
+      ],
+      "steps": [
+        { "stepNumber": 1, "instruction": "Blend yogurt, protein powder, banana, and 1 tbsp peanut butter until smooth." },
+        { "stepNumber": 2, "instruction": "Pour into a bowl." },
+        { "stepNumber": 3, "instruction": "Top with remaining peanut butter, chia seeds, and granola." },
+        { "stepNumber": 4, "instruction": "Add fresh berries if desired." },
+        { "stepNumber": 5, "instruction": "Enjoy immediately for maximum protein boost!" },
+        { "stepNumber": 6, "instruction": "Contains 30+ grams of protein per serving!" }
+      ],
+      "imageUrl": "https://example.com/images/protein-power-smoothie-bowl.jpg",
+      "author": {
+        "name": "DishGen Demo",
+        "isAI": true
+      },
+      "rating": 4.6,
+      "ratingCount": 89,
+      "createdAt": "2025-11-27T11:45:00Z",
+      "sourceUrl": ""
+    }
+  ]
+}

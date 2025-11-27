@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
@@ -33,9 +33,24 @@ interface EnhancedFilterProps {
 export const EnhancedFilter = ({ onFilterChange }: EnhancedFilterProps) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeFilters, setActiveFilters] = useState<Record<string, string[]>>({});
-  const [cookTime, setCookTime] = useState([30]);
+  const [cookTime, setCookTime] = useState([300]);
   const [isExpanded, setIsExpanded] = useState(true);
   const [quickFiltersOpen, setQuickFiltersOpen] = useState(true);
+  const [quickOptions, setQuickOptions] = useState({
+    onePot: false,
+    highProtein: false,
+    budgetFriendly: false,
+  });
+
+  // Notify parent component when filters change
+  useEffect(() => {
+    onFilterChange?.({
+      searchQuery,
+      cookTime,
+      quickOptions,
+      ...activeFilters
+    });
+  }, [searchQuery, cookTime, activeFilters, quickOptions, onFilterChange]);
 
   const filterCategories: FilterCategory[] = [
     {
@@ -84,17 +99,19 @@ export const EnhancedFilter = ({ onFilterChange }: EnhancedFilterProps) => {
         ? categoryFilters.filter((v) => v !== value)
         : [...categoryFilters, value];
       
-      const updated = { ...prev, [category]: newFilters };
-      onFilterChange?.(updated);
-      return updated;
+      return { ...prev, [category]: newFilters };
     });
   };
 
   const clearAllFilters = () => {
     setActiveFilters({});
-    setCookTime([30]);
+    setCookTime([300]);
     setSearchQuery("");
-    onFilterChange?.({});
+    setQuickOptions({
+      onePot: false,
+      highProtein: false,
+      budgetFriendly: false,
+    });
   };
 
   const activeFilterCount = Object.values(activeFilters).flat().length;
@@ -264,7 +281,12 @@ export const EnhancedFilter = ({ onFilterChange }: EnhancedFilterProps) => {
                     <Label className="text-sm font-medium">One-Pot Meals</Label>
                     <p className="text-xs text-muted-foreground">Minimal cleanup</p>
                   </div>
-                  <Switch />
+                  <Switch 
+                    checked={quickOptions.onePot}
+                    onCheckedChange={(checked) => 
+                      setQuickOptions(prev => ({ ...prev, onePot: checked }))
+                    }
+                  />
                 </div>
                 <div className="flex items-center justify-between">
                   <div>
@@ -273,7 +295,12 @@ export const EnhancedFilter = ({ onFilterChange }: EnhancedFilterProps) => {
                       Protein-rich recipes
                     </p>
                   </div>
-                  <Switch />
+                  <Switch 
+                    checked={quickOptions.highProtein}
+                    onCheckedChange={(checked) => 
+                      setQuickOptions(prev => ({ ...prev, highProtein: checked }))
+                    }
+                  />
                 </div>
                 <div className="flex items-center justify-between">
                   <div>
@@ -282,7 +309,12 @@ export const EnhancedFilter = ({ onFilterChange }: EnhancedFilterProps) => {
                       Affordable ingredients
                     </p>
                   </div>
-                  <Switch />
+                  <Switch 
+                    checked={quickOptions.budgetFriendly}
+                    onCheckedChange={(checked) => 
+                      setQuickOptions(prev => ({ ...prev, budgetFriendly: checked }))
+                    }
+                  />
                 </div>
               </div>
             </Card>
