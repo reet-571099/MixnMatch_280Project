@@ -9,6 +9,7 @@ import HomePage from "./pages/HomePage";
 import CreateRecipe from "./pages/CreateRecipe";
 import MealPlanner from "./pages/MealPlanner";
 import Explore from "./pages/Explore";
+import RecipeDetailPage from "./pages/RecipeDetailPage";
 import Pantry from "./pages/Pantry";
 import TipsSwaps from "./pages/TipsSwaps";
 import Favorites from "./pages/Favorites";
@@ -32,6 +33,7 @@ const App = () => (
               <Route path="/create" element={<CreateRecipe />} />
               <Route path="/meal-planner" element={<MealPlanner />} />
               <Route path="/explore" element={<Explore />} />
+              <Route path="/recipes/:id" element={<RecipeDetailPage />} />
               <Route path="/pantry" element={<Pantry />} />
               <Route path="/tips-swaps" element={<TipsSwaps />} />
               <Route path="/favorites" element={<Favorites />} />

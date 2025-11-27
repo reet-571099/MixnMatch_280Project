@@ -5,9 +5,6 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Clock, Heart } from "lucide-react";
 import { EnhancedFilter } from "@/components/EnhancedFilter";
-import stirfryImage from "@/assets/recipe-stirfry.jpg";
-import mediterraneanImage from "@/assets/recipe-mediterranean.jpg";
-import curryImage from "@/assets/recipe-curry.jpg";
 import { Link } from "react-router-dom";
 
 interface Recipe {
@@ -41,8 +38,8 @@ const Explore = () => {
         const recipesData = data.recipes.map((recipe: any) => ({
           ...recipe,
           // Use placeholder images for now since the JSON imageUrl points to example.com
-          imageUrl: recipe.id % 3 === 0 ? curryImage : 
-                   recipe.id % 3 === 1 ? stirfryImage : mediterraneanImage,
+          imageUrl: recipe.id % 3 === 0 ? '/src/assets/recipe-curry.jpg' : 
+                   recipe.id % 3 === 1 ? '/src/assets/recipe-stirfry.jpg' : '/src/assets/recipe-mediterranean.jpg',
         }));
         setRecipes(recipesData);
       } catch (error) {
@@ -187,45 +184,52 @@ const Explore = () => {
                 transition={{ delay: 0.1 * index }}
                 whileHover={{ y: -8 }}
               >
-                <Card className="overflow-hidden hover:shadow-glow transition-all duration-500 group border-2 h-full flex flex-col">
-                  <div className="relative h-48 overflow-hidden">
-                    <img
-                      src={recipe.imageUrl}
-                      alt={recipe.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                    <div className="absolute top-4 right-4 flex gap-2">
-                      <motion.button
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        className="w-8 h-8 rounded-full bg-card/80 backdrop-blur flex items-center justify-center"
-                      >
-                        <Heart className="h-4 w-4 text-foreground hover:fill-primary hover:text-primary transition-colors" />
-                      </motion.button>
+                <Link to={`/recipes/${recipe.id}`} className="block h-full">
+                  <Card className="overflow-hidden hover:shadow-glow transition-all duration-500 group border-2 h-full flex flex-col cursor-pointer">
+                    <div className="relative h-48 overflow-hidden">
+                      <img
+                        src={recipe.imageUrl}
+                        alt={recipe.name}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                      <div className="absolute top-4 right-4 flex gap-2">
+                        <motion.button
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.9 }}
+                          className="w-8 h-8 rounded-full bg-card/80 backdrop-blur flex items-center justify-center"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            // Handle favorite toggle here
+                          }}
+                        >
+                          <Heart className="h-4 w-4 text-foreground hover:fill-primary hover:text-primary transition-colors" />
+                        </motion.button>
+                      </div>
+                      <div className="absolute bottom-4 left-4 flex items-center gap-2 text-white">
+                        <Clock className="h-4 w-4" />
+                        <span className="text-sm font-medium">{recipe.cookTimeMinutes} min</span>
+                      </div>
                     </div>
-                    <div className="absolute bottom-4 left-4 flex items-center gap-2 text-white">
-                      <Clock className="h-4 w-4" />
-                      <span className="text-sm font-medium">{recipe.cookTimeMinutes} min</span>
-                    </div>
-                  </div>
-                  <CardContent className="p-6 space-y-4 flex-1 flex flex-col">
-                    <h3 className="font-bold text-lg line-clamp-2">{recipe.name}</h3>
-                    <p className="text-sm text-muted-foreground line-clamp-2 flex-1">{recipe.description}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {recipe.tags.filter(tag => tag !== 'ai-generated').slice(0, 3).map((tag) => (
-                        <Badge key={tag} variant="secondary" className="hover:bg-primary hover:text-primary-foreground transition-colors cursor-pointer">
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-                    <div className="flex gap-2 pt-2">
-                      <Button variant="outline" size="sm" className="w-full">
-                        View Recipe
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
+                    <CardContent className="p-6 space-y-4 flex-1 flex flex-col">
+                      <h3 className="font-bold text-lg line-clamp-2">{recipe.name}</h3>
+                      <p className="text-sm text-muted-foreground line-clamp-2 flex-1">{recipe.description}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {recipe.tags.filter(tag => tag !== 'ai-generated').slice(0, 3).map((tag) => (
+                          <Badge key={tag} variant="secondary" className="hover:bg-primary hover:text-primary-foreground transition-colors cursor-pointer">
+                            {tag}
+                          </Badge>
+                        ))}
+                      </div>
+                      <div className="flex gap-2 pt-2">
+                        <Button variant="outline" size="sm" className="w-full">
+                          View Recipe
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
               </motion.div>
             ))}
           </div>
