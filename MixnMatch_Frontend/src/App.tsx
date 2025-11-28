@@ -9,13 +9,17 @@ import HomePage from "./pages/HomePage";
 import CreateRecipe from "./pages/CreateRecipe";
 import MealPlanner from "./pages/MealPlanner";
 import Explore from "./pages/Explore";
-import Pantry from "./pages/Pantry";
 import TipsSwaps from "./pages/TipsSwaps";
 import Favorites from "./pages/Favorites";
 import Profile from "./pages/Profile";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import About from "./pages/About";
 import NotFound from "./pages/NotFound";
+import ScrollToTop from "./ScrollToTop";
+import Contact from "./pages/Contact";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
 
 const queryClient = new QueryClient();
 
@@ -26,16 +30,20 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+        <ScrollToTop />
           <Routes>
             <Route element={<Layout />}>
               <Route path="/" element={<HomePage />} />
               <Route path="/create" element={<CreateRecipe />} />
               <Route path="/meal-planner" element={<MealPlanner />} />
               <Route path="/explore" element={<Explore />} />
-              <Route path="/pantry" element={<Pantry />} />
               <Route path="/tips-swaps" element={<TipsSwaps />} />
               <Route path="/favorites" element={<Favorites />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/privacy" element={<PrivacyPolicy />} />
+              <Route path="/terms" element={<TermsOfService />} />
               <Route path="*" element={<NotFound />} />
             </Route>
             {/* Auth routes without Layout */}

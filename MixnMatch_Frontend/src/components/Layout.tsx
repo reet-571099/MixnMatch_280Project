@@ -35,7 +35,6 @@ export const Layout = () => {
     { name: "Create Recipe", path: "/create" },
     { name: "Meal Planner", path: "/meal-planner" },
     { name: "Explore", path: "/explore" },
-    { name: "Pantry", path: "/pantry" },
     { name: "Tips & Swaps", path: "/tips-swaps" },
     { name: "Favorites", path: "/favorites" },
   ];
@@ -52,7 +51,7 @@ export const Layout = () => {
             <div className="w-10 h-10 rounded-xl bg-gradient-primary flex items-center justify-center group-hover:scale-110 transition-transform">
               <ChefHat className="h-6 w-6 text-white" />
             </div>
-            <span className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">MinxMatch</span>
+            <span className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">Mix&Match</span>
           </Link>
           
           <nav className="hidden md:flex items-center space-x-1">
@@ -142,7 +141,7 @@ export const Layout = () => {
                 <div className="w-10 h-10 rounded-xl bg-gradient-primary flex items-center justify-center">
                   <ChefHat className="h-5 w-5 text-white" />
                 </div>
-                <span className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">MinxMatch</span>
+                <span className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">Mix&Match</span>
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 AI-powered cooking assistant that turns your pantry chaos into chef-level meals.
@@ -176,7 +175,7 @@ export const Layout = () => {
           </div>
           
           <div className="mt-8 pt-8 border-t border-border text-center text-sm text-muted-foreground">
-            © 2025 MinxMatch. All rights reserved.
+            © 2025 Mix&Match. All rights reserved.
           </div>
         </div>
       </footer>

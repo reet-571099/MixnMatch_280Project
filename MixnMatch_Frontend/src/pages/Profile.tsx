@@ -18,7 +18,7 @@ const Profile = () => {
           <User className="h-10 w-10 text-primary" />
           Profile & Preferences
         </h1>
-        <p className="text-muted-foreground">Customize MinxMatch to match your taste</p>
+        <p className="text-muted-foreground">Customize Mix&Match to match your taste</p>
       </div>
 
       <div className="space-y-6">

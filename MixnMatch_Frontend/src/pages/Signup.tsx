@@ -48,7 +48,7 @@ const Signup = () => {
     try {
       await signup(name, email, password);
       toast({
-        title: "Welcome to MinxMatch!",
+        title: "Welcome to Mix&Match!",
         description: "Your account has been created successfully.",
       });
       navigate("/create");
@@ -91,7 +91,7 @@ const Signup = () => {
             <CardTitle className="text-3xl font-bold text-center">
               Join{" "}
               <span className="bg-gradient-primary bg-clip-text text-transparent">
-                MinxMatch
+                Mix&Match
               </span>
             </CardTitle>
             <CardDescription className="text-center text-base">
