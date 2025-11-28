@@ -84,7 +84,7 @@ const HomePage = () => {
     {
       name: "Sarah Mitchell",
       role: "Home Cook",
-      content: "MinxMatch changed how I cook! No more wasted groceries, and I'm discovering amazing recipes every week.",
+      content: "Mix&Match changed how I cook! No more wasted groceries, and I'm discovering amazing recipes every week.",
       rating: 5,
       avatar: avatarSarah,
     },
@@ -187,7 +187,7 @@ const HomePage = () => {
               transition={{ delay: 0.4 }}
               className="text-xl text-muted-foreground leading-relaxed"
             >
-              Tell MinxMatch what's in your kitchen – get a personalized recipe in seconds.
+              Tell Mix&Match what's in your kitchen – get a personalized recipe in seconds.
               No more wasted food, just delicious possibilities.
             </motion.p>
             
@@ -271,11 +271,11 @@ const HomePage = () => {
             <h2 className="text-4xl lg:text-5xl font-bold mb-4">
               Create AI Recipes with{" "}
               <span className="bg-gradient-primary bg-clip-text text-transparent">
-                MinxMatch
+                Mix&Match
               </span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Discover the next generation of recipe creation. MinxMatch uses advanced AI and a chat-based interface to help you create and modify custom recipes in seconds.
+              Discover the next generation of recipe creation. Mix&Match uses advanced AI and a chat-based interface to help you create and modify custom recipes in seconds.
             </p>
           </motion.div>
 
@@ -414,7 +414,7 @@ const HomePage = () => {
               </span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              See what our community has to say about their MinxMatch experience
+              See what our community has to say about their Mix&Match experience
             </p>
           </motion.div>
 

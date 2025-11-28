@@ -68,7 +68,7 @@ const Login = () => {
             <CardTitle className="text-3xl font-bold text-center">
               Welcome back to{" "}
               <span className="bg-gradient-primary bg-clip-text text-transparent">
-                MinxMatch
+                Mix&Match
               </span>
             </CardTitle>
             <CardDescription className="text-center text-base">
