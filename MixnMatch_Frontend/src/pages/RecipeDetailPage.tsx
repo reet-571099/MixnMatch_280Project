@@ -338,25 +338,74 @@ const RecipeDetailPage = () => {
                     <h1 className="text-2xl lg:text-3xl font-bold text-foreground leading-tight mb-3 recipe-title">
                       {recipe.name}
                     </h1>
-                    <p className="text-muted-foreground leading-relaxed text-sm lg:text-base">
+                    <p className="text-muted-foreground leading-relaxed text-sm lg:text-base mb-4">
                       {recipe.description}
                     </p>
+                    
+                    {/* Quick Recipe Details - Integrated */}
+                    <div className="grid grid-cols-2 gap-3 mb-4 text-sm">
+                      <div className="flex items-center justify-between p-2 bg-background/50 rounded-lg">
+                        <span className="text-muted-foreground">Total Time</span>
+                        <span className="font-medium">
+                          {(recipe.prepTimeMinutes || 0) + recipe.cookTimeMinutes} min
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-between p-2 bg-background/50 rounded-lg">
+                        <span className="text-muted-foreground">Difficulty</span>
+                        <Badge className="capitalize text-xs bg-green-100 text-green-700 border-green-200 hover:bg-green-200">
+                          {recipe.difficulty}
+                        </Badge>
+                      </div>
+                      {recipe.cuisine && (
+                        <div className="flex items-center justify-between p-2 bg-background/50 rounded-lg">
+                          <span className="text-muted-foreground">Cuisine</span>
+                          <Badge className="capitalize text-xs bg-blue-100 text-blue-700 border-blue-200 hover:bg-blue-200">
+                            {recipe.cuisine}
+                          </Badge>
+                        </div>
+                      )}
+                      {recipe.mealType && (
+                        <div className="flex items-center justify-between p-2 bg-background/50 rounded-lg">
+                          <span className="text-muted-foreground">Meal Type</span>
+                          <Badge className="capitalize text-xs bg-purple-100 text-purple-700 border-purple-200 hover:bg-purple-200">
+                            {recipe.mealType}
+                          </Badge>
+                        </div>
+                      )}
+                    </div>
+                    
+                    {/* Rating & Author */}
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center gap-2">
+                        {recipe.rating && (
+                          <div className="flex items-center gap-1">
+                            <span className="text-yellow-500">{'★'.repeat(Math.floor(recipe.rating))}</span>
+                            <span className="text-sm font-medium">{recipe.rating}</span>
+                            {recipe.ratingCount && (
+                              <span className="text-xs text-muted-foreground">({recipe.ratingCount})</span>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    </div>
                   </div>
 
-                  {/* Action Tags */}
-                  {recipe.tags.filter(tag => !['ai-generated', 'vegan', 'vegetarian', 'gluten-free', 'dairy-free', 'keto', 'paleo'].includes(tag)).length > 0 && (
-                    <div className="flex flex-wrap gap-2 pt-2 border-t border-border/50">
-                      {recipe.tags.filter(tag => !['ai-generated', 'vegan', 'vegetarian', 'gluten-free', 'dairy-free', 'keto', 'paleo'].includes(tag)).map((tag) => (
-                        <Badge
-                          key={tag}
-                          variant="secondary"
-                          className="text-xs font-medium capitalize hover:bg-primary hover:text-primary-foreground transition-colors focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                        >
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-                  )}
+                  {/* All Recipe Tags - Better Integration */}
+                  <div className="flex flex-wrap gap-2 pt-4 border-t border-border/30">
+                    {recipe.tags.slice(0, 8).map((tag, index) => (
+                      <Badge
+                        key={tag}
+                        className={`text-xs font-medium capitalize transition-colors ${
+                          index % 4 === 0 ? 'bg-orange-100 text-orange-700 border-orange-200 hover:bg-orange-200' :
+                          index % 4 === 1 ? 'bg-teal-100 text-teal-700 border-teal-200 hover:bg-teal-200' :
+                          index % 4 === 2 ? 'bg-pink-100 text-pink-700 border-pink-200 hover:bg-pink-200' :
+                          'bg-indigo-100 text-indigo-700 border-indigo-200 hover:bg-indigo-200'
+                        }`}
+                      >
+                        {tag.replace('-', ' ')}
+                      </Badge>
+                    ))}
+                  </div>
                 </CardContent>
               </Card>
             </motion.aside>
@@ -381,12 +430,12 @@ const RecipeDetailPage = () => {
                         ({recipe.ingredients.length} items)
                       </span>
                     </h2>
-                    <div className="space-y-3">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {recipe.ingredients.map((ingredient, index) => (
                         <motion.div
                           key={index}
                           variants={fadeIn}
-                          className="flex items-start gap-3 p-3 rounded-lg hover:bg-muted/30 transition-colors group"
+                          className="flex items-start gap-3 p-4 rounded-lg bg-muted/20 hover:bg-muted/40 transition-colors group border border-border/20 hover:border-primary/20"
                         >
                           <button 
                             className="flex-shrink-0 w-5 h-5 bg-primary/10 border-2 border-primary/30 rounded-sm flex items-center justify-center mt-0.5 hover:bg-primary/20 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 transition-colors"
@@ -395,11 +444,12 @@ const RecipeDetailPage = () => {
                             <Check className="h-3 w-3 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
                           </button>
                           <div className="flex-1 min-w-0">
-                            <span className="font-medium text-foreground block">
-                              {ingredient.quantity} {ingredient.unit} {ingredient.name}
-                            </span>
+                            <div className="font-medium text-foreground">
+                              <span className="text-primary font-semibold">{ingredient.quantity} {ingredient.unit}</span>
+                              <span className="ml-2">{ingredient.name}</span>
+                            </div>
                             {ingredient.notes && (
-                              <span className="text-sm text-muted-foreground block mt-1">
+                              <span className="text-sm text-muted-foreground block mt-1 italic">
                                 {ingredient.notes}
                               </span>
                             )}
