@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Heart, Clock, Trash2 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Favorites = () => {
   const favoriteRecipes = [
@@ -70,8 +71,11 @@ const Favorites = () => {
                       ))}
                     </div>
                     <div className="flex gap-2">
-                      <Button variant="outline" size="sm">
-                        View Recipe
+                      {/* Note: Update with real recipe ID when favorites functionality is fully implemented */}
+                      <Button variant="outline" size="sm" asChild>
+                        <Link to={`/recipes/${recipe.id}`}>
+                          View Recipe
+                        </Link>
                       </Button>
                       <Button size="sm">Open in Chat</Button>
                     </div>

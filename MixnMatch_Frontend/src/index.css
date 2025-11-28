@@ -155,3 +155,58 @@ All colors MUST be HSL.
     display: none;
   }
 }
+
+/* Print Styles for Recipe PDF Export */
+@media print {
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+    color: black !important;
+    background: white !important;
+  }
+  
+  /* Hide navigation and UI elements */
+  nav, .print\\:hidden, button:not(.print\\:block) {
+    display: none !important;
+  }
+  
+  /* Recipe content styling */
+  .recipe-content {
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 20px !important;
+  }
+  
+  .recipe-title {
+    font-size: 24pt !important;
+    font-weight: bold !important;
+    margin-bottom: 16pt !important;
+    color: black !important;
+  }
+  
+  .recipe-image {
+    max-width: 100% !important;
+    height: auto !important;
+    margin-bottom: 16pt !important;
+  }
+  
+  .ingredient-list, .step-list {
+    margin: 16pt 0 !important;
+    padding-left: 20pt !important;
+  }
+  
+  .ingredient-item, .step-item {
+    margin-bottom: 8pt !important;
+    page-break-inside: avoid;
+  }
+  
+  /* Ensure good page breaks */
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+  
+  /* Force page breaks before major sections if needed */
+  .page-break-before {
+    page-break-before: always;
+  }
+}
