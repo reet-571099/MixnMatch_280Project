@@ -5,7 +5,8 @@
   "main": "rag.js",
   "type": "module",
   "scripts": {
-    "start": "node rag.js"
+    "start": "node rag.js",
+    "server": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -16,8 +17,10 @@
     "@langchain/core": "^1.0.2",
     "@langchain/google-genai": "^1.0.0",
     "@supabase/supabase-js": "^2.79.0",
+    "cors": "^2.8.5",
     "d3-dsv": "^2.0.0",
     "dotenv": "^16.6.1",
+    "express": "^4.18.2",
     "langchain": "^1.0.2"
   }
 }

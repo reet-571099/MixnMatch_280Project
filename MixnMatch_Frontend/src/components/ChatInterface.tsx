@@ -12,6 +12,9 @@ import { RecipeCard, Recipe } from "./RecipeCard";
 import { MacroConstraintsPanel, MacroConstraints } from "./MacroConstraints";
 import { TemplatePrompts } from "./TemplatePrompts";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { queryRAG } from "@/lib/ragClient";
+import { mapConstraintsToBackend } from "@/lib/constraintMapper";
+import { convertMessagesToBackendHistory } from "@/lib/chatHistoryMapper";
 
 interface PantryItem {
   id: string;
@@ -55,6 +58,7 @@ export const ChatInterface = ({
   const [selectedChips, setSelectedChips] = useState<string[]>([]);
   const [pantry, setPantry] = useState<PantryItem[]>([]);
   const [constraintsVisible, setConstraintsVisible] = useState(false);
+  const [chatStarted, setChatStarted] = useState(false); // Track if chat has started
 
   // Structured ingredient inputs
   const [ingName, setIngName] = useState("");
@@ -165,100 +169,42 @@ export const ChatInterface = ({
 
     const composed = buildUserPrompt();
     const userMessage: Message = { id: Date.now().toString(), role: "user", content: composed };
+
+    // Add user message to state first
     setMessages(prev => [...prev, userMessage]);
     setInput("");
     setIsTyping(true);
+    setChatStarted(true); // Mark chat as started
 
-    // Check if this is a meal plan request
-    const isMealPlanRequest = /meal\s*plan|weekly\s*plan|week|days?\s*of\s*meals?/i.test(composed);
-    const daysMatch = composed.match(/(\d+)\s*[-]?\s*days?/i);
-    const numDays = daysMatch ? parseInt(daysMatch[1]) : 7;
+    // Call RAG API for recipe - include ALL previous messages for context
+    try {
+      const result = await queryRAG({
+        question: composed,
+        chatHistory: convertMessagesToBackendHistory(messages), // Send all messages for full context
+        constraints: mapConstraintsToBackend(constraints, selectedChips),
+      });
 
-    if (isMealPlanRequest && onMealPlanGenerated) {
-      // Generate meal plan data
-      setTimeout(() => {
-        const mealTitles = [
-          ["Scrambled Eggs with Cheese and Avocado", "Greek Yogurt with Walnuts and Honey", "Omelette with Bacon and Cheese", "Full English Breakfast", "Protein Pancakes with Peanut Butter", "Breakfast Burrito with Cheese", "Smoked Salmon with Cream Cheese"],
-          ["Grilled Chicken Caesar Salad", "Salmon Salad with Olive Oil Dressing", "Tuna Salad with Mayonnaise and Boiled Eggs", "Chicken Alfredo Pasta", "Turkey Club Sandwich with Avocado", "Chicken Thigh Curry", "Beef Burger with Cheese and Bacon"],
-          ["Beef Stroganoff with Sour Cream", "Pork Chops with Creamy Mushroom Sauce", "Lamb Chops with Garlic Butter", "Ribeye Steak with Herb Butter", "Baked Salmon with Cream Sauce", "BBQ Ribs with Coleslaw", "Roast Chicken with Creamy Mashed Potatoes"]
-        ];
-
-        const mealDescriptions = [
-          ["Protein-rich eggs with healthy fats from cheese and avocado", "Thick yogurt with protein and walnuts for saturated fats", "Egg omelette packed with protein and fatty bacon and cheese", "Eggs, bacon, sausage, and beans for a protein and fat-rich start", "High-protein pancakes topped with creamy peanut butter", "Scrambled eggs, cheese, and sausage in a tortilla wrap", "Smoked salmon on bagel with cream cheese spread"],
-          ["Grilled chicken with creamy Caesar dressing and Parmesan cheese", "Omega-3 rich salmon with healthy fat olive oil dressing", "Protein-packed tuna with eggs and creamy mayo", "Creamy Alfredo sauce with grilled chicken and pasta", "Turkey breast with bacon, avocado, and cheese", "Rich coconut curry with tender chicken thighs", "Juicy beef patty with melted cheese and crispy bacon"],
-          ["Tender beef in creamy sour cream sauce providing protein and fats", "Juicy pork chops in a rich mushroom cream sauce", "Tender lamb chops topped with rich garlic butter", "Juicy ribeye steak with melted herb butter on top", "Oven-baked salmon with rich cream-based sauce", "Slow-cooked BBQ ribs with creamy coleslaw side", "Whole roasted chicken with butter mashed potatoes"]
-        ];
-
-        const days = [];
-        for (let i = 0; i < numDays; i++) {
-          days.push({
-            day: i + 1,
-            meals: [
-              { type: "breakfast", title: mealTitles[0][i % 7], description: mealDescriptions[0][i % 7] },
-              { type: "lunch", title: mealTitles[1][i % 7], description: mealDescriptions[1][i % 7] },
-              { type: "dinner", title: mealTitles[2][i % 7], description: mealDescriptions[2][i % 7] }
-            ]
-          });
-        }
-
-        const mealPlanData = {
-          title: `${numDays}-Day Meal Plan`,
-          description: "breakfast, lunch, dinner for each day",
-          days
-        };
-
-        onMealPlanGenerated(mealPlanData);
-        
-        const botMessage: Message = {
-          id: (Date.now() + 1).toString(),
-          role: "bot",
-          content: `I've created a ${numDays}-day meal plan for you! Check the right panel to see your personalized meal schedule.`,
-        };
-        setMessages(prev => [...prev, botMessage]);
-        setIsTyping(false);
-      }, 2000);
-    } else {
-      // Simulate streaming with skeleton for recipe
-      setTimeout(() => {
+      if (result.success && result.recipe) {
         const botMessage: Message = {
           id: (Date.now() + 1).toString(),
           role: "bot",
           content: "I found a great recipe for you!",
-          recipe: {
-            title: "Quick Asian-Style Stir-Fry",
-            summary: "A delicious, protein-packed meal ready in under 25 minutes",
-            ingredients: pantry.length > 0 
-              ? pantry.map(p => [p.qty, p.unit, p.name].filter(Boolean).join(" "))
-              : ["200g chicken breast", "2 bell peppers", "1 cup rice", "3 tbsp soy sauce", "2 cloves garlic"],
-            steps: [
-              "Cook rice according to package instructions",
-              "Cut chicken and peppers into bite-sized pieces",
-              "Heat oil in a large pan over high heat",
-              "Stir-fry chicken until golden (5-7 minutes)",
-              "Add peppers and garlic, cook 3 minutes",
-              "Add soy sauce and toss everything together",
-              "Serve over rice and enjoy!",
-            ],
-            macros: {
-              calories: constraints.calories.value + Math.floor(Math.random() * 50 - 25),
-              protein: constraints.protein.value + Math.floor(Math.random() * 10 - 5),
-              carbs: constraints.carbs.value + Math.floor(Math.random() * 15 - 7),
-              fats: constraints.fats.value + Math.floor(Math.random() * 8 - 4),
-            },
-            time: 25,
-            difficulty: "easy",
-            servings: 2,
-            explanation: `Hits your ${constraints.calories.value} kcal target, ${constraints.protein.value}g protein goal, under ${constraints.time.value} minutes${selectedChips.includes('vegan') ? ', completely plant-based' : ''}`,
-            sources: [
-              { name: "Asian Cooking Basics", confidence: 0.92 },
-              { name: "Quick Weeknight Meals", confidence: 0.87 },
-            ],
-            pantryMatches: pantry.slice(0, 3).map(p => p.name),
-          },
+          recipe: result.recipe,
         };
         setMessages(prev => [...prev, botMessage]);
-        setIsTyping(false);
-      }, 2000);
+      } else {
+        throw new Error(result.error || "Failed to generate recipe");
+      }
+    } catch (error) {
+      const errorMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        role: "bot",
+        content: "Oops! Something went wrong. Please try again.",
+        isError: true,
+      };
+      setMessages(prev => [...prev, errorMessage]);
+    } finally {
+      setIsTyping(false);
     }
   };
 
@@ -271,6 +217,7 @@ export const ChatInterface = ({
       setIngName("");
       setIngQty("");
       setIngUnit("none");
+      setChatStarted(false); // Reset chat started state
     }
   };
   useEffect(() => {
@@ -405,22 +352,24 @@ export const ChatInterface = ({
 
       {/* Input Area */}
       <div className="border-t border-border p-4 space-y-3">
-        {/* Dietary Pills */}
-        <div className="flex flex-wrap gap-2">
-          {quickChips.map((chip) => (
-            <Badge
-              key={chip.value}
-              variant={selectedChips.includes(chip.value) ? "default" : "outline"}
-              className="cursor-pointer transition-colors"
-              onClick={() => toggleChip(chip.value)}
-            >
-              {chip.label}
-            </Badge>
-          ))}
-        </div>
+        {/* Dietary Pills - Hide after chat starts */}
+        {!chatStarted && (
+          <div className="flex flex-wrap gap-2">
+            {quickChips.map((chip) => (
+              <Badge
+                key={chip.value}
+                variant={selectedChips.includes(chip.value) ? "default" : "outline"}
+                className="cursor-pointer transition-colors"
+                onClick={() => toggleChip(chip.value)}
+              >
+                {chip.label}
+              </Badge>
+            ))}
+          </div>
+        )}
 
-        {/* Constraints Toggle */}
-        {showConstraints && (
+        {/* Constraints Toggle - Hide after chat starts */}
+        {!chatStarted && showConstraints && (
           <Button
             variant="ghost"
             size="sm"
@@ -432,9 +381,9 @@ export const ChatInterface = ({
           </Button>
         )}
 
-        {/* Constraints Panel */}
+        {/* Constraints Panel - Hide after chat starts */}
         <AnimatePresence>
-          {constraintsVisible && (
+          {!chatStarted && constraintsVisible && (
             <MacroConstraintsPanel
               constraints={constraints}
               onChange={setConstraints}
@@ -443,81 +392,83 @@ export const ChatInterface = ({
           )}
         </AnimatePresence>
 
-        {/* Ingredient Input */}
-        <div className="rounded-xl border bg-white p-3 shadow-sm">
-          {pantry.length > 0 && (
-            <div className="mb-2 flex flex-wrap gap-2">
-              {pantry.map(p => (
-                <span key={p.id} className="inline-flex items-center gap-1 rounded-full border px-2 py-1 text-xs bg-muted">
-                  {[p.qty, p.unit, p.name].filter(Boolean).join(" ")}
-                  {!previewMode && (
-                    <button aria-label="Remove" onClick={() => removePantryItem(p.id)} className="hover:text-destructive">
-                      <X className="h-3 w-3" />
-                    </button>
-                  )}
-                </span>
-              ))}
-            </div>
-          )}
+        {/* Ingredient Input - Hide after chat starts */}
+        {!chatStarted && (
+          <div className="rounded-xl border bg-white p-3 shadow-sm">
+            {pantry.length > 0 && (
+              <div className="mb-2 flex flex-wrap gap-2">
+                {pantry.map(p => (
+                  <span key={p.id} className="inline-flex items-center gap-1 rounded-full border px-2 py-1 text-xs bg-muted">
+                    {[p.qty, p.unit, p.name].filter(Boolean).join(" ")}
+                    {!previewMode && (
+                      <button aria-label="Remove" onClick={() => removePantryItem(p.id)} className="hover:text-destructive">
+                        <X className="h-3 w-3" />
+                      </button>
+                    )}
+                  </span>
+                ))}
+              </div>
+            )}
 
-          <div className="grid grid-cols-12 gap-2">
-            <div className="col-span-3">
-              <Input
-                value={ingQty}
-                onChange={e => !previewMode && setIngQty(e.target.value)}
-                placeholder="Qty"
-                inputMode="decimal"
-                disabled={previewMode}
-              />
-            </div>
+            <div className="grid grid-cols-12 gap-2">
+              <div className="col-span-3">
+                <Input
+                  value={ingQty}
+                  onChange={e => !previewMode && setIngQty(e.target.value)}
+                  placeholder="Qty"
+                  inputMode="decimal"
+                  disabled={previewMode}
+                />
+              </div>
 
-            <div className="col-span-3">
-              <Select value={ingUnit} onValueChange={setIngUnit} disabled={previewMode}>
-                <SelectTrigger className="w-full"><SelectValue /></SelectTrigger>
-                <SelectContent>
-                  {UNITS.map(u => (
-                    <SelectItem key={u} value={u}>{u === "none" ? "—" : u}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
+              <div className="col-span-3">
+                <Select value={ingUnit} onValueChange={setIngUnit} disabled={previewMode}>
+                  <SelectTrigger className="w-full"><SelectValue /></SelectTrigger>
+                  <SelectContent>
+                    {UNITS.map(u => (
+                      <SelectItem key={u} value={u}>{u === "none" ? "—" : u}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
 
-            <div className="col-span-5">
-  <Input
-    ref={nameInputRef}
-    value={ingName}
-    onChange={(e) => {
-      if (!previewMode) setIngName(e.target.value);
-    }}
-    onKeyDown={(e) => {
-      if (e.key === "Enter") {
-        e.preventDefault();
-        if (ingName.trim()) addPantryItem(ingName, ingQty, ingUnit);
-      } else if (e.key === ",") {
-        e.preventDefault();
-        if (ingName.trim()) maybeTokenize(ingName);
-      }
-    }}
-    placeholder="Ingredient name"
-    disabled={previewMode}
-  />
-</div>
+              <div className="col-span-5">
+    <Input
+      ref={nameInputRef}
+      value={ingName}
+      onChange={(e) => {
+        if (!previewMode) setIngName(e.target.value);
+      }}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          if (ingName.trim()) addPantryItem(ingName, ingQty, ingUnit);
+        } else if (e.key === ",") {
+          e.preventDefault();
+          if (ingName.trim()) maybeTokenize(ingName);
+        }
+      }}
+      placeholder="Ingredient name"
+      disabled={previewMode}
+    />
+  </div>
 
 
-            <div className="col-span-1 flex items-center justify-end">
-              <Button
-                type="button"
-                variant="secondary"
-                className="h-9 w-9 p-0"
-                onClick={() => addPantryItem(ingName, ingQty, ingUnit)}
-                disabled={previewMode || !ingName.trim()}
-                title="Add ingredient"
-              >
-                <Plus className="h-4 w-4" />
-              </Button>
+              <div className="col-span-1 flex items-center justify-end">
+                <Button
+                  type="button"
+                  variant="secondary"
+                  className="h-9 w-9 p-0"
+                  onClick={() => addPantryItem(ingName, ingQty, ingUnit)}
+                  disabled={previewMode || !ingName.trim()}
+                  title="Add ingredient"
+                >
+                  <Plus className="h-4 w-4" />
+                </Button>
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
         {/* Message Input */}
         <div className="flex gap-2">

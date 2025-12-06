@@ -35,7 +35,7 @@ import readline from "readline";
 // --- 1. Configuration ---
 
 // File path for your CSV.
-const CSV_FILE_PATH = "recipes_3000_sample.csv";
+const CSV_FILE_PATH = "selected_20k_recipes.csv";
 
 // A unique identifier for this dataset. This is used to "namespace"
 // the data in the Supabase table, allowing you to store multiple
@@ -297,8 +297,8 @@ async function main() {
 
         await vectorStore.addDocuments(batch);
 
-        // Wait for 1 second between batches to respect rate limits
-        await sleep(1000);
+        // Wait for 3 seconds between batches to respect Cohere rate limits
+        await sleep(3000);
       }
       
       console.log("Successfully indexed all documents in Supabase.");
