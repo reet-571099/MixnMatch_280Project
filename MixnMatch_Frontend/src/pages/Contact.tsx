@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -6,25 +5,39 @@ import { Card } from "@/components/ui/card";
 import { toast } from "sonner";
 import { Mail, MapPin, Phone, Send } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+
+// Zod validation schema
+const contactSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters").max(50, "Name must be less than 50 characters"),
+  email: z.string().email("Please enter a valid email address"),
+  subject: z.string().min(3, "Subject must be at least 3 characters").max(100, "Subject must be less than 100 characters"),
+  message: z.string().min(10, "Message must be at least 10 characters").max(1000, "Message must be less than 1000 characters"),
+});
+
+type ContactFormData = z.infer<typeof contactSchema>;
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema),
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast.success("Message sent! We'll get back to you soon.");
-    setFormData({ name: "", email: "", subject: "", message: "" });
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const onSubmit = async (data: ContactFormData) => {
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      toast.success("Message sent! We'll get back to you soon.");
+      reset();
+    } catch (error) {
+      toast.error("Failed to send message. Please try again.");
+    }
   };
 
   return (
@@ -54,76 +67,77 @@ const Contact = () => {
           {/* Contact Form */}
           <Card className="p-8 shadow-lg border-border/50 bg-card/50 backdrop-blur-sm">
             <h2 className="text-2xl font-bold mb-6">Send us a Message</h2>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2">
-                  Name
+                  Name <span className="text-red-500">*</span>
                 </label>
                 <Input
                   id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
+                  {...register("name")}
                   placeholder="Your name"
-                  required
                   className="bg-background"
                 />
+                {errors.name && (
+                  <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
+                )}
               </div>
               
               <div>
                 <label htmlFor="email" className="block text-sm font-medium mb-2">
-                  Email
+                  Email <span className="text-red-500">*</span>
                 </label>
                 <Input
                   id="email"
-                  name="email"
                   type="email"
-                  value={formData.email}
-                  onChange={handleChange}
+                  {...register("email")}
                   placeholder="your@email.com"
-                  required
                   className="bg-background"
                 />
+                {errors.email && (
+                  <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+                )}
               </div>
               
               <div>
                 <label htmlFor="subject" className="block text-sm font-medium mb-2">
-                  Subject
+                  Subject <span className="text-red-500">*</span>
                 </label>
                 <Input
                   id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
+                  {...register("subject")}
                   placeholder="What's this about?"
-                  required
                   className="bg-background"
                 />
+                {errors.subject && (
+                  <p className="text-red-500 text-sm mt-1">{errors.subject.message}</p>
+                )}
               </div>
               
               <div>
                 <label htmlFor="message" className="block text-sm font-medium mb-2">
-                  Message
+                  Message <span className="text-red-500">*</span>
                 </label>
                 <Textarea
                   id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
+                  {...register("message")}
                   placeholder="Tell us more..."
                   rows={6}
-                  required
                   className="bg-background resize-none"
                 />
+                {errors.message && (
+                  <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>
+                )}
               </div>
               
               <Button 
                 type="submit" 
                 className="w-full bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity"
                 size="lg"
+                disabled={isSubmitting}
               >
                 <Send className="w-4 h-4 mr-2" />
-                Send Message
+                {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
             </form>
           </Card>
