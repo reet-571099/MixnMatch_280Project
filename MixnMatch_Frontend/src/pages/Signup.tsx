@@ -53,9 +53,10 @@ const Signup = () => {
       });
       navigate("/create");
     } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : "Something went wrong. Please try again.";
       toast({
         title: "Signup failed",
-        description: "Something went wrong. Please try again.",
+        description: errorMessage,
         variant: "destructive",
       });
     } finally {
@@ -224,7 +225,10 @@ const Signup = () => {
               <Button
                 variant="outline"
                 className="h-12 bg-white/50 backdrop-blur border-white/50 rounded-xl hover:shadow-glow-secondary"
-                onClick={() => console.log("Google signup")}
+                onClick={() => {
+                  const backendUrl = import.meta.env.VITE_AUTH_API_URL || 'http://localhost:5000';
+                  window.location.href = `${backendUrl}/auth/google`;
+                }}
               >
                 <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24">
                   <path

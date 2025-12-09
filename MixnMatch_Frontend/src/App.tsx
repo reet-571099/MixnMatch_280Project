@@ -15,6 +15,7 @@ import Favorites from "./pages/Favorites";
 import Profile from "./pages/Profile";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import AuthCallback from "./pages/AuthCallback";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./ScrollToTop";
@@ -51,6 +52,7 @@ const App = () => (
             {/* Auth routes without Layout */}
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/auth/callback" element={<AuthCallback />} />
           </Routes>
         </BrowserRouter>
       </TooltipProvider>

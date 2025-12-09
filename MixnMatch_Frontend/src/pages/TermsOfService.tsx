@@ -39,6 +39,7 @@ const TermsOfService = () => {
 
   return (
     <div className="min-h-screen bg-background">
+        
 
       {/* Hero Section */}
       <section className="relative overflow-hidden py-20">
