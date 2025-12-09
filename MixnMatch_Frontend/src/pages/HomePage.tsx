@@ -367,7 +367,7 @@ const HomePage = () => {
                 transition={{ delay: index * 0.15, duration: 0.6 }}
                 whileHover={{ y: -10, scale: 1.02 }}
               >
-                <Card className="h-full p-10 bg-white/60 backdrop-blur-xl rounded-3xl border border-white/30 hover:shadow-glow transition-all duration-500 group overflow-hidden">
+                <Card className="h-full p-10 bg-white/70 backdrop-blur-xl rounded-3xl border border-white/40 shadow-xl hover:shadow-glow transition-all duration-500 group overflow-hidden">
                   <CardContent className="p-0 space-y-6">
                     <div className={`w-full h-48 rounded-2xl bg-gradient-to-br ${step.gradient} flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-500`}>
                       <img 
@@ -401,7 +401,7 @@ const HomePage = () => {
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ delay: index * 0.15, duration: 0.6 }}
               >
-                <Card className="text-center p-10 bg-white/60 backdrop-blur-xl rounded-3xl border border-white/30 hover:shadow-glow transition-all duration-500 hover:scale-105">
+                <Card className="text-center p-10 bg-white/70 backdrop-blur-xl rounded-3xl border border-white/40 shadow-xl hover:shadow-glow transition-all duration-500 hover:scale-105">
                   <CardContent className="space-y-4 p-0">
                     <motion.div
                       whileHover={{ rotate: 360 }}
@@ -456,7 +456,7 @@ const HomePage = () => {
                 transition={{ delay: index * 0.15, duration: 0.6 }}
                 whileHover={{ y: -10 }}
               >
-                <Card className="h-full p-10 bg-white/60 backdrop-blur-xl rounded-3xl border border-white/30 hover:shadow-glow transition-all duration-500 group">
+                <Card className="h-full p-10 bg-white/70 backdrop-blur-xl rounded-3xl border border-white/40 shadow-xl hover:shadow-glow transition-all duration-500 group">
                   <CardContent className="p-0 space-y-6">
                     <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
                       <feature.icon className="h-10 w-10 text-white" />
@@ -507,7 +507,7 @@ const HomePage = () => {
                   transition={{ delay: index * 0.15, duration: 0.6 }}
                   className="min-w-[350px] md:min-w-[400px] snap-center"
                 >
-                  <Card className="h-full p-10 bg-white/60 backdrop-blur-xl rounded-3xl border border-white/30 hover:shadow-glow-secondary transition-all duration-500">
+                  <Card className="h-full p-10 bg-white/70 backdrop-blur-xl rounded-3xl border border-white/40 shadow-xl hover:shadow-glow-secondary transition-all duration-500">
                     <CardContent className="p-0 space-y-6">
                       <div className="flex gap-1">
                         {[...Array(testimonial.rating)].map((_, i) => (
@@ -661,7 +661,7 @@ const HomePage = () => {
             transition={{ duration: 0.6 }}
             className="max-w-4xl mx-auto"
           >
-            <Card className="p-16 bg-white/60 backdrop-blur-xl rounded-3xl border border-white/30 text-center shadow-glow">
+            <Card className="p-16 bg-white/70 backdrop-blur-xl rounded-3xl border border-white/40 shadow-xl text-center shadow-glow">
               <CardContent className="space-y-8 p-0">
                 <motion.div
                   animate={{ rotate: [0, 360] }}
