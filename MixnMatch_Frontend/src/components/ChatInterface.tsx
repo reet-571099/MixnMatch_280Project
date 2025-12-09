@@ -63,7 +63,7 @@ export const ChatInterface = ({
   // Structured ingredient inputs
   const [ingName, setIngName] = useState("");
   const [ingQty, setIngQty] = useState("");
-  const [ingUnit, setIngUnit] = useState<string>("none");
+  const [ingUnit, setIngUnit] = useState<string>("");
   const [openAuto, setOpenAuto] = useState(false);
 
   // Macro constraints
@@ -106,11 +106,11 @@ export const ChatInterface = ({
   const addPantryItem = (name: string, qty?: string, unit?: string) => {
     const clean = name.trim();
     if (!clean) return;
-    const cleanUnit = unit && unit !== "none" ? unit : undefined;
+    const cleanUnit = unit && unit !== "none" && unit !== "" ? unit : undefined;
     setPantry(prev => [...prev, { id: crypto.randomUUID(), name: clean, qty: qty?.trim() || undefined, unit: cleanUnit }]);
     setIngName("");
     setIngQty("");
-    setIngUnit("none");
+    setIngUnit("");
     setOpenAuto(false);
     requestAnimationFrame(() => nameInputRef.current?.focus());
   };
@@ -216,7 +216,7 @@ export const ChatInterface = ({
       setPantry([]);
       setIngName("");
       setIngQty("");
-      setIngUnit("none");
+      setIngUnit("");
       setChatStarted(false); // Reset chat started state
     }
   };
@@ -414,7 +414,14 @@ export const ChatInterface = ({
               <div className="col-span-3">
                 <Input
                   value={ingQty}
-                  onChange={e => !previewMode && setIngQty(e.target.value)}
+                  onChange={e => {
+                    if (!previewMode) {
+                      const value = e.target.value;
+                      if (value === '' || /^[\d\s./]*$/.test(value)) {
+                        setIngQty(value);
+                      }
+                    }
+                  }}
                   placeholder="Qty"
                   inputMode="decimal"
                   disabled={previewMode}
@@ -423,7 +430,7 @@ export const ChatInterface = ({
 
               <div className="col-span-3">
                 <Select value={ingUnit} onValueChange={setIngUnit} disabled={previewMode}>
-                  <SelectTrigger className="w-full"><SelectValue /></SelectTrigger>
+                  <SelectTrigger className="w-full"><SelectValue placeholder="Unit" /></SelectTrigger>
                   <SelectContent>
                     {UNITS.map(u => (
                       <SelectItem key={u} value={u}>{u === "none" ? "—" : u}</SelectItem>
