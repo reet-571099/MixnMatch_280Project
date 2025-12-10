@@ -28,7 +28,7 @@ const Login = () => {
         title: "Welcome back!",
         description: "You've successfully logged in.",
       });
-      navigate("/create");
+      navigate("/");
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : "Please check your credentials and try again.";
       toast({

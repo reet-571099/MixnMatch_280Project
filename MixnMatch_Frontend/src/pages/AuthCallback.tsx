@@ -45,7 +45,7 @@ const AuthCallback = () => {
           });
 
           // Redirect to create page or home
-          navigate("/create");
+          navigate("/");
         } else {
           throw new Error("Failed to fetch user data");
         }
