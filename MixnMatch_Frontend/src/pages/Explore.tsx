@@ -6,16 +6,42 @@ import { Button } from "@/components/ui/button";
 import { Clock, Heart } from "lucide-react";
 import { EnhancedFilter } from "@/components/EnhancedFilter";
 import { Link } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
+import { saveRecipe } from "@/lib/authClient";
+import { useToast } from "@/hooks/use-toast";
 
 interface Recipe {
   id: number;
+  slug: string;
   name: string;
   description: string;
+  servings: number;
+  prepTimeMinutes: number;
   cookTimeMinutes: number;
+  totalTimeMinutes: number;
+  difficulty: string;
   cuisine: string;
   mealType: string;
   tags: string[];
+  ingredients: Array<{
+    name: string;
+    quantity: number;
+    unit: string;
+    notes: string;
+  }>;
+  steps: Array<{
+    stepNumber: number;
+    instruction: string;
+  }>;
   imageUrl: string;
+  author: {
+    name: string;
+    isAI: boolean;
+  };
+  rating: number;
+  ratingCount: number;
+  createdAt: string;
+  sourceUrl: string;
 }
 
 const Explore = () => {
@@ -28,6 +54,10 @@ const Explore = () => {
     highProtein: false,
     budgetFriendly: false,
   });
+  const [savedRecipeIds, setSavedRecipeIds] = useState<Set<string>>(new Set());
+  
+  const { user, isAuthenticated } = useAuth();
+  const { toast } = useToast();
 
   // Load recipes from JSON on component mount
   useEffect(() => {
@@ -37,7 +67,7 @@ const Explore = () => {
         const data = await response.json();
         const recipesData = data.recipes.map((recipe: any) => ({
           ...recipe,
-          // Use slug-based image URLs from assets
+          // Use slug-based image URLs from assets (override the JSON imageUrl)
           imageUrl: `/src/assets/${recipe.name}.jpg`,
         }));
         setRecipes(recipesData);
@@ -51,6 +81,74 @@ const Explore = () => {
     loadRecipes();
   }, []);
 
+  // Convert Explore recipe format to saveable format
+  const convertToSaveableRecipe = (recipe: Recipe) => {
+    // Convert ingredients to string array format expected by GraphQL
+    const ingredientsStringArray = recipe.ingredients.map(ing => {
+      const quantity = ing.quantity ? `${ing.quantity} ${ing.unit}`.trim() : '';
+      const notes = ing.notes ? ` (${ing.notes})` : '';
+      return `${quantity} ${ing.name}${notes}`.trim();
+    });
+
+    // Convert steps to string array format expected by GraphQL  
+    const stepsStringArray = recipe.steps
+      .sort((a, b) => a.stepNumber - b.stepNumber)
+      .map(step => step.instruction);
+
+    return {
+      title: recipe.name,
+      summary: recipe.description,
+      ingredients: ingredientsStringArray,
+      steps: stepsStringArray,
+      time: recipe.totalTimeMinutes,
+      difficulty: recipe.difficulty as "easy" | "medium" | "hard",
+      servings: recipe.servings,
+      explanation: `${recipe.cuisine} ${recipe.mealType} recipe from our curated collection.`,
+    };
+  };
+
+  // Handle saving recipe to user's collection
+  const handleSaveRecipe = async (recipe: Recipe) => {
+    if (!isAuthenticated || !user) {
+      toast({
+        title: "Please sign in",
+        description: "You need to be signed in to save recipes to your collection.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const token = localStorage.getItem("token");
+    if (!token) {
+      toast({
+        title: "Authentication error",
+        description: "Please sign in again to save recipes.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    try {
+      const saveableRecipe = convertToSaveableRecipe(recipe);
+      await saveRecipe(saveableRecipe, token);
+      
+      // Mark as saved
+      setSavedRecipeIds(prev => new Set(prev).add(recipe.name));
+      
+      toast({
+        title: "Recipe saved!",
+        description: `${recipe.name} has been saved to your collection.`,
+      });
+    } catch (error) {
+      console.error("Failed to save recipe:", error);
+      toast({
+        title: "Failed to save recipe",
+        description: "Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
+
   // Filter recipes based on all active filters
   const filteredRecipes = useMemo(() => {
     return recipes.filter((recipe) => {
@@ -61,7 +159,7 @@ const Explore = () => {
       }
 
       // Cook time filter
-      if (recipe.cookTimeMinutes > cookTimeMax) {
+      if (recipe.totalTimeMinutes > cookTimeMax) {
         return false;
       }
 
@@ -196,19 +294,24 @@ const Explore = () => {
                         <motion.button
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.9 }}
-                          className="w-8 h-8 rounded-full bg-card/80 backdrop-blur flex items-center justify-center"
+                          className="w-8 h-8 rounded-full bg-card/80 backdrop-blur flex items-center justify-center hover:bg-red-50 transition-colors"
                           onClick={(e) => {
                             e.preventDefault();
                             e.stopPropagation();
-                            // Handle favorite toggle here
+                            handleSaveRecipe(recipe);
                           }}
+                          title={savedRecipeIds.has(recipe.name) ? "Recipe saved" : "Save recipe"}
                         >
-                          <Heart className="h-4 w-4 text-foreground hover:fill-primary hover:text-primary transition-colors" />
+                          <Heart className={`h-4 w-4 transition-colors ${
+                            savedRecipeIds.has(recipe.name) 
+                              ? "fill-primary text-primary" 
+                              : "text-foreground hover:fill-primary hover:text-primary"
+                          }`} />
                         </motion.button>
                       </div>
                       <div className="absolute bottom-4 left-4 flex items-center gap-2 text-white">
                         <Clock className="h-4 w-4" />
-                        <span className="text-sm font-medium">{recipe.cookTimeMinutes} min</span>
+                        <span className="text-sm font-medium">{recipe.totalTimeMinutes} min</span>
                       </div>
                     </div>
                     <CardContent className="p-6 space-y-4 flex-1 flex flex-col">
