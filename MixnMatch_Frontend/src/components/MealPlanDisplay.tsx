@@ -55,14 +55,22 @@ const MealBorderColor = (type: string) => {
 };
 
 export const MealPlanDisplay = ({ data }: MealPlanDisplayProps) => {
-  const [expandedMeal, setExpandedMeal] = useState<string | null>(null);
+  const [expandedMeals, setExpandedMeals] = useState<Set<string>>(new Set());
 
   const getMealsByType = (meals: Meal[], type: string) => {
     return meals.find(m => m.type === type);
   };
 
   const toggleMeal = (mealKey: string) => {
-    setExpandedMeal(expandedMeal === mealKey ? null : mealKey);
+    setExpandedMeals(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(mealKey)) {
+        newSet.delete(mealKey);
+      } else {
+        newSet.add(mealKey);
+      }
+      return newSet;
+    });
   };
 
   return (
@@ -99,7 +107,7 @@ export const MealPlanDisplay = ({ data }: MealPlanDisplayProps) => {
                   if (!meal) return <div key={mealType} className="col-span-1" />;
 
                   const mealKey = `${dayData.day}-${mealType}`;
-                  const isExpanded = expandedMeal === mealKey;
+                  const isExpanded = expandedMeals.has(mealKey);
 
                   return (
                     <Card
