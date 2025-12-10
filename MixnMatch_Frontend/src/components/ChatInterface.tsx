@@ -12,7 +12,7 @@ import { RecipeCard, Recipe } from "./RecipeCard";
 import { MacroConstraintsPanel, MacroConstraints } from "./MacroConstraints";
 import { TemplatePrompts } from "./TemplatePrompts";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { queryRAG } from "@/lib/ragClient";
+import { queryRAG, generateMealPlan } from "@/lib/ragClient";
 import { mapConstraintsToBackend } from "@/lib/constraintMapper";
 import { convertMessagesToBackendHistory } from "@/lib/chatHistoryMapper";
 import { useAuth } from "@/contexts/AuthContext";
@@ -181,6 +181,49 @@ export const ChatInterface = ({
     setInput("");
     setIsTyping(true);
     setChatStarted(true); // Mark chat as started
+
+    // Check if this is a meal plan request (when onMealPlanGenerated is provided - i.e., on Meal Planner page)
+    if (onMealPlanGenerated) {
+      // Call meal plan API - use pantry items if available, otherwise pass the user's text as ingredients
+      try {
+        let ingredientNames: string[];
+        if (pantry.length > 0) {
+          ingredientNames = pantry.map(p => p.name);
+        } else {
+          // Extract ingredients from user input text (split by commas, "and", etc.)
+          ingredientNames = composed
+            .replace(/i have|suggest|weekly|meal plan|indian|recipes|with|please|create|make/gi, '')
+            .split(/[,\.\&]|\band\b/)
+            .map(s => s.trim())
+            .filter(s => s.length > 1);
+        }
+
+        const result = await generateMealPlan(ingredientNames);
+
+        if (result.success && result.mealPlan) {
+          const botMessage: Message = {
+            id: (Date.now() + 1).toString(),
+            role: "bot",
+            content: "I've created a 7-day meal plan using your ingredients! Check it out on the right.",
+          };
+          setMessages(prev => [...prev, botMessage]);
+          onMealPlanGenerated(result.mealPlan);
+        } else {
+          throw new Error(result.error || "Failed to generate meal plan");
+        }
+      } catch (error) {
+        const errorMessage: Message = {
+          id: (Date.now() + 1).toString(),
+          role: "bot",
+          content: "Oops! Something went wrong generating your meal plan. Please try again.",
+          isError: true,
+        };
+        setMessages(prev => [...prev, errorMessage]);
+      } finally {
+        setIsTyping(false);
+      }
+      return;
+    }
 
     // Call RAG API for recipe - include ALL previous messages for context
     try {

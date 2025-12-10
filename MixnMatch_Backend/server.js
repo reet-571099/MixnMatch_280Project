@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { initializeData, queryRecipes } from "./ragService.js";
+import { initializeData, queryRecipes, generateMealPlan } from "./ragService.js";
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -62,6 +62,46 @@ app.post("/api/query", async (req, res) => {
     }
   } catch (error) {
     console.error("Error in /api/query:", error);
+    res.status(500).json({
+      success: false,
+      error: error.message || "Internal server error",
+    });
+  }
+});
+
+// Meal plan generation endpoint
+app.post("/api/meal-plan", async (req, res) => {
+  try {
+    if (!isInitialized) {
+      return res.status(503).json({
+        success: false,
+        error: "Service is initializing, please try again in a moment",
+      });
+    }
+
+    const { ingredients } = req.body;
+
+    if (!ingredients || !Array.isArray(ingredients) || ingredients.length === 0) {
+      return res.status(400).json({
+        success: false,
+        error: "Ingredients array is required",
+      });
+    }
+
+    console.log("📥 Received meal plan request for:", ingredients);
+    const result = await generateMealPlan(ingredients);
+    console.log("📤 Sending meal plan response");
+
+    if (result.success) {
+      res.json(result);
+    } else {
+      res.status(500).json({
+        success: false,
+        error: result.error || "Failed to generate meal plan",
+      });
+    }
+  } catch (error) {
+    console.error("Error in /api/meal-plan:", error);
     res.status(500).json({
       success: false,
       error: error.message || "Internal server error",

@@ -37,9 +37,8 @@ const Explore = () => {
         const data = await response.json();
         const recipesData = data.recipes.map((recipe: any) => ({
           ...recipe,
-          // Use placeholder images for now since the JSON imageUrl points to example.com
-          imageUrl: recipe.id % 3 === 0 ? '/src/assets/recipe-curry.jpg' : 
-                   recipe.id % 3 === 1 ? '/src/assets/recipe-stirfry.jpg' : '/src/assets/recipe-mediterranean.jpg',
+          // Use slug-based image URLs from assets
+          imageUrl: `/src/assets/${recipe.name}.jpg`,
         }));
         setRecipes(recipesData);
       } catch (error) {

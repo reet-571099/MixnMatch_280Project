@@ -283,4 +283,48 @@ export async function queryRecipes(question, chatHistory = [], constraints = {})
   }
 }
 
-export default { initializeData, queryRecipes, buildConstraintsPrompt };
+// Generate a 7-day meal plan based on ingredients
+async function generateMealPlan(ingredients) {
+  try {
+    const prompt = ChatPromptTemplate.fromMessages([
+      [
+        "system",
+        `Create a 7-day meal plan. Return ONLY valid JSON:
+{{"title":"7-Day Meal Plan","description":"Weekly meals","days":[{{"day":1,"meals":[{{"title":"Meal Name","description":"Brief desc","type":"breakfast","ingredients":["item1","item2"],"steps":["Step 1","Step 2"],"time":15}},{{"title":"...","type":"lunch",...}},{{"title":"...","type":"dinner",...}}]}},{{"day":2,"meals":[...]}},...]}}
+
+Rules:
+- Use ONLY the given ingredients
+- 7 days, each with breakfast/lunch/dinner
+- Each meal: title, description (10 words max), type, ingredients array, steps array (3-4 simple steps), time (minutes)
+- Keep steps simple and brief
+- Output JSON only`,
+      ],
+      ["human", "Ingredients: {ingredients}"],
+    ]);
+
+    const chain = prompt.pipe(llm).pipe(new StringOutputParser());
+
+    console.log("🍽️ Generating meal plan for ingredients:", ingredients);
+    const answer = await chain.invoke({ ingredients: ingredients.join(", ") });
+
+    // Parse JSON from LLM response
+    const jsonMatch = answer.match(/\{[\s\S]*\}/);
+    if (!jsonMatch) {
+      throw new Error("No JSON found in response");
+    }
+    const mealPlanData = JSON.parse(jsonMatch[0]);
+
+    return {
+      success: true,
+      mealPlan: mealPlanData,
+    };
+  } catch (error) {
+    console.error("Error in generateMealPlan:", error);
+    return {
+      success: false,
+      error: error.message,
+    };
+  }
+}
+
+export { generateMealPlan };
