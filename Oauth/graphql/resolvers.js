@@ -123,8 +123,6 @@ const resolvers = {
         cookTimeMinutes: cookTime,
         totalTimeMinutes: totalTime,
         difficulty: recipe.difficulty || "easy",
-        cuisine: "fusion",
-        mealType: "dinner",
         tags: [],
         ingredients: parsedIngredients,
         steps: steps,

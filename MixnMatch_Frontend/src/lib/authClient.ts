@@ -23,6 +23,31 @@ export interface GraphQLResponse<T> {
   errors?: Array<{ message: string }>;
 }
 
+export interface SavedRecipe {
+  id: string;
+  name: string;
+  description: string;
+  servings: number;
+  prepTimeMinutes: number;
+  cookTimeMinutes: number;
+  totalTimeMinutes: number;
+  difficulty: "easy" | "medium" | "hard";
+  cuisine: string;
+  mealType: string;
+  ingredients: Array<{
+    name: string;
+    quantity?: number;
+    unit?: string;
+    notes?: string;
+  }>;
+  steps: Array<{
+    stepNumber: number;
+    instruction: string;
+  }>;
+  slug: string;
+  createdAt: string;
+}
+
 /**
  * Execute a GraphQL mutation or query
  */
@@ -117,6 +142,38 @@ const ME_QUERY = `
 `;
 
 /**
+ * Get user's saved recipes query
+ */
+const GET_MY_RECIPES_QUERY = `
+  query GetMyRecipes {
+    myRecipes {
+      id
+      name
+      description
+      servings
+      prepTimeMinutes
+      cookTimeMinutes
+      totalTimeMinutes
+      difficulty
+      cuisine
+      mealType
+      ingredients {
+        name
+        quantity
+        unit
+        notes
+      }
+      steps {
+        stepNumber
+        instruction
+      }
+      slug
+      createdAt
+    }
+  }
+`;
+
+/**
  * Login with email and password
  */
 export async function login(email: string, password: string): Promise<AuthResponse> {
@@ -152,6 +209,32 @@ export async function getCurrentUser(token: string): Promise<User | null> {
     return data.me;
   } catch (error) {
     console.error('Failed to get current user:', error);
+    return null;
+  }
+}
+
+/**
+ * Get user's saved recipes
+ */
+export async function getUserRecipes(token: string): Promise<SavedRecipe[]> {
+  try {
+    const data = await graphqlRequest<{ myRecipes: SavedRecipe[] }>(GET_MY_RECIPES_QUERY, undefined, token);
+    return data.myRecipes || [];
+  } catch (error) {
+    console.error('Failed to get user recipes:', error);
+    return [];
+  }
+}
+
+/**
+ * Get a specific saved recipe by ID
+ */
+export async function getSavedRecipe(token: string, recipeId: string): Promise<SavedRecipe | null> {
+  try {
+    const allRecipes = await getUserRecipes(token);
+    return allRecipes.find(recipe => recipe.id === recipeId) || null;
+  } catch (error) {
+    console.error('Failed to get saved recipe:', error);
     return null;
   }
 }
