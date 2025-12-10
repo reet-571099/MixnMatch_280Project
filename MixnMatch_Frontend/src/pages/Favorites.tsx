@@ -203,10 +203,8 @@ const Favorites = () => {
                 whileHover={{ y: -8 }}
               >
                 <Card className="overflow-hidden hover:shadow-glow transition-all duration-300 group h-full flex flex-col">
-                  {/* Header with cuisine and meal type */}
+                  {/* Header */}
                   <div className="bg-gradient-to-r from-primary/10 to-secondary/10 p-4 border-b">
-                    <div className="flex items-center justify-between mb-2">
-                    </div>
                     <h3 className="font-bold text-lg line-clamp-2 group-hover:text-primary transition-colors">
                       {recipe.name}
                     </h3>

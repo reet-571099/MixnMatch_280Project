@@ -28,11 +28,10 @@ const recipeSchema = new mongoose.Schema({
   totalTimeMinutes: { type: Number, required: true },
   difficulty: { 
     type: String, 
-    enum: ["easy", "medium", "hard"], 
     default: "easy" 
   },
-  cuisine: { type: String, default: "fusion" },
-  mealType: { type: String, default: "dinner" },
+  cuisine: { type: String },
+  mealType: { type: String },
   tags: [{ type: String }],
   ingredients: [ingredientSchema],
   steps: [stepSchema],
