@@ -156,3 +156,49 @@ export async function getCurrentUser(token: string): Promise<User | null> {
   }
 }
 
+/**
+ * Recipe input type for saving
+ */
+export interface RecipeInput {
+  title: string;
+  summary?: string;
+  ingredients: string[];
+  steps: string[];
+  macros?: {
+    calories?: number;
+    protein?: number;
+    carbs?: number;
+    fats?: number;
+  };
+  time?: number;
+  difficulty?: "easy" | "medium" | "hard";
+  servings?: number;
+  explanation?: string;
+}
+
+/**
+ * Save recipe mutation
+ */
+const SAVE_RECIPE_MUTATION = `
+  mutation SaveRecipe($recipe: RecipeInput!) {
+    saveRecipe(recipe: $recipe) {
+      id
+      name
+      slug
+      createdAt
+    }
+  }
+`;
+
+/**
+ * Save a recipe to user's favorites
+ */
+export async function saveRecipe(recipe: RecipeInput, token: string): Promise<{ id: string; name: string }> {
+  const data = await graphqlRequest<{ saveRecipe: { id: string; name: string } }>(
+    SAVE_RECIPE_MUTATION,
+    { recipe },
+    token
+  );
+  return data.saveRecipe;
+}
+

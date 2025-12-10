@@ -15,6 +15,9 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { queryRAG } from "@/lib/ragClient";
 import { mapConstraintsToBackend } from "@/lib/constraintMapper";
 import { convertMessagesToBackendHistory } from "@/lib/chatHistoryMapper";
+import { useAuth } from "@/contexts/AuthContext";
+import { saveRecipe } from "@/lib/authClient";
+import { useToast } from "@/hooks/use-toast";
 
 interface PantryItem {
   id: string;
@@ -59,6 +62,9 @@ export const ChatInterface = ({
   const [pantry, setPantry] = useState<PantryItem[]>([]);
   const [constraintsVisible, setConstraintsVisible] = useState(false);
   const [chatStarted, setChatStarted] = useState(false); // Track if chat has started
+  const [savedRecipeIds, setSavedRecipeIds] = useState<Set<string>>(new Set());
+  const { user, isAuthenticated } = useAuth();
+  const { toast } = useToast();
 
   // Structured ingredient inputs
   const [ingName, setIngName] = useState("");
@@ -239,6 +245,59 @@ export const ChatInterface = ({
     setInput(prompt);
   };
 
+  const handleSaveRecipe = async (recipe: Recipe) => {
+    if (!isAuthenticated || !user) {
+      toast({
+        title: "Please sign in",
+        description: "You need to be signed in to save recipes.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const token = localStorage.getItem("token");
+    if (!token) {
+      toast({
+        title: "Authentication error",
+        description: "Please sign in again.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    try {
+      await saveRecipe(
+        {
+          title: recipe.title,
+          summary: recipe.summary,
+          ingredients: recipe.ingredients,
+          steps: recipe.steps,
+          macros: recipe.macros,
+          time: recipe.time,
+          difficulty: recipe.difficulty,
+          servings: recipe.servings,
+          explanation: recipe.explanation,
+        },
+        token
+      );
+
+      // Mark as saved
+      setSavedRecipeIds(prev => new Set(prev).add(recipe.title));
+      
+      toast({
+        title: "Recipe saved!",
+        description: `${recipe.title} has been added to your favorites.`,
+      });
+    } catch (error) {
+      console.error("Failed to save recipe:", error);
+      toast({
+        title: "Failed to save recipe",
+        description: error instanceof Error ? error.message : "Something went wrong. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
+
   return (
     <motion.div
       ref={containerRef}
@@ -288,8 +347,9 @@ export const ChatInterface = ({
                     onCookMode={() => console.log("Cook mode")}
                     onSwapIngredient={(ing) => setInput(`Swap ${ing} for something else`)}
                     onRegenerate={handleSend}
-                    onSave={() => console.log("Save")}
+                    onSave={() => handleSaveRecipe(message.recipe)}
                     onShare={() => console.log("Share")}
+                    isSaved={savedRecipeIds.has(message.recipe.title)}
                   />
                 </div>
               ) : (

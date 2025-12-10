@@ -36,6 +36,7 @@ interface RecipeCardProps {
   onRegenerate?: () => void;
   onSave?: () => void;
   onShare?: () => void;
+  isSaved?: boolean;
 }
 
 export const RecipeCard = ({
@@ -45,6 +46,7 @@ export const RecipeCard = ({
   onRegenerate,
   onSave,
   onShare,
+  isSaved = false,
 }: RecipeCardProps) => {
   const [completedSteps, setCompletedSteps] = useState<Set<number>>(new Set());
 
@@ -84,8 +86,14 @@ export const RecipeCard = ({
               )}
             </div>
             <div className="flex gap-1">
-              <Button variant="ghost" size="icon" onClick={onSave} title="Save recipe">
-                <Heart className="h-4 w-4" />
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                onClick={onSave} 
+                title={isSaved ? "Recipe saved" : "Save recipe"}
+                className={isSaved ? "text-primary" : ""}
+              >
+                <Heart className={`h-4 w-4 ${isSaved ? "fill-current" : ""}`} />
               </Button>
               <Button variant="ghost" size="icon" onClick={onShare} title="Share">
                 <Share2 className="h-4 w-4" />
