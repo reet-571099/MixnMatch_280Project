@@ -23,9 +23,9 @@ import {
   BarChart3,
 } from "lucide-react";
 import heroImage from "@/assets/hero-cooking.jpg";
-import stirfryImage from "@/assets/recipe-stirfry.jpg";
-import mediterraneanImage from "@/assets/recipe-mediterranean.jpg";
-import curryImage from "@/assets/recipe-curry.jpg";
+import salmonImage from "@/assets/Garlic Lemon Roasted Salmon.jpg";
+import mediterraneanImage from "@/assets/Savory Chicken Salad with Fresh Green Beans.jpg";
+import smoothieImage from "@/assets/Blueberry Banana Smoothie.jpg";
 import howItWorksChatImage from "@/assets/how-it-works-chat.jpg";
 import howItWorksRecipesImage from "@/assets/how-it-works-recipes.jpg";
 import howItWorksSaveImage from "@/assets/how-it-works-save.jpg";
@@ -81,21 +81,24 @@ const HomePage = () => {
       ratingCount: 142
     },
     {
-      id: 2,
-      name: "Creamy Tomato Basil Pasta",
-      description: "Warm pasta in a creamy tomato basil sauce — comfort food for any day of the week.",
-      servings: 4,
-      totalTimeMinutes: 35,
-      difficulty: "easy",
-      cuisine: "italian",
-      mealType: "dinner",
-      tags: ["comfort-food", "vegetarian"],
+      id: 10,
+      name: "Blueberry Banana Smoothie",
+      description: "A refreshing blueberry banana smoothie — creamy, fruity and perfect for breakfast or a snack.",
+      servings: 2,
+      totalTimeMinutes: 5,
+      difficulty: "very easy",
+      cuisine: "american",
+      mealType: "breakfast",
+      tags: [ "vegan", "quick", "healthy"],
       ingredients: [
-        { name: "pasta", quantity: 400, unit: "g", notes: "spaghetti or your choice" },
-        { name: "olive oil", quantity: 2, unit: "tbsp", notes: "" },
-        { name: "garlic", quantity: 3, unit: "cloves", notes: "minced" }
+        { "name": "banana", "quantity": 1, "unit": "", "notes": "ripe" },
+        { "name": "blueberries", "quantity": 1, "unit": "cup", "notes": "fresh or frozen" },
+        { "name": "plant milk", "quantity": 1.5, "unit": "cups", "notes": "almond, soy, or oat" },
+        { "name": "honey", "quantity": 1, "unit": "tbsp", "notes": "optional (skip if vegan)" },
+        { "name": "chia seeds", "quantity": 1, "unit": "tbsp", "notes": "optional" },
+        { "name": "vanilla extract", "quantity": 0.5, "unit": "tsp", "notes": "optional" }
       ],
-      imageUrl: curryImage,
+      imageUrl: smoothieImage,
       rating: 4.5,
       ratingCount: 98
     },
@@ -114,7 +117,7 @@ const HomePage = () => {
         { name: "olive oil", quantity: 2, unit: "tbsp", notes: "" },
         { name: "garlic", quantity: 3, unit: "cloves", notes: "minced" }
       ],
-      imageUrl: stirfryImage,
+      imageUrl: salmonImage,
       rating: 4.8,
       ratingCount: 210
     }
