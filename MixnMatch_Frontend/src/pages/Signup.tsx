@@ -111,7 +111,7 @@ const Signup = () => {
                   <Input
                     id="name"
                     type="text"
-                    placeholder="John Doe"
+                    placeholder="Name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     className="pl-10 h-12 bg-white/50 backdrop-blur border-white/50 rounded-xl"
