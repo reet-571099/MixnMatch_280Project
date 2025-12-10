@@ -9,12 +9,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ChefHat, Sparkles, User, LogOut, Settings } from "lucide-react";
+import { ChefHat, Sparkles, User, LogOut, Settings, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 
 export const Layout = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { isAuthenticated, user, logout } = useAuth();
   const navigate = useNavigate();
 
@@ -41,25 +42,29 @@ export const Layout = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
-      <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+      <header className={`sticky top-0 z-50 w-full transition-all duration-300 pointer-events-auto ${
         scrolled 
           ? "bg-background/70 backdrop-blur-xl border-b border-border/50 shadow-lg" 
           : "bg-transparent"
       }`}>
-        <div className="container flex h-20 items-center justify-between">
-          <Link to="/" className="flex items-center space-x-3 hover:opacity-80 transition-all group">
+        <div className="container flex h-20 items-center justify-between relative pointer-events-auto">
+          <Link 
+            to="/" 
+            className="flex items-center space-x-3 hover:opacity-80 transition-all group relative z-10"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="w-10 h-10 rounded-xl bg-gradient-primary flex items-center justify-center group-hover:scale-110 transition-transform">
               <ChefHat className="h-6 w-6 text-white" />
             </div>
             <span className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">Mix&Match</span>
           </Link>
           
-          <nav className="hidden md:flex items-center space-x-1">
+          <nav className="hidden md:flex items-center space-x-1 relative z-10 pointer-events-auto">
             {navItems.map((item) => (
               <NavLink
                 key={item.path}
                 to={item.path}
-                className="px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg hover:bg-primary/10 text-muted-foreground"
+                className="px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg hover:bg-primary/10 text-muted-foreground relative z-10 cursor-pointer pointer-events-auto"
                 activeClassName="text-primary bg-primary/10"
               >
                 {item.name}
@@ -67,11 +72,25 @@ export const Layout = () => {
             ))}
           </nav>
           
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-2 relative z-10 pointer-events-auto">
+            {/* Mobile menu button - positioned next to profile */}
+            <Button
+              variant="ghost"
+              size="icon"
+              className="md:hidden relative z-10 pointer-events-auto"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </Button>
             {isAuthenticated ? (
               <>
-                <Button size="sm" asChild className="group hidden sm:inline-flex">
-                  <Link to="/create">
+                <Button 
+                  size="sm" 
+                  asChild 
+                  className="group hidden sm:inline-flex relative z-10"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <Link to="/create" onClick={(e) => e.stopPropagation()}>
                     <Sparkles className="h-4 w-4 mr-2 group-hover:rotate-12 transition-transform" />
                     Try Here
                   </Link>
@@ -114,11 +133,22 @@ export const Layout = () => {
               </>
             ) : (
               <>
-                <Button variant="ghost" size="sm" className="hidden sm:inline-flex" asChild>
-                  <Link to="/login">Login</Link>
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  className="hidden sm:inline-flex relative z-10" 
+                  asChild
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <Link to="/login" onClick={(e) => e.stopPropagation()}>Login</Link>
                 </Button>
-                <Button size="sm" asChild className="group">
-                  <Link to="/signup">
+                <Button 
+                  size="sm" 
+                  asChild 
+                  className="group relative z-10"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <Link to="/signup" onClick={(e) => e.stopPropagation()}>
                     <Sparkles className="h-4 w-4 mr-2 group-hover:rotate-12 transition-transform" />
                     Try Here
                   </Link>
@@ -127,6 +157,25 @@ export const Layout = () => {
             )}
           </div>
         </div>
+
+        {/* Mobile menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-xl">
+            <nav className="container py-4 space-y-2">
+              {navItems.map((item) => (
+                <NavLink
+                  key={item.path}
+                  to={item.path}
+                  className="block px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg hover:bg-primary/10 text-muted-foreground pointer-events-auto"
+                  activeClassName="text-primary bg-primary/10"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item.name}
+                </NavLink>
+              ))}
+            </nav>
+          </div>
+        )}
       </header>
 
       <main className="flex-1">
