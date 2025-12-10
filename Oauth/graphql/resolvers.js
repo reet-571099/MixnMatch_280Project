@@ -139,6 +139,35 @@ const resolvers = {
       });
 
       return savedRecipe;
+    },
+
+    deleteRecipe: async (_, { recipeId }, { user }) => {
+      if (!user) throw new Error("Authentication required");
+
+      try {
+        const recipe = await Recipe.findOneAndDelete({
+          _id: recipeId,
+          userId: user._id
+        });
+
+        if (!recipe) {
+          return {
+            success: false,
+            message: "Recipe not found or you don't have permission to delete it"
+          };
+        }
+
+        return {
+          success: true,
+          message: "Recipe deleted successfully"
+        };
+      } catch (error) {
+        console.error("Error deleting recipe:", error);
+        return {
+          success: false,
+          message: "Failed to delete recipe"
+        };
+      }
     }
   }
 };

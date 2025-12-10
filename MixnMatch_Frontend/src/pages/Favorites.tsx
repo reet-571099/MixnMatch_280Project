@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Heart, Clock, Trash2, ChefHat, Users, BarChart3, Utensils, Calendar, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
-import { getUserRecipes, type SavedRecipe } from "@/lib/authClient";
+import { getUserRecipes, deleteRecipe, type SavedRecipe } from "@/lib/authClient";
 import { useToast } from "@/hooks/use-toast";
 
 const Favorites = () => {
@@ -70,6 +70,62 @@ const Favorites = () => {
       hour: '2-digit',
       minute: '2-digit'
     });
+  };
+
+  // Handle deleting a saved recipe
+  const handleDeleteRecipe = async (recipeId: string, recipeName: string) => {
+    if (!isAuthenticated || !user) {
+      toast({
+        title: "Authentication required",
+        description: "Please sign in to delete recipes.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Confirmation dialog
+    const confirmed = window.confirm(
+      `Are you sure you want to delete "${recipeName}" from your favorites?\n\nThis action cannot be undone.`
+    );
+    
+    if (!confirmed) return;
+
+    const token = localStorage.getItem("token");
+    if (!token) {
+      toast({
+        title: "Authentication error",
+        description: "Please sign in again to delete recipes.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    try {
+      const result = await deleteRecipe(recipeId, token);
+      
+      if (result.success) {
+        // Remove from local state with animation
+        setFavoriteRecipes(prev => prev.filter(recipe => recipe.id !== recipeId));
+        
+        toast({
+          title: "Recipe deleted! 🗑️",
+          description: `"${recipeName}" has been removed from your collection.`,
+        });
+      } else {
+        toast({
+          title: "Failed to delete recipe",
+          description: result.message,
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error("Failed to delete recipe:", error);
+      toast({
+        title: "Error",
+        description: "Failed to delete recipe. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   // Show login prompt if not authenticated
@@ -256,6 +312,7 @@ const Favorites = () => {
                         size="icon" 
                         className="text-destructive hover:text-destructive hover:bg-red-50"
                         title="Remove from favorites"
+                        onClick={() => handleDeleteRecipe(recipe.id, recipe.name)}
                       >
                         <Trash2 className="h-4 w-4" />
                       </Button>

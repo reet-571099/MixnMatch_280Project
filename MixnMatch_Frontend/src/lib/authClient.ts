@@ -274,6 +274,18 @@ const SAVE_RECIPE_MUTATION = `
 `;
 
 /**
+ * Delete recipe mutation
+ */
+const DELETE_RECIPE_MUTATION = `
+  mutation DeleteRecipe($recipeId: ID!) {
+    deleteRecipe(recipeId: $recipeId) {
+      success
+      message
+    }
+  }
+`;
+
+/**
  * Save a recipe to user's favorites
  */
 export async function saveRecipe(recipe: RecipeInput, token: string): Promise<{ id: string; name: string }> {
@@ -283,5 +295,17 @@ export async function saveRecipe(recipe: RecipeInput, token: string): Promise<{ 
     token
   );
   return data.saveRecipe;
+}
+
+/**
+ * Delete a saved recipe
+ */
+export async function deleteRecipe(recipeId: string, token: string): Promise<{ success: boolean; message: string }> {
+  const data = await graphqlRequest<{ deleteRecipe: { success: boolean; message: string } }>(
+    DELETE_RECIPE_MUTATION,
+    { recipeId },
+    token
+  );
+  return data.deleteRecipe;
 }
 

@@ -88,6 +88,11 @@ const typeDefs = gql`
     fats: Float
   }
 
+  type DeleteResponse {
+    success: Boolean!
+    message: String!
+  }
+
   type Query {
     me: User
     myRecipes: [Recipe]
@@ -97,6 +102,7 @@ const typeDefs = gql`
     signup(email: String!, password: String!, name: String, role: Role): AuthResponse
     login(email: String!, password: String!): AuthResponse
     saveRecipe(recipe: RecipeInput!): Recipe
+    deleteRecipe(recipeId: ID!): DeleteResponse
   }
 `;
 
