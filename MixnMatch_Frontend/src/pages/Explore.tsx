@@ -67,8 +67,8 @@ const Explore = () => {
         const data = await response.json();
         const recipesData = data.recipes.map((recipe: any) => ({
           ...recipe,
-          // Use slug-based image URLs from assets (override the JSON imageUrl)
-          imageUrl: `/src/assets/${recipe.name}.avif`,
+          // Use slug-based image URLs from assets (override the JSON imageUrl) - WebP for better compatibility
+          imageUrl: `/src/assets/${recipe.name}.webp`,
         }));
         setRecipes(recipesData);
       } catch (error) {

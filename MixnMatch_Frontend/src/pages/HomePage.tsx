@@ -22,16 +22,16 @@ import {
   UserCheck,
   BarChart3,
 } from "lucide-react";
-import heroImage from "@/assets/hero-cooking.jpg";
-import salmonImage from "@/assets/Garlic Lemon Roasted Salmon.avif";
-import mediterraneanImage from "@/assets/Savory Chicken Salad with Fresh Green Beans.avif";
-import smoothieImage from "@/assets/Blueberry Banana Smoothie.avif";
-import howItWorksChatImage from "@/assets/how-it-works-chat.jpg";
-import howItWorksRecipesImage from "@/assets/how-it-works-recipes.jpg";
-import howItWorksSaveImage from "@/assets/how-it-works-save.jpg";
-import avatarSarah from "@/assets/avatar-sarah.jpg";
-import avatarJames from "@/assets/avatar-james.jpg";
-import avatarEmma from "@/assets/avatar-emma.jpg";
+import heroImage from "@/assets/hero-cooking.webp";
+import salmonImage from "@/assets/Garlic Lemon Roasted Salmon.webp";
+import mediterraneanImage from "@/assets/Savory Chicken Salad with Fresh Green Beans.webp";
+import smoothieImage from "@/assets/Blueberry Banana Smoothie.webp";
+import howItWorksChatImage from "@/assets/how-it-works-chat.webp";
+import howItWorksRecipesImage from "@/assets/how-it-works-recipes.webp";
+import howItWorksSaveImage from "@/assets/how-it-works-save.webp";
+import avatarSarah from "@/assets/avatar-sarah.webp";
+import avatarJames from "@/assets/avatar-james.webp";
+import avatarEmma from "@/assets/avatar-emma.webp";
 
 interface Recipe {
   id: number;

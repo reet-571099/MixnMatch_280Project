@@ -156,10 +156,10 @@ const RecipeDetailPage = () => {
           const foundRecipe = data.recipes.find((r: any) => r.id === parseInt(id || '0'));
           
           if (foundRecipe) {
-            // Use slug-based image URLs from assets - WebP for better performance
+            // Use slug-based image URLs from assets - WebP for better compatibility
             const recipeWithImage = {
               ...foundRecipe,
-              imageUrl: `/src/assets/${foundRecipe.name}.avif`,
+              imageUrl: `/src/assets/${foundRecipe.name}.webp`,
             };
             setRecipe(recipeWithImage);
           } else {
