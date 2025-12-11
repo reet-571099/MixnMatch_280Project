@@ -1,9 +1,14 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  Typography,
+  Chip,
+  Button,
+  TextField,
+  Switch,
+  Box,
+} from "@mui/material";
 import { User } from "lucide-react";
 
 const Profile = () => {
@@ -23,101 +28,120 @@ const Profile = () => {
 
       <div className="space-y-6">
         <Card>
-          <CardHeader>
-            <CardTitle>Dietary Preferences</CardTitle>
-          </CardHeader>
+          <CardHeader
+            title={<Typography variant="h6">Dietary Preferences</Typography>}
+          />
           <CardContent>
-            <div className="flex flex-wrap gap-2">
+            <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
               {dietaryPreferences.map((diet) => (
-                <Badge
+                <Chip
                   key={diet}
-                  variant="outline"
-                  className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors"
-                >
-                  {diet}
-                </Badge>
+                  label={diet}
+                  variant="outlined"
+                  clickable
+                  sx={{
+                    cursor: "pointer",
+                    "&:hover": {
+                      backgroundColor: "primary.main",
+                      color: "primary.contrastText",
+                    },
+                    transition: "all 0.2s",
+                  }}
+                />
               ))}
-            </div>
+            </Box>
           </CardContent>
         </Card>
 
         <Card>
-          <CardHeader>
-            <CardTitle>Favorite Cuisines</CardTitle>
-          </CardHeader>
+          <CardHeader
+            title={<Typography variant="h6">Favorite Cuisines</Typography>}
+          />
           <CardContent>
-            <div className="flex flex-wrap gap-2">
+            <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
               {cuisines.map((cuisine) => (
-                <Badge
+                <Chip
                   key={cuisine}
-                  variant="secondary"
-                  className="cursor-pointer hover:opacity-80 transition-opacity"
-                >
-                  {cuisine}
-                </Badge>
+                  label={cuisine}
+                  color="secondary"
+                  clickable
+                  sx={{
+                    cursor: "pointer",
+                    "&:hover": {
+                      opacity: 0.8,
+                    },
+                    transition: "opacity 0.2s",
+                  }}
+                />
               ))}
-            </div>
+            </Box>
           </CardContent>
         </Card>
 
         <Card>
-          <CardHeader>
-            <CardTitle>Cooking Preferences</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <Label htmlFor="quick-meals">Prefer Quick Meals ({"<"} 30 min)</Label>
-                <p className="text-sm text-muted-foreground">Prioritize recipes that are fast to prepare</p>
-              </div>
-              <Switch id="quick-meals" />
-            </div>
-            
-            <div className="flex items-center justify-between">
-              <div>
-                <Label htmlFor="high-protein">High Protein Focus</Label>
-                <p className="text-sm text-muted-foreground">Show more protein-rich recipes</p>
-              </div>
-              <Switch id="high-protein" />
-            </div>
-            
-            <div className="flex items-center justify-between">
-              <div>
-                <Label htmlFor="one-pot">One-Pot Meals</Label>
-                <p className="text-sm text-muted-foreground">Prefer recipes with minimal cleanup</p>
-              </div>
-              <Switch id="one-pot" />
-            </div>
+          <CardHeader
+            title={<Typography variant="h6">Cooking Preferences</Typography>}
+          />
+          <CardContent>
+            <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+              <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                <Box>
+                  <Typography component="label" htmlFor="quick-meals">Prefer Quick Meals ({"<"} 30 min)</Typography>
+                  <Typography variant="body2" color="text.secondary">Prioritize recipes that are fast to prepare</Typography>
+                </Box>
+                <Switch id="quick-meals" />
+              </Box>
+
+              <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                <Box>
+                  <Typography component="label" htmlFor="high-protein">High Protein Focus</Typography>
+                  <Typography variant="body2" color="text.secondary">Show more protein-rich recipes</Typography>
+                </Box>
+                <Switch id="high-protein" />
+              </Box>
+
+              <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                <Box>
+                  <Typography component="label" htmlFor="one-pot">One-Pot Meals</Typography>
+                  <Typography variant="body2" color="text.secondary">Prefer recipes with minimal cleanup</Typography>
+                </Box>
+                <Switch id="one-pot" />
+              </Box>
+            </Box>
           </CardContent>
         </Card>
 
         <Card>
-          <CardHeader>
-            <CardTitle>Disliked Ingredients</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div>
-              <Label htmlFor="disliked">Add ingredients to avoid</Label>
-              <div className="flex gap-2 mt-2">
-                <Input id="disliked" placeholder="e.g., cilantro, mushrooms..." />
-                <Button>Add</Button>
-              </div>
-            </div>
-            
-            <div className="flex flex-wrap gap-2">
-              {dislikedIngredients.map((ingredient) => (
-                <Badge key={ingredient} variant="destructive">
-                  {ingredient}
-                  <button className="ml-2 hover:opacity-70">×</button>
-                </Badge>
-              ))}
-            </div>
+          <CardHeader
+            title={<Typography variant="h6">Disliked Ingredients</Typography>}
+          />
+          <CardContent>
+            <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+              <Box>
+                <Typography component="label" htmlFor="disliked">Add ingredients to avoid</Typography>
+                <Box sx={{ display: "flex", gap: 1, mt: 1 }}>
+                  <TextField id="disliked" placeholder="e.g., cilantro, mushrooms..." size="small" fullWidth />
+                  <Button variant="contained">Add</Button>
+                </Box>
+              </Box>
+
+              <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
+                {dislikedIngredients.map((ingredient) => (
+                  <Chip
+                    key={ingredient}
+                    label={ingredient}
+                    color="error"
+                    onDelete={() => {}}
+                  />
+                ))}
+              </Box>
+            </Box>
           </CardContent>
         </Card>
 
-        <div className="flex justify-end">
-          <Button size="lg">Save Preferences</Button>
-        </div>
+        <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+          <Button variant="contained" size="large">Save Preferences</Button>
+        </Box>
       </div>
     </div>
   );
