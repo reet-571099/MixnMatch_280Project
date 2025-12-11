@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { ChefHat, Mail, Lock, Sparkles } from "lucide-react";
+import { ChefHat, Mail, Lock, Sparkles, ArrowLeft } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { HeroBackground } from "@/components/HeroBackground";
@@ -49,6 +49,18 @@ const Login = () => {
       </div>
       <div className="absolute inset-0 bg-gradient-mesh opacity-15" />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/60 to-background" />
+
+      {/* Back Button */}
+      <Button
+        variant="outline"
+        size="sm"
+        className="absolute top-6 left-6 z-20 bg-white/80 backdrop-blur border-white/50 hover:bg-white hover:shadow-md transition-all duration-200 focus:ring-2 focus:ring-primary focus:ring-offset-2"
+        onClick={() => navigate("/")}
+        aria-label="Go back to homepage"
+      >
+        <ArrowLeft className="h-4 w-4 mr-2" />
+        Back to Home
+      </Button>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
