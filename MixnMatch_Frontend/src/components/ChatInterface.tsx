@@ -86,11 +86,12 @@ export const ChatInterface = ({
 
   useEffect(() => {
     // Scroll to the top of the page or container on mount
-    if (containerRef.current) {
-      containerRef.current.scrollTop = 0;
-    } else {
-      window.scrollTo(0, 0);
-    }
+    // Use requestAnimationFrame to avoid forced reflow during initial render
+    requestAnimationFrame(() => {
+      if (containerRef.current) {
+        containerRef.current.scrollTop = 0;
+      }
+    });
   }, []);
 
   const quickChips = [
@@ -270,18 +271,24 @@ export const ChatInterface = ({
     }
   };
   useEffect(() => {
-    if (containerRef.current) {
-      containerRef.current.scrollTop = 0;
-    }
+    // Use requestAnimationFrame to avoid forced reflow
+    requestAnimationFrame(() => {
+      if (containerRef.current) {
+        containerRef.current.scrollTop = 0;
+      }
+    });
   }, []);
-  
+
   // Scroll to bottom ONLY when a bot message arrives
   useEffect(() => {
     if (messages.length === 0) return;
-  
+
     const last = messages[messages.length - 1];
     if (last.role === "bot") {
-      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+      // Use requestAnimationFrame to batch with paint cycle
+      requestAnimationFrame(() => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+      });
     }
   }, [messages]);
   const handleTemplateSelect = (prompt: string) => {

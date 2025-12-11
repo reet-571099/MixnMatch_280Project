@@ -22,16 +22,16 @@ import {
   UserCheck,
   BarChart3,
 } from "lucide-react";
-import heroImage from "@/assets/hero-cooking.jpg";
-import salmonImage from "@/assets/Garlic Lemon Roasted Salmon.jpg";
-import mediterraneanImage from "@/assets/Savory Chicken Salad with Fresh Green Beans.jpg";
-import smoothieImage from "@/assets/Blueberry Banana Smoothie.jpg";
-import howItWorksChatImage from "@/assets/how-it-works-chat.jpg";
-import howItWorksRecipesImage from "@/assets/how-it-works-recipes.jpg";
-import howItWorksSaveImage from "@/assets/how-it-works-save.jpg";
-import avatarSarah from "@/assets/avatar-sarah.jpg";
-import avatarJames from "@/assets/avatar-james.jpg";
-import avatarEmma from "@/assets/avatar-emma.jpg";
+import heroImage from "@/assets/hero-cooking.webp";
+import salmonImage from "@/assets/Garlic Lemon Roasted Salmon.webp";
+import mediterraneanImage from "@/assets/Savory Chicken Salad with Fresh Green Beans.webp";
+import smoothieImage from "@/assets/Blueberry Banana Smoothie.webp";
+import howItWorksChatImage from "@/assets/how-it-works-chat.webp";
+import howItWorksRecipesImage from "@/assets/how-it-works-recipes.webp";
+import howItWorksSaveImage from "@/assets/how-it-works-save.webp";
+import avatarSarah from "@/assets/avatar-sarah.webp";
+import avatarJames from "@/assets/avatar-james.webp";
+import avatarEmma from "@/assets/avatar-emma.webp";
 
 interface Recipe {
   id: number;
@@ -250,17 +250,12 @@ const HomePage = () => {
               </Badge>
             </motion.div>
             
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="text-5xl lg:text-7xl font-bold leading-tight"
-            >
+            <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
               Turn pantry chaos into{" "}
               <span className="bg-gradient-primary bg-clip-text text-transparent">
                 chef-level meals
               </span>
-            </motion.h1>
+            </h1>
             
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -333,7 +328,15 @@ const HomePage = () => {
           transition={{ delay: 0.8, duration: 1 }}
           className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-4xl opacity-10 pointer-events-none"
         >
-          <img src={heroImage} alt="Fresh ingredients" className="w-full h-auto rounded-t-3xl" />
+          <img
+            src={heroImage}
+            alt="Fresh ingredients"
+            className="w-full h-auto rounded-t-3xl"
+            loading="lazy"
+            decoding="async"
+            width={896}
+            height={504}
+          />
         </motion.div>
       </section>
 
@@ -373,10 +376,14 @@ const HomePage = () => {
                 <Card className="h-full p-10 bg-white/70 backdrop-blur-xl rounded-3xl border border-white/40 shadow-xl hover:shadow-glow transition-all duration-500 group overflow-hidden">
                   <CardContent className="p-0 space-y-6">
                     <div className={`w-full h-48 rounded-2xl bg-gradient-to-br ${step.gradient} flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-500`}>
-                      <img 
-                        src={step.image} 
+                      <img
+                        src={step.image}
                         alt={step.title}
                         className="w-full h-full object-cover"
+                        loading="lazy"
+                        decoding="async"
+                        width={400}
+                        height={192}
                       />
                     </div>
                     <div>
@@ -523,10 +530,14 @@ const HomePage = () => {
                       </div>
                       <p className="text-lg leading-relaxed italic">"{testimonial.content}"</p>
                       <div className="flex items-center gap-4">
-                        <img 
-                          src={testimonial.avatar} 
+                        <img
+                          src={testimonial.avatar}
                           alt={testimonial.name}
                           className="w-12 h-12 rounded-full object-cover ring-2 ring-primary/20"
+                          loading="lazy"
+                          decoding="async"
+                          width={48}
+                          height={48}
                         />
                         <div>
                           <div className="font-semibold">{testimonial.name}</div>
@@ -580,6 +591,10 @@ const HomePage = () => {
                       src={recipe.imageUrl || (recipe as any).image}
                       alt={recipe.name}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      loading="lazy"
+                      decoding="async"
+                      width={400}
+                      height={288}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                     

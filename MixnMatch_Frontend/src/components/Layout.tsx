@@ -9,8 +9,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ChefHat, Sparkles, User, LogOut, Settings, Menu, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { ChefHat, Sparkles, User, LogOut, Menu, X } from "lucide-react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 
 export const Layout = () => {
@@ -19,13 +19,39 @@ export const Layout = () => {
   const { isAuthenticated, user, logout } = useAuth();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+  // Optimized scroll handler with requestAnimationFrame for better performance
+  const rafRef = useRef<number | null>(null);
+  const lastScrollY = useRef(0);
+
+  const handleScroll = useCallback(() => {
+    // Cancel any pending animation frame
+    if (rafRef.current) {
+      cancelAnimationFrame(rafRef.current);
+    }
+
+    rafRef.current = requestAnimationFrame(() => {
+      const currentScrollY = window.scrollY;
+      // Only update state if threshold is crossed (reduces re-renders)
+      const shouldBeScrolled = currentScrollY > 20;
+      const wasScrolled = lastScrollY.current > 20;
+
+      if (shouldBeScrolled !== wasScrolled) {
+        setScrolled(shouldBeScrolled);
+      }
+      lastScrollY.current = currentScrollY;
+    });
   }, []);
+
+  useEffect(() => {
+    // Use passive listener for better scroll performance
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
+    };
+  }, [handleScroll]);
 
   const handleLogout = () => {
     logout();

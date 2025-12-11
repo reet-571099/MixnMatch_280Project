@@ -107,18 +107,22 @@ export default {
           to: { transform: "scale(1)", opacity: "1" },
         },
         "shimmer": {
-          "0%": { backgroundPosition: "-1000px 0" },
-          "100%": { backgroundPosition: "1000px 0" },
+          // Use transform instead of background-position for GPU acceleration
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(100%)" },
         },
         "float": {
+          // Already uses transform - GPU composited
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-20px)" },
         },
         "pulse-glow": {
-          "0%, 100%": { boxShadow: "0 0 20px hsl(var(--primary) / 0.3)" },
-          "50%": { boxShadow: "0 0 40px hsl(var(--primary) / 0.6)" },
+          // Replace box-shadow animation with opacity for GPU compositing
+          "0%, 100%": { opacity: "0.7" },
+          "50%": { opacity: "1" },
         },
         "twinkle": {
+          // Already uses transform and opacity - GPU composited
           "0%, 100%": { opacity: "1", transform: "scale(1)" },
           "50%": { opacity: "0.5", transform: "scale(0.9)" },
         },

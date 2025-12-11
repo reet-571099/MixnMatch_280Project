@@ -67,8 +67,8 @@ const Explore = () => {
         const data = await response.json();
         const recipesData = data.recipes.map((recipe: any) => ({
           ...recipe,
-          // Use slug-based image URLs from assets (override the JSON imageUrl)
-          imageUrl: `/src/assets/${recipe.name}.jpg`,
+          // Use slug-based image URLs from assets (override the JSON imageUrl) - WebP for better performance
+          imageUrl: `/src/assets/${recipe.name}.webp`,
         }));
         setRecipes(recipesData);
       } catch (error) {
@@ -288,6 +288,10 @@ const Explore = () => {
                         src={recipe.imageUrl}
                         alt={recipe.name}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        loading="lazy"
+                        decoding="async"
+                        width={400}
+                        height={192}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                       <div className="absolute top-4 right-4 flex gap-2">
