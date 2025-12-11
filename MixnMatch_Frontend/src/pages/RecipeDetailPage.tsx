@@ -159,7 +159,7 @@ const RecipeDetailPage = () => {
             // Use slug-based image URLs from assets - WebP for better performance
             const recipeWithImage = {
               ...foundRecipe,
-              imageUrl: `/src/assets/${foundRecipe.name}.webp`,
+              imageUrl: `/src/assets/${foundRecipe.name}.avif`,
             };
             setRecipe(recipeWithImage);
           } else {
