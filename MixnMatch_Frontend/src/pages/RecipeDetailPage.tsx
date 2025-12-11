@@ -159,7 +159,7 @@ const RecipeDetailPage = () => {
             // Use slug-based image URLs from assets
             const recipeWithImage = {
               ...foundRecipe,
-              imageUrl: `/src/assets/${foundRecipe.name}.jpg`,
+              imageUrl: `/src/assets/${foundRecipe.name}.avif`,
             };
             setRecipe(recipeWithImage);
           } else {
