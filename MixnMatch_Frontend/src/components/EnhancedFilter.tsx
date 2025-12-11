@@ -126,15 +126,18 @@ export const EnhancedFilter = ({ onFilterChange }: EnhancedFilterProps) => {
       <div className="relative">
         <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
         <Input
+          id="recipe-search"
           placeholder="Search recipes, ingredients..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           className="pl-12 pr-12 h-14 text-lg border-2 focus:border-primary transition-all duration-300 bg-card/50 backdrop-blur"
+          aria-label="Search recipes and ingredients"
         />
         {searchQuery && (
           <button
             onClick={() => setSearchQuery("")}
             className="absolute right-4 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+            aria-label="Clear search"
           >
             <X className="h-5 w-5" />
           </button>
@@ -146,7 +149,7 @@ export const EnhancedFilter = ({ onFilterChange }: EnhancedFilterProps) => {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <SlidersHorizontal className="h-5 w-5 text-primary" />
-            <h3 className="font-semibold text-lg">Filters</h3>
+            <h2 className="font-semibold text-lg">Filters</h2>
             {activeFilterCount > 0 && (
               <Badge variant="default" className="animate-scale-in">
                 {activeFilterCount}
@@ -160,6 +163,7 @@ export const EnhancedFilter = ({ onFilterChange }: EnhancedFilterProps) => {
                 size="sm"
                 onClick={clearAllFilters}
                 className="text-sm"
+                aria-label="Clear all active filters"
               >
                 Clear All
               </Button>
@@ -168,6 +172,8 @@ export const EnhancedFilter = ({ onFilterChange }: EnhancedFilterProps) => {
               variant="ghost"
               size="sm"
               onClick={() => setIsExpanded(!isExpanded)}
+              aria-label={isExpanded ? "Collapse filters" : "Expand filters"}
+              aria-expanded={isExpanded}
             >
               <ChevronDown
                 className={`h-4 w-4 transition-transform duration-300 ${
@@ -192,7 +198,7 @@ export const EnhancedFilter = ({ onFilterChange }: EnhancedFilterProps) => {
             <Card className="p-6 bg-card/50 backdrop-blur border-2">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <Label className="text-base font-semibold">
+                  <Label htmlFor="cook-time-slider" className="text-base font-semibold">
                     Maximum Cook Time
                   </Label>
                   <Badge variant="secondary" className="text-base">
@@ -200,12 +206,14 @@ export const EnhancedFilter = ({ onFilterChange }: EnhancedFilterProps) => {
                   </Badge>
                 </div>
                 <Slider
+                  id="cook-time-slider"
                   value={cookTime}
                   onValueChange={setCookTime}
                   max={120}
                   min={5}
                   step={5}
                   className="py-4"
+                  aria-label={`Maximum cook time: ${cookTime[0]} minutes`}
                 />
                 <div className="flex justify-between text-xs text-muted-foreground">
                   <span>5 min</span>
@@ -226,7 +234,7 @@ export const EnhancedFilter = ({ onFilterChange }: EnhancedFilterProps) => {
                 <Card className="overflow-hidden bg-card/50 backdrop-blur border-2">
                   <CollapsibleTrigger className="w-full p-4 hover:bg-muted/50 transition-colors">
                     <div className="flex items-center justify-between">
-                      <h4 className="font-semibold text-base">{category.title}</h4>
+                      <h3 className="font-semibold text-base">{category.title}</h3>
                       <ChevronDown
                         className={`h-4 w-4 transition-transform duration-300 ${
                           quickFiltersOpen ? "rotate-180" : ""
@@ -259,6 +267,9 @@ export const EnhancedFilter = ({ onFilterChange }: EnhancedFilterProps) => {
                                     : "hover:border-primary/50"
                                 } ${option.color || ""}`}
                                 onClick={() => toggleFilter(category.title, option.value)}
+                                role="button"
+                                aria-pressed={isActive}
+                                aria-label={`${isActive ? 'Remove' : 'Add'} ${option.label} filter`}
                               >
                                 {option.label}
                               </Badge>
@@ -274,46 +285,52 @@ export const EnhancedFilter = ({ onFilterChange }: EnhancedFilterProps) => {
 
             {/* Quick Toggles */}
             <Card className="p-6 bg-card/50 backdrop-blur border-2">
-              <h4 className="font-semibold text-base mb-4">Quick Options</h4>
+              <h3 className="font-semibold text-base mb-4">Quick Options</h3>
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <Label className="text-sm font-medium">One-Pot Meals</Label>
+                    <Label htmlFor="one-pot-switch" className="text-sm font-medium">One-Pot Meals</Label>
                     <p className="text-xs text-muted-foreground">Minimal cleanup</p>
                   </div>
                   <Switch 
+                    id="one-pot-switch"
                     checked={quickOptions.onePot}
                     onCheckedChange={(checked) => 
                       setQuickOptions(prev => ({ ...prev, onePot: checked }))
                     }
+                    aria-label="Filter for one-pot meals with minimal cleanup"
                   />
                 </div>
                 <div className="flex items-center justify-between">
                   <div>
-                    <Label className="text-sm font-medium">High Protein</Label>
+                    <Label htmlFor="high-protein-switch" className="text-sm font-medium">High Protein</Label>
                     <p className="text-xs text-muted-foreground">
                       Protein-rich recipes
                     </p>
                   </div>
                   <Switch 
+                    id="high-protein-switch"
                     checked={quickOptions.highProtein}
                     onCheckedChange={(checked) => 
                       setQuickOptions(prev => ({ ...prev, highProtein: checked }))
                     }
+                    aria-label="Filter for high protein recipes"
                   />
                 </div>
                 <div className="flex items-center justify-between">
                   <div>
-                    <Label className="text-sm font-medium">Budget Friendly</Label>
+                    <Label htmlFor="budget-friendly-switch" className="text-sm font-medium">Budget Friendly</Label>
                     <p className="text-xs text-muted-foreground">
                       Affordable ingredients
                     </p>
                   </div>
                   <Switch 
+                    id="budget-friendly-switch"
                     checked={quickOptions.budgetFriendly}
                     onCheckedChange={(checked) => 
                       setQuickOptions(prev => ({ ...prev, budgetFriendly: checked }))
                     }
+                    aria-label="Filter for budget-friendly recipes with affordable ingredients"
                   />
                 </div>
               </div>

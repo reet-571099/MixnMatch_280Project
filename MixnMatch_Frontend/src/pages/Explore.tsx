@@ -229,10 +229,11 @@ const Explore = () => {
 
   return (
     <div className="container py-8">
-      <motion.div
+      <motion.header
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="mb-8"
+        role="banner"
       >
         <h1 className="text-4xl lg:text-5xl font-bold mb-4">
           Explore{" "}
@@ -243,7 +244,7 @@ const Explore = () => {
         <p className="text-xl text-muted-foreground">
           Discover new recipes tailored to your taste and pantry
         </p>
-      </motion.div>
+      </motion.header>
 
       <div className="grid lg:grid-cols-[350px_1fr] gap-8">
         {/* Filters Sidebar */}
@@ -257,11 +258,13 @@ const Explore = () => {
         </motion.aside>
 
         {/* Recipe Grid */}
-        <motion.div
+        <motion.main
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
           className="space-y-6"
+          role="main"
+          aria-label="Recipe search results"
         >
           <div className="flex items-center justify-between">
             <p className="text-muted-foreground">
@@ -281,12 +284,12 @@ const Explore = () => {
                 transition={{ delay: 0.1 * index }}
                 whileHover={{ y: -8 }}
               >
-                <Link to={`/recipes/${recipe.id}`} className="block h-full">
+                <Link to={`/recipes/${recipe.id}`} className="block h-full" aria-label={`View full recipe for ${recipe.name} - ${recipe.description}`}>
                   <Card className="overflow-hidden hover:shadow-glow transition-all duration-500 group border-2 h-full flex flex-col cursor-pointer">
                     <div className="relative h-48 overflow-hidden">
                       <img
                         src={recipe.imageUrl}
-                        alt={recipe.name}
+                        alt={`${recipe.name} - ${recipe.description || 'Delicious recipe'}`}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                         loading="lazy"
                         decoding="async"
@@ -305,6 +308,7 @@ const Explore = () => {
                             handleSaveRecipe(recipe);
                           }}
                           title={savedRecipeIds.has(recipe.name) ? "Recipe saved" : "Save recipe"}
+                          aria-label={savedRecipeIds.has(recipe.name) ? `${recipe.name} is saved to favorites` : `Save ${recipe.name} to favorites`}
                         >
                           <Heart className={`h-4 w-4 transition-colors ${
                             savedRecipeIds.has(recipe.name) 
@@ -319,7 +323,7 @@ const Explore = () => {
                       </div>
                     </div>
                     <CardContent className="p-6 space-y-4 flex-1 flex flex-col">
-                      <h3 className="font-bold text-lg line-clamp-2">{recipe.name}</h3>
+                      <h2 className="font-bold text-lg line-clamp-2">{recipe.name}</h2>
                       <p className="text-sm text-muted-foreground line-clamp-2 flex-1">{recipe.description}</p>
                       <div className="flex flex-wrap gap-2">
                         {recipe.tags.filter(tag => tag !== 'ai-generated').slice(0, 3).map((tag) => (
@@ -329,7 +333,12 @@ const Explore = () => {
                         ))}
                       </div>
                       <div className="flex gap-2 pt-2">
-                        <Button variant="outline" size="sm" className="w-full">
+                        <Button 
+                          variant="outline" 
+                          size="sm" 
+                          className="w-full"
+                          aria-label={`View full recipe for ${recipe.name}`}
+                        >
                           View Recipe
                         </Button>
                       </div>
@@ -339,7 +348,7 @@ const Explore = () => {
               </motion.div>
             ))}
           </div>
-        </motion.div>
+        </motion.main>
       </div>
     </div>
   );
