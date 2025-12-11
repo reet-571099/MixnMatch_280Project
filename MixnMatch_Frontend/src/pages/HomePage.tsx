@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
-import { ChatInterface } from "@/components/ChatInterface";
 import { HeroBackground } from "@/components/HeroBackground";
 import {
   ChefHat,
@@ -21,8 +20,8 @@ import {
   Award,
   UserCheck,
   BarChart3,
+  Send,
 } from "lucide-react";
-import heroImage from "@/assets/hero-cooking.webp";
 import salmonImage from "@/assets/Garlic Lemon Roasted Salmon.webp";
 import mediterraneanImage from "@/assets/Savory Chicken Salad with Fresh Green Beans.webp";
 import smoothieImage from "@/assets/Blueberry Banana Smoothie.webp";
@@ -123,21 +122,6 @@ const HomePage = () => {
     }
   ];
 
-  const previewMessages = [
-    { id: "1", role: "user" as const, content: "I have chicken, bell peppers, rice, and soy sauce" },
-    {
-      id: "2",
-      role: "bot" as const,
-      content: "Perfect! I can create a delicious stir-fry for you.",
-      recipe: {
-        title: "Asian Chicken Stir-Fry",
-        ingredients: ["2 chicken breasts", "2 bell peppers", "1 cup rice", "3 tbsp soy sauce"],
-        steps: ["Cook rice", "Cut chicken and peppers", "Stir-fry chicken", "Add peppers and soy sauce"],
-      },
-    },
-    { id: "3", role: "user" as const, content: "Can you make it spicier?" },
-    { id: "4", role: "bot" as const, content: "Absolutely! I'll add chili flakes and sriracha." },
-  ];
 
   const stats = [
     { icon: Users, value: "50K+", label: "Active Users", color: "text-primary" },
@@ -221,7 +205,7 @@ const HomePage = () => {
   return (
     <div className="w-full overflow-hidden">
       {/* Hero Section with Parallax */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
+      <section className="relative min-h-[80vh] lg:min-h-screen flex items-center overflow-hidden">
         {/* Animated Background with Ingredients */}
         <div className="absolute inset-0">
           <HeroBackground />
@@ -232,12 +216,12 @@ const HomePage = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/60 to-background" />
         
-        <div className="container relative z-10 grid lg:grid-cols-2 gap-16 items-center py-24 px-6 lg:px-8">
+        <div className="container relative z-10 grid lg:grid-cols-2 gap-8 lg:gap-16 items-center py-16 lg:py-24 px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="space-y-8"
+            className="space-y-6 lg:space-y-8"
           >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -250,7 +234,7 @@ const HomePage = () => {
               </Badge>
             </motion.div>
             
-            <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
+            <h1 className="text-4xl lg:text-7xl font-bold leading-tight">
               Turn pantry chaos into{" "}
               <span className="bg-gradient-primary bg-clip-text text-transparent">
                 chef-level meals
@@ -261,7 +245,7 @@ const HomePage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="text-xl text-muted-foreground leading-relaxed"
+              className="text-lg lg:text-xl text-muted-foreground leading-relaxed"
             >
               Tell Mix&Match what's in your kitchen – get a personalized recipe in seconds.
               No more wasted food, just delicious possibilities.
@@ -305,39 +289,90 @@ const HomePage = () => {
             </motion.div>
           </motion.div>
 
+          {/* Desktop only: Chat Interface Screenshot */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="h-[650px] relative"
+            className="hidden lg:block h-[650px] relative"
           >
             <motion.div
               whileHover={{ scale: 1.02 }}
               className="absolute inset-0 bg-gradient-primary opacity-20 blur-3xl rounded-full"
             />
-            <div className="relative h-full">
-              <ChatInterface previewMode messages={previewMessages} />
+            <div className="relative h-full bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl overflow-hidden shadow-2xl border border-white/20 p-6">
+              {/* Chat Header */}
+              <div className="bg-white rounded-xl p-4 mb-4 shadow-sm border border-gray-200">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-gradient-primary rounded-full flex items-center justify-center">
+                    <ChefHat className="h-5 w-5 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">AI Recipe Assistant</h3>
+                    <p className="text-sm text-green-600 flex items-center gap-1">
+                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                      Online
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Chat Messages */}
+              <div className="space-y-4 mb-6">
+                {/* User Message */}
+                <div className="flex justify-end">
+                  <div className="bg-primary text-white px-4 py-2 rounded-2xl rounded-br-md max-w-xs">
+                    <p className="text-sm">I have chicken, rice, and broccoli</p>
+                  </div>
+                </div>
+
+                {/* Bot Message */}
+                <div className="flex justify-start">
+                  <div className="bg-white border border-gray-200 px-4 py-3 rounded-2xl rounded-bl-md max-w-sm shadow-sm">
+                    <p className="text-sm text-gray-700 mb-2">
+                      Perfect! I can create a delicious <strong>Chicken Fried Rice</strong> with your ingredients.
+                    </p>
+                    <div className="flex items-center gap-2 text-xs text-gray-500">
+                      <Clock className="h-3 w-3" />
+                      <span>25 mins</span>
+                      <Users className="h-3 w-3 ml-2" />
+                      <span>4 servings</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Another User Message */}
+                <div className="flex justify-end">
+                  <div className="bg-primary text-white px-4 py-2 rounded-2xl rounded-br-md max-w-xs">
+                    <p className="text-sm">Make it spicy!</p>
+                  </div>
+                </div>
+
+                {/* Bot Response */}
+                <div className="flex justify-start">
+                  <div className="bg-white border border-gray-200 px-4 py-3 rounded-2xl rounded-bl-md max-w-sm shadow-sm">
+                    <p className="text-sm text-gray-700">
+                      🔥 Absolutely! I'll add chili flakes, ginger, and garlic for that perfect kick!
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Input Area */}
+              <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-200">
+                <div className="flex items-center gap-3">
+                  <div className="flex-1 bg-gray-50 rounded-full px-4 py-2 text-sm text-gray-500 border border-gray-200">
+                    Tell me what ingredients you have...
+                  </div>
+                  <button className="bg-primary hover:bg-primary/90 text-white p-2 rounded-full transition-colors">
+                    <Send className="h-4 w-4" />
+                  </button>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
 
-        {/* Floating Hero Image */}
-        <motion.div
-          initial={{ opacity: 0, y: 100 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 1 }}
-          className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-4xl opacity-10 pointer-events-none"
-        >
-          <img
-            src={heroImage}
-            alt="Fresh ingredients"
-            className="w-full h-auto rounded-t-3xl"
-            loading="lazy"
-            decoding="async"
-            width={896}
-            height={504}
-          />
-        </motion.div>
       </section>
 
       {/* How It Works Section */}
