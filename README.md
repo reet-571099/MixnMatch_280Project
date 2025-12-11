@@ -180,6 +180,23 @@
 - **First Paint**: <1.5 seconds
 - **Time to Interactive**: <2 seconds
 
+## Metrics
+- HomePage
+
+<img width="551" height="126" alt="Screenshot 2025-12-11 at 2 32 56 PM" src="https://github.com/user-attachments/assets/5c0655c2-b025-4f7d-b5f5-84f13e81128a" />
+
+- Explore
+
+<img width="549" height="126" alt="Screenshot 2025-12-11 at 2 32 35 PM" src="https://github.com/user-attachments/assets/447f72de-bf36-416f-a767-2228acd5d908" />
+
+- Create Recipe
+
+<img width="568" height="129" alt="Screenshot 2025-12-11 at 2 33 10 PM" src="https://github.com/user-attachments/assets/bcb40afe-2598-49b8-bd83-3a5a09583f1d" />
+
+- Meal Planner
+
+<img width="566" height="132" alt="Screenshot 2025-12-11 at 2 33 28 PM" src="https://github.com/user-attachments/assets/fc08f127-e953-43f2-b7f4-b793129cc2f9" />
+
 
 ## AI Tool Usage Disclosure
 
